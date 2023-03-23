@@ -1,0 +1,59 @@
+<div class="dashboard-container">
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <app-dashboard-selects [dataModel]="dashboardSelectsDataModel" [configModel]="dashboardSelectsConfigModel">
+        </app-dashboard-selects>
+    </div>
+    <div class="dashboard-row" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="25px">
+        <mat-card fxFlex="49" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+            <app-count-indicator-v1 [dataModel]="countIndicatorV11DataModel" [configModel]="countIndicatorV11ConfigModel">
+            </app-count-indicator-v1>
+            <app-stepper-cost [dataModel]="stepperCost1DataModel" [configModel]="stepperCost1ConfigModel"></app-stepper-cost>
+        </mat-card>
+        <mat-card fxFlex="49" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+            <app-count-indicator-v1 [dataModel]="countIndicatorV12DataModel" [configModel]="countIndicatorV12ConfigModel">
+            </app-count-indicator-v1>
+            <app-stepper-cost [dataModel]="stepperCost2DataModel" [configModel]="stepperCost2ConfigModel"></app-stepper-cost>
+        </mat-card>
+
+    </div>
+
+
+    <div class="dashboard-row" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="25px">
+
+        <mat-card fxFlex="49" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+            <app-count-indicator-v1 [dataModel]="countIndicatorV13DataModel" [configModel]="countIndicatorV13ConfigModel">
+            </app-count-indicator-v1>
+            <app-stepper-cost [dataModel]="stepperCost3DataModel" [configModel]="stepperCost3ConfigModel"></app-stepper-cost>
+        </mat-card>
+        <mat-card fxFlex="49" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="15px">
+            <app-count-indicator-v1 [dataModel]="countIndicatorV14DataModel" [configModel]="countIndicatorV14ConfigModel">
+            </app-count-indicator-v1>
+            <app-stepper-cost [dataModel]="stepperCost4DataModel" [configModel]="stepperCost4ConfigModel"></app-stepper-cost>
+        </mat-card>
+    </div>
+
+    <div class="dashboard-row" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="25px">
+        <div fxFlex="60">
+            <!-- <app-matrix [dataModel]="matrixDataModel" [configModel]="matrixConfigModel"></app-matrix> -->
+            <app-matrix-a2 [dataModel]="matrixA2DataModel" [configModel]="matrixA2ConfigModel"></app-matrix-a2>
+        </div>
+        <div fxFlex="40" fxLayout="column" fxLayoutGap="25px">
+            <div fxLayout="row" fxLayoutGap="25px">
+                <div fxFlex="50">
+                    <app-potential-cost-card [dataModel]="potentialCostCard1DataModel" [configModel]="potentialCostCard1ConfigModel"></app-potential-cost-card>
+                </div>
+                <div fxFlex="50">
+                    <app-potential-cost-card [dataModel]="potentialCostCard2DataModel" [configModel]="potentialCostCard2ConfigModel"></app-potential-cost-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="25px">
+                <div fxFlex="50">
+                    <app-potential-cost-card [dataModel]="potentialCostCard3DataModel" [configModel]="potentialCostCard3ConfigModel"></app-potential-cost-card>
+                </div>
+                <div fxFlex="50">
+                    <app-potential-cost-card [dataModel]="potentialCostCard4DataModel" [configModel]="potentialCostCard4ConfigModel"></app-potential-cost-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

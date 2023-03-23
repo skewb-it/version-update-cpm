@@ -1,0 +1,201 @@
+.black-tab,
+.blue-tab,
+.green-tab {
+  width: 80px;
+  background-color: black;
+  text-align: center;
+  padding: 2px;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.mat-stroked-button {
+  background-color: #f9f9f9 !important;
+  border: 1px solid #333 !important
+}
+
+.blue-tab {
+  background-color: #3D6EB5;
+
+}
+
+.green-tab {
+  background-color: #4CAF50;
+}
+
+.blue-text {
+  color: var(--stroked-button-bg-color);
+}
+
+.grey-text {
+  color: var(--dark-gray-text-color);
+}
+
+.switch-tab {
+  width: 100%;
+}
+
+.blue-btn {
+  background-color: var(--stroked-button-bg-color) !important;
+  color: #fff;
+}
+
+
+.plain-btn {
+  background-color: none;
+  /* color: black; */
+  border-color: none;
+  border-radius: 5px !important;
+  text-align: center;
+}
+
+.key-details-container {
+  display: block !important;
+}
+
+
+.completed,
+.in_progress,
+.cancelled {
+  background-color: #50AA4E;
+  padding: 3px 20px;
+  border-radius: 4px;
+  color: #fff;
+  width: 100%;
+  font-size: 80%;
+}
+
+.cancelled {
+  background-color: red;
+
+}
+
+.in_progress {
+  background-color: #ffb300;
+}
+
+.split-invoice-container {
+  color: var(--dark-gray-text-color);
+}
+
+.invoice-item {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 390px;
+}
+
+
+.charge-item {
+  padding: 1rem;
+  background-color: #E0E0E0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+.charge-item label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+}
+
+.charge.item p {
+  display: block;
+  color: var(--dark-gray-text-color)
+}
+
+.invoice-container-box {
+  display: flex;
+  width: 700px;
+  flex-direction: column;
+}
+
+.button-sets {
+  display: flex;
+  justify-content: center;
+}
+
+.button-sets button {
+  margin: 0 1rem;
+}
+
+.invoice-pdf {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #222;
+  padding: 3rem;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.grey-lite {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.bg-grey-lite {
+  background-color: #f3f3f3;
+  border-radius: 5px;
+}
+
+.fw-bold {
+  font-weight: 600;
+}
+
+.grey-dark {
+  color: rgba(0, 0, 0, 0.5)
+}
+
+._invoice_due_date {
+  color: #222
+}
+
+.table-row-bg {
+  background: aliceblue;
+  border: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+/* Mat Styling  */
+
+
+
+.mat-tab-group {
+  width: 100% !important;
+}
+
+::ng-deep .mat-tab-label {
+  height: 48px;
+  min-width: 135px !important;
+  padding: 0px 10px !important;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.mat-tab-label-container {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+
+::ng-deep .mat-card {
+  border-radius: 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
+  padding: 1.5em 1em !important;
+}
+
+::ng-deep .custom-table.low-border-padding table {
+  border-spacing: 4px 2px !important;
+  border-collapse: separate;
+}

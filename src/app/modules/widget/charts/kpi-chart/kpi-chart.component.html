@@ -1,0 +1,7 @@
+<div class="kpi-container" fxLayout="column" fxLayoutAlign="center center"
+  [ngStyle]="{'background-color':'var('+dataModel.data.kpiBackgroundColor+')'}">
+  <div class="kpi-circle" fxLayout="row" fxLayoutAlign="center center"
+    [ngStyle]="{'color':'var('+dataModel.data.kpiColor+')', 'border-color':'var('+dataModel.data.circleBorderColor+')', 'background-color':'var('+dataModel.data.circleBackgroundColor+')'}">
+    {{dataModel.data.kpi}}</div>
+  <div class="kpi-title" [ngStyle]="{'color':'var('+dataModel.data.labelColor+')'}">{{dataModel.data.label}}</div>
+</div>

@@ -1,0 +1,117 @@
+<div class="permit-details">
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="" *ngIf="dataModel.filterValue == 'FPN'">FPN Reference Number</label>
+            <label for="" *ngIf="dataModel.filterValue == 'Permit' || dataModel.filterValue == 'commercial'">Draft Invoice Reference Number</label>
+            <p>{{ dataModel.data.fpnReferenceNumber }}</p>
+        </div>
+        <div *ngIf="dataModel.filterValue == 'commercial'" class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+              <label for="">Final Invoice Number</label>
+              <p>{{ dataModel.data.invoiceRefNumber }}</p>
+          </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="" *ngIf="dataModel.filterValue == 'FPN'">Permit Reference Number</label>
+            <label for="" *ngIf="dataModel.filterValue == 'Permit' || dataModel.filterValue == 'commercial'">Charge Number</label>
+
+            <p>{{ dataModel.data.permitRefNumber }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="" *ngIf="dataModel.filterValue == 'FPN'">FPN Offence Code</label>
+            <label for="" *ngIf="dataModel.filterValue == 'Permit' || dataModel.filterValue == 'commercial'">Permit Reference Number</label>
+
+            <p>{{ dataModel.data.offenceCode }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Liability Assigned</label>
+            <p>{{ dataModel.data.liabilityAssgned }}</p>
+        </div>
+    </div>
+    <hr />
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Works Location Description</label>
+            <p>{{ dataModel.data.worksLocationDescription }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">USRN Details</label>
+            <p>{{ dataModel.data.usrnDetails }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Charge type</label>
+            <p>{{ dataModel.data.roadType }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="" *ngIf="dataModel.filterValue == 'FPN'">FPN Offence Details</label>
+            <label for="" *ngIf="dataModel.filterValue == 'Permit'">Charge Details</label>
+            <label for="" *ngIf="dataModel.filterValue == 'commercial'">Charge Reason</label>
+            <p>{{ dataModel.data.fpnOffenceDetails }}</p>
+        </div>
+    </div>
+    <hr />
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Highway Authority</label>
+            <p>{{ dataModel.data.highwayAuthority }}</p>
+        </div>
+        <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Liability Organisation</label>
+            <p>{{ dataModel.data.liabilityOrganisation }}</p>
+        </div>
+        <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Road Category</label>
+            <p>{{ dataModel.data.roadCategoryType1 }}</p>
+        </div>
+        <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Network</label>
+            <p>{{ dataModel.data.network }}</p>
+        </div>
+        <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+          <label for="">Assigned To</label>
+          <p>{{ dataModel.data.assignedBy }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Granted Date</label>
+            <p>{{ dataModel.data.grantedDate }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="" *ngIf="dataModel.filterValue == 'FPN'">Issued Date</label>
+            <label for="" *ngIf="dataModel.filterValue == 'Permit' || dataModel.filterValue == 'commercial'">Date Draft Invoice Received</label>
+
+            <p>{{ dataModel.data.issuedDate }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="" *ngIf="dataModel.filterValue == 'FPN'">Date Accepted</label>
+            <label for="" *ngIf="dataModel.filterValue == 'Permit' || dataModel.filterValue == 'commercial'">Date Final Invoice Received</label>
+            <p>{{ dataModel.data.dateAccepted }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="" *ngIf="dataModel.filterValue == 'FPN'">Date FPN Paid</label>
+            <label for="" *ngIf="dataModel.filterValue == 'Permit' || dataModel.filterValue == 'commercial'">Date Final Invoice Paid</label>
+            <p>{{ dataModel.data.dateFPNpaid }}</p>
+        </div>
+    </div>
+    <hr/>
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="7px" fxLayoutAlign="flex-start">
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Work Type</label>
+            <p>{{ dataModel.data.workType }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Spend Type</label>
+            <p>{{ dataModel.data.spendType }}</p>
+        </div>
+        <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+            <label for="">Cost Code</label>
+            <p>{{ dataModel.data.costcode }}</p>
+        </div>
+    </div>
+    <hr/>
+    <!-- <div *ngIf="dataModel.filterValue == 'commercial'" class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+      <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+          <label for="">Final Invoice Number</label>
+          <p>{{ dataModel.data.invoiceRefNumber }}</p>
+      </div> -->
+  </div>

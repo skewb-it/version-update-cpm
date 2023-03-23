@@ -1,0 +1,155 @@
+<mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #drawer class="drawer-sidenav" mode="side" position="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a [routerLink]="['/admin/permit-listing']" (click)="drawer.toggle()">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            My Permits
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            Permit Management
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            Permit Registration
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            Teams Permits
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            Works Start / Works Stop
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            Forward Planning
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            Inspection Management
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            Cost and Penalty Management
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#" [routerLink]="['/admin/user-management']" (click)="drawer.toggle()">
+                        <div class="nav-card" fxLayout="row" fxLayoutAlign="center center">
+                            User Management
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="topbar-container" fxLayout="row" fxLayoutGap="6px">
+            <div class="topbar" fxLayout="column" [ngStyle]="{'height':showNavControl?'11rem':'7rem'}">
+                <div fxLayout="row" fxLayoutAlign="space-between center" [ngStyle]="{'margin-top':showNavControl?'':'9px'}">
+                    <div class="top-left" fxLayout="row" fxLayoutAlign="start center">
+                        <div class="app-logo">
+                            <img *ngIf="!isSVGimagerender" src="assets/images/logo-toolbar-title.png" alt="">
+                            <img *ngIf="isSVGimagerender" src="assets/images/logo-toolbar-title.svg" alt="">
+                        </div>
+                        <div class="top-bar-nav" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
+                            <div class="home-button">
+                                <button type="button" [routerLink]="['/admin/pcp-operational-dashboard']" mat-fab>
+                                  <mat-icon>home</mat-icon>
+                                </button>
+                            </div>
+                            <div class="breadcrumbs" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px">
+                                <p>Home</p><span class="material-icons">chevron_right</span>
+                                <p>{{hometitle}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-middle">
+                      <div class="inner-text">Cost and Penalty Manager</div>
+                    </div>
+                    <div class="top-right" fxLayout="row" fxLayoutAlign="start center">
+
+                        <div *ngIf="ispoweredbyimageshow" class="powered-by-logo" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                            <!-- <p>Powered By</p> -->
+                            <!-- <img src="assets/images/skewb-logo.png" alt=""> -->
+                            <img src="assets/images/opuslogo.png" alt="">
+                        </div>
+
+                        <div>
+                            <!-- <mat-slide-toggle color="primary" (change)="onHelperTextActionChange($event)"
+                [checked]="helperTextPopoverService.shouldHelperTextEnable">
+                Help Text
+              </mat-slide-toggle> -->
+                            <mat-icon class="ic-helper-text" [ngStyle]="{'color':helperTextPopoverService.shouldHelperTextEnable?'green':'blue'}" (click)="onHelperTextActionChange()">help_outline</mat-icon>
+                        </div>
+
+                        <div class="profile-icon"> <button type="button" mat-fab color="primary" [matMenuTriggerFor]="menuProfile" class="profile-btn">
+                <span class="toolbar-profile-btn">{{userDisplayLogo}}</span>
+              </button>
+                            <mat-menu #menuProfile="matMenu">
+                                <div class="profile-menu" fxLayout="row" fxLayoutAlign="center center">
+                                    <div fxLayout="column" fxLayoutAlign="center center">
+                                        <span [matTooltip]="userDisplayName" class="menu-profile-logo user-display-name" fxLayoutAlign="center center">{{getTrimmed(userDisplayName)}}</span>
+                                        <span class="menu-subtitle-key">User Id : <span class="menu-subtitle-value">{{userName}}</span>
+                                        </span>
+                                        <button mat-stroked-button class="btn-change-password">Change Password</button>
+                                        <button [routerLink]="['/']" mat-raised-button color="primary" class="btn-logout">
+                      <mat-icon>settings_power</mat-icon>Logout
+                    </button>
+                                    </div>
+                                </div>
+                            </mat-menu>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="navCont-container" *ngIf="showNavControl">
+                    <hr class="separator-line">
+                    <div fxLayoutAlign="center center" fxFlex="100">
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="98">
+                            <div class="top-left" fxLayout="row" fxLayoutAlign="start center">
+                                <div class="top-bar-nav" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
+                                    <app-nav-control></app-nav-control>
+                                </div>
+                            </div>
+                            <div class="top-right" fxLayout="row" fxLayoutAlign="start center">
+                                <div>
+                                    <span class="main-heading ">
+                    {{getdate | date: 'd MMMM yyyy h:mm a':'UTC':'en-GB'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-div" [ngStyle]="{'margin-top':showNavControl?'5rem':'1rem'}">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

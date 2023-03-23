@@ -1,0 +1,43 @@
+ul li {
+    float: left;
+    margin-right: 25px;
+    list-style: none
+}
+
+.rlegend {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: #FAE8E9;
+}
+
+.glegend {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: #ACF2BD;
+}
+
+th {
+    width: 40%;
+}
+
+p-table {
+    padding-right: 15px!important;
+}
+
+.table th,
+.table td {
+    border: 1px solid;
+    background-color: #f3f2fd;
+}
+
+.diff-data-container{
+  padding: 20px;
+}
+
+.text-diff-row{
+  max-width: 900px;
+}

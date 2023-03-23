@@ -1,0 +1,6 @@
+.headingtitle {
+  font-size: 14px;
+  padding-bottom: 3px;
+  color: var(--theme-color);
+  font-weight: 800;
+}

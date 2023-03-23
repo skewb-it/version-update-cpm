@@ -1,0 +1,8 @@
+<div fxLayout="row" fxLayoutGap="15px">
+    <mat-form-field class="select-on-card" appearance="outline" *ngFor="let select of dataModel.data">
+        <mat-label>{{select.selectLable}}</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let option of select.options" [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

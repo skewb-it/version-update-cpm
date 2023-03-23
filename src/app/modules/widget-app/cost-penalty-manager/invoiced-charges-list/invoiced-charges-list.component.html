@@ -1,0 +1,45 @@
+<div class="permit-list custom-table border-padding">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="Select">
+            <th mat-header-cell *matHeaderCellDef style="padding-left: 10px !important;"></th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 10px !important;">
+                <mat-radio-button></mat-radio-button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="CostType">
+            <th mat-header-cell *matHeaderCellDef>Cost Type</th>
+            <td mat-cell *matCellDef="let element">{{element.costType}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Matched">
+            <th mat-header-cell *matHeaderCellDef>Matched</th>
+            <td mat-cell *matCellDef="let element">
+                <div>
+                    <span class="dot ml-4" [ngClass]="{'matched-type1':element.matched=='matched1','matched-type2':element.matched=='matched2','matched-type3':element.matched=='matched3'}"></span>
+                </div>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Value">
+            <th mat-header-cell *matHeaderCellDef>Value</th>
+            <td mat-cell *matCellDef="let element"> {{element.value | transformCurrency}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.date | transformDate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="DueDate">
+            <th mat-header-cell *matHeaderCellDef>Due Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.dueDate | transformDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef class="centre">Status</th>
+            <td mat-cell *matCellDef="let element" class="centre"> {{element.status}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="detail-element-row"></tr>
+    </table>
+</div>

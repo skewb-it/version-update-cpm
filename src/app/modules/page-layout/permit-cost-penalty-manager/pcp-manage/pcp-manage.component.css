@@ -1,0 +1,225 @@
+.permit-info-container {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 4px #C1CBFF3B;
+    opacity: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.permit-title h1 {
+    font: normal normal bold 1.5rem Noto Sans;
+    letter-spacing: 0px;
+    color: #706F6F;
+    opacity: 1;
+}
+
+.permit-actions .mat-stroked-button {
+    padding: 0 8px;
+    line-height: 25px;
+    font-size: 1.1rem;
+    font: Noto Sans;
+    background-color: #50AA4E;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+.permit-actions .mat-stroked-button .material-icons {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.permit-actions .mat-stroked-button .mat-icon {
+    height: 2rem;
+    width: 2rem;
+}
+
+.early-start-form {
+    padding: 20px;
+}
+
+.early-start-form h3 {
+    font: normal normal bold 1.5rem Noto Sans;
+    letter-spacing: 0px;
+    color: #706F6F;
+    opacity: 1;
+    margin-bottom: 10px;
+}
+
+.confirm-msg-container {
+    padding: 20px 10px;
+}
+
+.charge-tag {
+    font-size: 20px;
+    margin: 0 5px;
+    font-weight: 600;
+    color: var(--theme-color);
+}
+
+.cost-split {
+    padding: 20px 0px;
+}
+
+.cost-split tr,
+td {
+    border: 1px solid var(--table-tr-td-border-color);
+}
+
+.cost-split-row-td-key {
+    width: 50%;
+    padding: 10px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.cost-split-row-td-value {
+    width: 50%;
+    padding: 10px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.bg-total-row {
+    background-color: var(--table-total-row-bg-color);
+    color: var(--white);
+}
+
+.permit-details {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 4px #C1CBFF3B;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    height: 555px;
+}
+
+.estimated-charges,
+.invoiced-charges,
+.history-charges {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 4px #C1CBFF3B;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.invoiced-charges-actions {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 4px #C1CBFF3B;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    height: 455px;
+}
+
+.permit-key-details {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 4px #C1CBFF3B;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    height: 555px;
+}
+
+.permit-acitvity-log {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 4px #C1CBFF3B;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.info-element img {
+    height: 45px;
+    padding: 5px;
+    display: block;
+}
+
+.permit-actions button {
+    font-weight: normal;
+    font-family: Noto Sans;
+    margin-top: 15px;
+    box-shadow: none;
+}
+
+.map-container {
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 4px;
+    height: 320px;
+}
+
+.cost-tag {
+    cursor: pointer;
+    padding: 3px 0px 0px 3px;
+    color: var(--text-highlighted-2);
+    font-size: 20px !important;
+}
+
+.heading {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--theme-color);
+    margin: 6px 0px 8px 0px;
+}
+
+.cost-penalty-history-list {
+    margin: 15px;
+}
+
+.stepper-cost-container {
+    margin-left: 35px;
+}
+
+@media screen and (min-device-width: 1401px) and (max-device-width: 1700px) {
+    .stepper-cost-container {
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (min-device-width: 1701px) and (max-device-width: 2000px) {
+    .stepper-cost-container {
+        margin-left: -2px;
+    }
+}
+
+.long-and-truncated {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.status-1 {
+    background-color: #ffb300;
+    padding: 3px 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.status-2 {
+    background-color: #50AA4E;
+    padding: 3px 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.info-element {
+    text-align: center;
+}
+
+.charges-card {
+    padding: 20px 0px 20px;
+    box-shadow: 0px 3px 4px #C1CBFF3B;
+}

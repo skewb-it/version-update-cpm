@@ -1,0 +1,118 @@
+.permit-details {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 4px #C1CBFF3B;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.permit-key-details {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 4px #C1CBFF3B;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.info-element img {
+  height: 45px;
+  padding: 5px;
+  display: block;
+}
+
+.pmrTrueIconColor{
+  color: var(--theme-color);
+}
+.pmrFalseIconColor{
+  color:var(--pmr-false-icon-color);
+}
+
+
+.permit-actions button {
+  font-weight: normal;
+  font-family: Noto Sans;
+  margin-top: 15px;
+  box-shadow: none;
+}
+
+.map-container {
+  margin: 5px;
+  border: 1px solid;
+  border-radius: 4px;
+  height: 320px;
+}
+
+.cost-tag {
+  cursor: pointer;
+  padding: 3px 0px 0px 3px;
+  color: var(--text-highlighted-2);
+  font-size: 20px !important;
+}
+
+.assessment-info-element label {
+  font: Noto Sans;
+  font-size: 1.2rem;
+  letter-spacing: 0px;
+  color: #838296;
+  margin-bottom: 0px;
+}
+
+.assessment-info-element .assessment-status {
+  font: Noto Sans;
+  font-size: 1.8rem;
+  letter-spacing: 0px;
+  color: var(--icon-theme-color);
+  font-weight: bold;
+}
+
+.assessment-info-element .description-title {
+  font: Noto Sans;
+  font-size: 1.4rem;
+  letter-spacing: 0px;
+  color: var(--icon-theme-color);
+  font-weight: bold;
+}
+
+.assessment-info-element .assessment-description {
+  font: Noto Sans;
+  font-size: 1.4rem;
+  letter-spacing: 0px;
+  color: var(--icon-theme-color);
+}
+
+.long-and-truncated {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+
+.status-1 {
+  background-color: #ffb300;
+  padding: 3px 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.status-2 {
+  background-color: #50AA4E;
+  padding: 3px 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.info-element {
+  text-align: center;
+}
+
+.charges-card {
+  padding: 20px 0px 20px;
+  box-shadow: 0px 3px 4px #C1CBFF3B;
+}
+
+.stepper-cost-container {
+  margin-left: 35px !important;
+}

@@ -1,0 +1,6 @@
+<div class="row wrap" fxLayoutGap="10px">
+    <div  *ngFor="let item of dataModel.buttonSet">
+        <button mat mat-stroked-button class="my-2" (click)="eventEmmiter(item.event)">{{item.label}}</button>
+
+    </div>
+</div>

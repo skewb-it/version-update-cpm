@@ -1,0 +1,24 @@
+
+            p {
+                font-size: larger;
+            }
+            body {
+                margin: 20px;
+                font-family: arial;
+            }
+            #erw-container {
+                background-color: rgba(0, 41, 255, 0.21);                
+                border: solid black 3px;
+            }
+           
+            #on-map {
+                position: relative;
+                width: 600px!important;
+                height: 200px!important;
+            }
+
+            .ons-map-container{
+                width: 200px!important;
+                height: 200px!important;
+            }
+        

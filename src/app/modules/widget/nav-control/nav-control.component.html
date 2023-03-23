@@ -1,0 +1,42 @@
+<!-- <div fxFlex="100" fxLayoutAlign="center center">
+  <div fxFlex="98"> -->
+<ul class="list-inline">
+    <li class="list-inline-item">
+        <nav mat-tab-nav-bar>
+            <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link" [matMenuTriggerFor]="menu"> {{link}} </a>
+
+            <a mat-tab-link *ngFor="let item of newLinks" (click)="redirectToPage(item.navigationRout, item.link)" [active]="activeLink == item.link">
+        {{item.name}} </a>
+        </nav>
+        <!-- <button mat-button [matMenuTriggerFor]="menu">Dashboard</button> -->
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/admin/charges-performance">Charges Performance at a Glance</button>
+            <button mat-menu-item routerLink="/admin/pcp-operational-dashboard">Operational Dashboard</button>
+        </mat-menu>
+    </li>
+    <!-- <li class="list-inline-item" *ngFor="let item of navTitlesData"> -->
+    <li class="list-inline-item">
+        <!-- <div class="main-menu-color dropdown">
+      <ul>
+        <li class="li-class row" (click)="redirectToPage(item.navigationRout)">
+          <span class="menu-name">{{ item.title }}</span>
+        </li>
+        <div id="myDropdown" class="dropdown-content">
+          <a (click)="redirectToPage(subitem.navigationRout)" *ngFor="let subitem of item.subNavControls">{{
+            subitem.subTitle }}</a>
+        </div>
+      </ul>
+    </div> -->
+
+
+        <!-- <nav mat-tab-nav-bar>
+      <a mat-tab-link *ngFor="let item of newLinks" (click)="redirectToPage(item.navigationRout, item.link)"
+        [active]="activeLink == item.link">
+        {{item.name}} </a>
+    </nav> -->
+
+    </li>
+</ul>
+<!-- </div>
+
+</div> -->

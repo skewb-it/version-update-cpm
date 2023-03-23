@@ -1,0 +1,31 @@
+<div class="form-group">
+  <form form [formGroup]="EmailInvoiceForm" id="filter-form" class="d-flex flex-column p-3" appInvalidControlScroll>
+    <div class="fixed-underline" class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <!-- <mat-label>To</mat-label> -->
+        <input matInput placeholder="To" autocomplete="off" formControlName="emailTo">
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="checkbox-container">
+      <div><label class="my-2">SELECT CHARGES TO BE INCLUDE IN A PDF/EXCEL FILE</label></div>
+      <div>
+
+        <mat-checkbox class="example-margin">ChargeADF43</mat-checkbox>
+      </div>
+      <div>
+
+        <mat-checkbox class="example-margin">ChargeADF4343</mat-checkbox>
+      </div>
+      <div>
+
+        <mat-checkbox class="example-margin">ChargeADF342</mat-checkbox>
+      </div>
+    </div>
+
+
+
+
+
+  </form>
+</div>

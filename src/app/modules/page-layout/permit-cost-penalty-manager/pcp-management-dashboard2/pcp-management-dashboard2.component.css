@@ -1,0 +1,22 @@
+.dashboard-container {
+    padding: 15px 25px 50px 25px;
+    margin-top: 2%;
+}
+
+.dashboard-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.card-height {
+    height: 400px
+}
+
+.chart-card-heading {
+    color: #690096;
+    font-weight: bold;
+}
+
+.card-heading{
+  margin-bottom: 15px;
+}

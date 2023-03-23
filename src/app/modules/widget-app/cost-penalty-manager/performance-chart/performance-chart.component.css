@@ -1,0 +1,70 @@
+.equalizer {
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-end; */
+  /* height: 10rem; */
+  /* margin-top: 4rem; */
+}
+
+.border-grey {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+}
+
+.total-tab {
+  /* text-align: center; */
+  padding-right: 1rem;
+}
+
+.black-tab {
+  background-color: black;
+  color: white;
+  padding: 0 6px;
+  /* width: 80px; */
+  font-size: 80%;
+}
+
+.equalizer-bar {
+  width: 3.5rem;
+  margin: 0 10px;
+  /* height: 0.5rem; */
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+span {
+  display: block;
+  /* height: 4px; */
+  border-radius: 4px;
+  width: 100%;
+  /* margin: 2px 0; */
+  background: gray;
+  transition: .2s ease all;
+  opacity: 1;
+}
+
+p {
+  margin-top: 0 !important;
+  /* margin-bottom: 1rem !important; */
+}
+
+.info {
+  text-align: center;
+  font-size: 60px !important;
+}
+
+span.active {
+  background: rgb(238, 255, 0);
+}
+
+.headingtitle {
+  font-size: 14px;
+  padding-bottom: 3px;
+  color: var(--theme-color);
+  font-weight: 800;
+}
+
+.chartTotal {
+  font-size: 22px;
+  font-weight: 800;
+}

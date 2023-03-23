@@ -1,0 +1,160 @@
+<div class="filter-card">
+    <div class="filter-title-container" fxLayout="row" fxLayoutAlign="center center">
+        <!-- <mat-icon class="ic-reset-filter" matTooltip="Clear" color="primary" (click)="onResetFilterClick()">refresh
+    </mat-icon> -->
+        <div class="py-4 theme-color">Filter</div>
+
+    </div>
+    <form [formGroup]="wgFormGroup" id="filter-form">
+        <!-- <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="enter search term" (keyup.enter)="applyFilter()" autocomplete="off"
+        formControlName="search">
+      <mat-error>Field must be valid</mat-error>
+    </mat-form-field> -->
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="fromDate" (click)="fromDate.open()" (focus)="fromDate.open()" formControlName="fromDate">
+            <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+            <mat-datepicker #fromDate></mat-datepicker>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="toDate" (click)="toDate.open()" (focus)="toDate.open()" formControlName="toDate">
+            <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+            <mat-datepicker #toDate></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Charge Number</mat-label>
+            <input matInput placeholder="Charge Nummber" autocomplete="off" formControlName="chargeNumber">
+            <!-- <mat-error>Field must be valid</mat-error> -->
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Invoice Number</mat-label>
+            <input matInput placeholder="Invoice Nummber" autocomplete="off" formControlName="invoiceNumber">
+            <!-- <mat-error>Field must be valid</mat-error> -->
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Charge Type</mat-label>
+            <mat-select multiple formControlName="chargeType">
+                <mat-option [value]="workStatus.key" *ngFor="let workStatus of arrChargeType">{{workStatus.displayText}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Charge Status</mat-label>
+            <mat-select multiple formControlName="status">
+                <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrStatus">
+                    {{permitStatus.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Highway Authority</mat-label>
+            <mat-select multiple formControlName="highwayAuthority">
+                <mat-option [value]="highWayAuthority.authorityId" *ngFor="let highWayAuthority of arrHighWayAuthorities">
+                    {{highWayAuthority.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Liability Owner</mat-label>
+            <mat-select multiple formControlName="liabilityOwner">
+                <!-- <mat-option [value]="workType.key" *ngFor="let workType of arrLiabilityOwner">
+                    {{workType.displayText}}</mat-option> -->
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Job Owner</mat-label>
+            <mat-select>
+                <!-- <mat-option [value]="workType.key" *ngFor="let workType of arrLiabilityOwner">
+                  {{workType.displayText}}</mat-option> -->
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date of Offence</mat-label>
+            <input matInput [matDatepicker]="dateOfOffence" (click)="dateOfOffence.open()" (focus)="dateOfOffence.open()" formControlName="dateOfOffence">
+            <mat-datepicker-toggle matSuffix [for]="dateOfOffence"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfOffence></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date of Potential Charge</mat-label>
+            <input matInput [matDatepicker]="dateOfPotentialCharge" (click)="dateOfPotentialCharge.open()" (focus)="dateOfPotentialCharge.open()" formControlName="dateOfPotentialCharge">
+            <mat-datepicker-toggle matSuffix [for]="dateOfPotentialCharge"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfPotentialCharge></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date of Invoice</mat-label>
+            <input matInput [matDatepicker]="dateOfInvoive" (click)="dateOfInvoive.open()" (focus)="dateOfInvoive.open()" formControlName="dateOfInvoive">
+            <mat-datepicker-toggle matSuffix [for]="dateOfInvoive"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfInvoive></mat-datepicker>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date of PO Raised</mat-label>
+            <input matInput [matDatepicker]="dateofPORaised" (click)="dateofPORaised.open()" (focus)="dateOfPayment.open()" formControlName="dateofPORaised">
+            <mat-datepicker-toggle matSuffix [for]="dateofPORaised"></mat-datepicker-toggle>
+            <mat-datepicker #dateofPORaised></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date of Payment</mat-label>
+            <input matInput [matDatepicker]="dateOfPayment" (click)="dateOfPayment.open()" (focus)="dateOfPayment.open()" formControlName="dateOfPayment">
+            <mat-datepicker-toggle matSuffix [for]="dateOfPayment"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfPayment></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Date of Recharge Agreed</mat-label>
+            <input matInput [matDatepicker]="dateOfRecharge" (click)="dateOfRecharge.open()" (focus)="dateOfRecharge.open()" formControlName="dateOfRecharge">
+            <mat-datepicker-toggle matSuffix [for]="dateOfRecharge"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfRecharge></mat-datepicker>
+        </mat-form-field>
+
+
+    </form>
+
+    <div class="text-center mt-3 pl-3 pr-3">
+
+        <div class="is-invalid"></div>
+        <div *ngIf="wgFormGroup.errors" class="invalid-feedback">
+            <ng-container *ngFor="let item of wgFormGroup.errors | keyvalue">
+                <div *ngIf="wgFormGroup.errors[item.key].errorMessage">
+                    {{wgFormGroup.errors[item.key].errorMessage}}
+                </div>
+            </ng-container>
+        </div>
+        <!-- <div class="mb-2  ">
+      <button type="button" fxflex="100" mat-raised-button class="primary-button w-100" color="primary"
+        (click)="applyFilter()">Apply</button>
+      </div> -->
+    </div>
+
+    <div class="" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="10px">
+        <button type="button" fxflex="100" mat-stroked-button (click)="onResetFilterClick()">RESET</button>
+        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="applyFilter()">APPLY</button>
+    </div>

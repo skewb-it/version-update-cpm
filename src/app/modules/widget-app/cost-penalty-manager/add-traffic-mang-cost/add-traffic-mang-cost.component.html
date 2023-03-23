@@ -1,0 +1,31 @@
+<form [formGroup]="wgFormGroup" class="form-container">
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+        <mat-form-field appearance="outline" fxFlex="50">
+            <mat-label>TM Type</mat-label>
+            <mat-select formControlName="tmType">
+                <mat-option [value]="c.value" *ngFor="let c of arrTMType">{{c.viewValue}}</mat-option>
+            </mat-select>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50">
+            <mat-label>Quantity</mat-label>
+            <input matInput placeholder="Enter Quantity" autocomplete="off" formControlName="quantity" type="number" />
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+        <mat-form-field appearance="outline" fxFlex="50">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Enter some Description" formControlName="description"></textarea>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="50" appearance="outline">
+            <mat-label>Amount</mat-label>
+            <input matInput placeholder="Enter Amount" autocomplete="off" formControlName="amount" type="number">
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end end">
+        <button type="button" mat-raised-button color="primary" class="primary-button" (click)="addTrafficManagementCost()">Save</button>
+    </div>
+</form>

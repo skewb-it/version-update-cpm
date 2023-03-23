@@ -1,0 +1,67 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 matDialogTitle>Create Role</h2>
+    <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+      <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+    </button>
+</div>
+<hr>
+<mat-dialog-content class="mat-typography custom-form-input">
+   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <mat-form-field appearance="outline" fxFlex="25" >
+        <mat-label>Role Title * *
+        </mat-label>
+        <input matInput placeholder="Enter Role Title * *" autocomplete="off">
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+   </div>
+   <h3 class="checklist-label" >Select Module Access (R- Read, W- Write)</h3>
+   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+   <div class="custom-checkbox-div custom-checkbox" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex="33.3"> 
+       <p>Permit Registration</p>
+       <mat-checkbox >R</mat-checkbox>
+       <mat-checkbox >W</mat-checkbox>
+   </div>
+   <div class="custom-checkbox-div custom-checkbox" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex="33.3">
+    <p>Teams Permits</p>
+    <mat-checkbox >R</mat-checkbox>
+    <mat-checkbox >W</mat-checkbox>
+</div>
+<div class="custom-checkbox-div custom-checkbox" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex="33.3">
+    <p>Works Start / Works Stop</p>
+    <mat-checkbox >R</mat-checkbox>
+    <mat-checkbox >W</mat-checkbox>
+</div>
+   </div>
+   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div class="custom-checkbox-div custom-checkbox" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex="33.3">
+        <p>Forward Planning</p>
+        <mat-checkbox >R</mat-checkbox>
+        <mat-checkbox >W</mat-checkbox>
+    </div>
+    
+    <div class="custom-checkbox-div custom-checkbox" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex="33.3">
+        <p>Inspection Management</p>
+        <mat-checkbox >R</mat-checkbox>
+        <mat-checkbox >W</mat-checkbox>
+    </div>
+    <div class="custom-checkbox-div custom-checkbox" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex="33.3">
+     <p>Cost and Penalty Managem..</p>
+     <mat-checkbox >R</mat-checkbox>
+     <mat-checkbox >W</mat-checkbox>
+   </div>
+</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+     <div class="custom-checkbox-div custom-checkbox" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex="33.3">
+         <p>User Management</p>
+         <mat-checkbox >R</mat-checkbox>
+         <mat-checkbox >W</mat-checkbox>
+     </div>
+     
+        </div>
+</mat-dialog-content>
+
+<hr>
+<mat-dialog-actions align="end">
+             <button mat-raised-button class="primary-button mb-2" color="primary"  [mat-dialog-close]="true">Create Role</button>
+  
+</mat-dialog-actions>

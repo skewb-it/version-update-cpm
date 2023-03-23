@@ -1,0 +1,66 @@
+<div class="login-page-container">
+    <div class="container  h-100">
+        <div class="row h-100  no-gutters">
+            <div class="col-sm-4 my-auto">
+                <div class="login-card">
+                    <div class="login-form-container">
+                        <div fxLayout="column" fxLayoutAlign="space-between center">
+                            <img *ngIf="!isSVGimagerender" src="assets/images/logo_login.png" alt="_logo_murphy" class="logo-murphy">
+                            <img *ngIf="isSVGimagerender" src="assets/images/logo_login.svg" alt="_logo_murphy" class="logo-murphy">
+                            <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="space-between none" class="login-form">
+                                <h2 class="login-form-title">Welcome back, Please login to your account.</h2>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>User Id
+                                    </mat-label>
+                                    <input required matInput placeholder="Enter user id" autocomplete="off" value="sm@Murphy.uk" formControlName="userId">
+                                    <mat-error>User Id must be valid
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input required matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password" autocomplete="off" formControlName="password">
+                                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                                    <mat-error>Password must be valid</mat-error>
+                                </mat-form-field>
+                                <div fxLayout="row" fxLayoutAlign="space-between start" class="login-form-links">
+                                    <mat-checkbox formControlName="rememberMe">Remember Me</mat-checkbox>
+                                    <a matTooltip="Reset Password">Forgot Password</a>
+                                </div>
+                                <div style="text-align:center;">
+                                    <button type="submit" mat-raised-button color="primary" style="width:50%; text-align:center;" (click)="authenticateUser()">Login</button>
+                                </div>
+
+                            </form>
+                            <div fxLayout="row" fxLayoutAlign="space-between start" class="login-form-term-links" fxLayoutGap="10px">
+                                <a>Terms of use</a>
+                                <a>Privacy Policy</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <div class="powered-by-logo" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                    <p>Powered By</p>
+                    <img src="assets/images/skewb-logo.png" alt="">
+                </div> -->
+            </div>
+            <div class="col-sm-8 my-auto" fxLayout="column" fxLayoutAlign="space-between center">
+                <div class="Landingtitles">
+                    <div>
+                        <h1 *ngIf="!isopuslogorender">Streetworks in a Skewb</h1>
+                    </div>
+                    <div class="text-center">
+                        <img *ngIf="isopuslogorender" class="opuslogo" src="assets/images/opuslogo.png" alt="opuslogo">
+                        <!-- <h2>Permits Manager</h2> -->
+                    </div>
+                    <img style="width: 95%;   float:right;" src="assets/images/login-bg.png" alt="_logo_murphy">
+                    <!-- <img *ngIf="isSVGimagerender" style="width: 95%;   float:right;" src="assets/images/login-bg.svg" alt="_logo_murphy"> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

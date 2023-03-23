@@ -1,0 +1,41 @@
+
+
+
+<div class="row">
+    <div class="col-sm-2">
+Tab1
+    </div>
+    <div class="col-sm-2">
+        Tab2
+    </div>
+    <div class="col-sm-2">
+        Tab3
+    </div>
+</div>
+
+<app-user-list (popupEventEmitter)="togglePopup($event)"></app-user-list>
+
+
+<p-dialog [(visible)]="display" [modal]="true" [responsive]="true"
+    [style]="{width: '800px', minWidth: '700px', 'text-align' : 'center', 'font-size': '15px'}" 
+    [minY]="100"
+    [maximizable]="true" header="Select Billing Address" [baseZIndex]="10000">
+
+    <div>
+        <div class="col-12">
+            <div class="row dialogbox">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-12">                        
+                           <app-user-details></app-user-details>
+                        </div>
+                        <div class="col-12">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</p-dialog>

@@ -1,0 +1,230 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>Check Permit Details Before Submission</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div>
+<hr> -->
+<!-- <mat-dialog-content class="mat-typography"> -->
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Promoter Prefix</label>
+        <p>{{dataModel.data.promoterPrefix}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Permit Ref. Number</label>
+        <p>{{dataModel.data.permitReference}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Works Reference Number</label>
+        <p>{{dataModel.data.worksReferenceNumber}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Project Reference Number</label>
+        <p>{{dataModel.data.projectReferenceNumber}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Highway Authority</label>
+        <p>{{dataModel.data.highwayAuthority}}</p>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Works Location Description</label>
+        <p>{{dataModel.data.worksLocationDescription}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Location details</label>
+        <p>{{dataModel.data.locationDetails}}</p>
+    </div>
+    <div fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+            <label for="">Post Code</label>
+            <p>{{dataModel.data.postCode}}</p>
+        </div>
+        <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+            <label for="">USRN</label>
+            <p>{{dataModel.data.usrn}}</p>
+        </div>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Works Description</label>
+        <p>{{dataModel.data.worksDescription}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Works Type</label>
+        <p>{{dataModel.data.worksType}}</p>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Contractor</label>
+        <p>{{dataModel.data.accountability}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Road Type</label>
+        <p>{{dataModel.data.roadType}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Promoter Organisation</label>
+        <p>{{dataModel.data.promoterOrganisation}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Contact</label>
+        <p>{{dataModel.data.contact}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Workstream</label>
+        <p>{{dataModel.data.workStream}}</p>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Proposed Start Date</label>
+        <p>{{dataModel.data.proposedStartDate | transformDateTime}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Proposed End Date</label>
+        <p>{{dataModel.data.proposedEndDate | transformDateTime}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Duration</label>
+        <p>{{dataModel.data.duration}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <!-- <label for="">Actual Start Date/Time</label>
+    <p>{{dataModel.data.actualStartDateTime | transformDateTime}}</p> -->
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <!-- <label for="">Actual End Date/Time</label>
+    <p>{{dataModel.data.actualEndDateTime | transformDateTime}}</p> -->
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Traffic Sensitive</label>
+        <p>{{dataModel.data.trafficSensitivity}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Footway Closure</label>
+        <p>{{dataModel.data.footwayClosure}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Excavation Required</label>
+        <p>{{dataModel.data.excavationRequired}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Is Lane Rental Applicable?</label>
+        <p>{{dataModel.data.isLaneRentalApplicable}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Traffic Management Required</label>
+        <p>{{dataModel.data.trafficManagementRequired}}</p>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Collaborative Working</label>
+        <p>{{PermitFormPageData.collaborativeWorkingFlag ==true?'Yes':'No'}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Collaborative Details</label>
+        <p>{{PermitFormPageData.collaborationDetails}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Collaborative Work</label>
+        <p>{{PermitFormPageData.collaborativeWorks}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Collaborative Type</label>
+        <p>{{PermitFormPageData.collaborationType}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Activity Type</label>
+        <p>{{PermitFormPageData.activityType}}</p>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">TTRO required</label>
+        <p>{{PermitFormPageData.ttro_requiredFlag ==true?'Yes':'No'}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Environmental Health</label>
+        <p>{{PermitFormPageData.environmental_flag ==true?'Yes':'No'}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Is Lane Rental Applicable?</label>
+        <p>{{PermitFormPageData.laneRentalFlag ==true?'Yes':'No'}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Covid19</label>
+        <p>{{PermitFormPageData.is_covid19_response ==true?'Yes':'No'}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)"></div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Do you have pre-approval for an early start?</label>
+        <p>{{PermitFormPageData.earlyStartPreApprovalFlag ==true?'Yes':'No'}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Early Start Reason</label>
+        <p>{{PermitFormPageData.earlyStartReason}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Pre approved by</label>
+        <p>{{PermitFormPageData.preApprovalAuthoriser}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Pre approved Details</label>
+        <p>{{PermitFormPageData.preApprovalDetails}}</p>
+    </div>
+    <div class="info-element" fxFlex="20" fxFlex.lt-sm="0 1 calc(50% - 20px)"></div>
+</div>
+<hr>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div class="indicator" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+        <img src="/assets/images/flags/cost.png" alt="">
+        <div class="indicator-info">
+            <h2>{{dataModel.data.cost | transformCurrency}}</h2>
+            <p>Expected Permit Cost</p>
+        </div>
+    </div>
+    <div class="indicator" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+        <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.costRisk)" alt="_pic_cost_risk">
+        <div class="indicator-info">
+            <h2>Cost Risk</h2>
+            <p>{{dataModel.data.costRisk}}</p>
+        </div>
+    </div>
+    <div class="indicator" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+        <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.customerRisk)" alt="_pic_customer_risk">
+        <div class="indicator-info">
+            <h2>Customer Risk</h2>
+            <p>{{dataModel.data.customerRisk}}</p>
+        </div>
+    </div>
+    <div class="indicator" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+        <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.trafficManagement)" alt="_pic_traffic_mng">
+        <div class="indicator-info">
+            <h2>Traffic Management</h2>
+            <p>{{dataModel.data.trafficManagement}}</p>
+        </div>
+    </div>
+</div>
+<!-- </mat-dialog-content>
+<hr>
+<mat-dialog-actions align="end">
+  <p style="margin-right: 25px;">Are you sure you want to confirm?</p> <button mat-raised-button
+    class="green-button mb-2" color="primary" (click)="openCreatePermitConfirmationDialog()"
+    [mat-dialog-close]="true">Confirm</button>
+</mat-dialog-actions> -->

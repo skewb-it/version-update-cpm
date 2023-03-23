@@ -1,0 +1,181 @@
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="page-top-left" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                    <div class="page-title">
+                        <h1>All Roles</h1>
+                    </div>
+                    <div class="page-actions" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                        <button (click)="openDialog()" mat-stroked-button color="primary">
+                            <mat-icon>add_box</mat-icon>Create Role
+                        </button>
+                    </div>
+                </div>
+                <div class="page-inputs page-top-right">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Search
+                        </mat-label>
+                        <input matInput placeholder="enter search term" autocomplete="off">
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="inspection-list custom-table ">
+                <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="RoleTitle">
+                        <th mat-header-cell *matHeaderCellDef>Role Title</th>
+                        <td mat-cell *matCellDef="let element" style="padding-left: 20px !important;">
+                            {{element.RoleTitle}}
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="PermitRegistration">
+                        <th mat-header-cell *matHeaderCellDef>Permit Registration</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p> R
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p>W
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="TeamsPermits">
+                        <th mat-header-cell *matHeaderCellDef>Teams Permits</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p> R
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p>W
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="WorksStartWorkStop">
+                        <th mat-header-cell *matHeaderCellDef>Works Start/Work Stop</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p> R
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p>W
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ForwardPlanning">
+                        <th mat-header-cell *matHeaderCellDef>Forward Planning</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p> R
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p>W
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="InspectionManagement">
+                        <th mat-header-cell *matHeaderCellDef>Inspection Management</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p> R
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p>W
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="CostAndPenaltyManagement">
+                        <th mat-header-cell *matHeaderCellDef>Cost And Penalty Management</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p> R
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p>W
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="UserManagement">
+                        <th mat-header-cell *matHeaderCellDef>User Management</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p> R
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                                <div fxLayoutAlign="start  center" fxLayoutGap="20px">
+                                    <p>W
+                                        <mat-icon class="r-w-icon">done</mat-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;">Actions </th>
+                        <td mat-cell *matCellDef="let row">
+                            <div fxLayout="row" fxLayoutAlign="center center">
+                                <button mat-icon-button matTooltip="Click to view" class="iconbutton" color="primary">
+                                    <mat-icon aria-label="Edit">visibility</mat-icon>
+                                </button>
+                                <button mat-icon-button matTooltip="Click to view" class="iconbutton" color="primary">
+                                    <mat-icon aria-label="Edit">edit</mat-icon>
+                                </button>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+
+        </div>
+    </div>
+
+</div>

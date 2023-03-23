@@ -1,0 +1,39 @@
+<div class="detail-container mb-4" fxFlex="100" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="10px"
+  fxLayoutAlign="flex-start strech">
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Invoice Reference Number </label>
+    <p class="mt-2">{{this.dataModel.data.invoiceReferenceNumber}}</p>
+  </div>
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Invoice Status </label>
+    <p class="mt-2">
+      <span
+        [ngClass]="{'completed':this.dataModel.data.invoiceStatus=='Matched','cancelled':this.dataModel.data.invoiceStatus=='Not Matched', 'in_progress':this.dataModel.data.invoiceStatus=='Open'}">
+        {{this.dataModel.data.invoiceStatus}}</span>
+    </p>
+  </div>
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Highway Authority </label>
+    <p class="mt-2">{{this.dataModel.data.highwayAuthority}}</p>
+  </div>
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Start Date </label>
+    <p class="mt-2">{{this.dataModel.data.startDate}}</p>
+  </div>
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">End Date </label>
+    <p class="mt-2">{{this.dataModel.data.endDate}}</p>
+  </div>
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Cost Estimated </label>
+    <p class="mt-2"><span class="black-tab">&pound;{{this.dataModel.data.estimatedCost}}</span></p>
+  </div>
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Cost Invoiced </label>
+    <p class="mt-2"><span class="blue-tab">&pound;{{this.dataModel.data.invoicedCost}}</span></p>
+  </div>
+  <div class="info-element" fxFlex="12.8" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Cost Paid </label>
+    <p class="mt-2"><span class="green-tab">&pound;{{this.dataModel.data.paidCost}}</span></p>
+  </div>
+</div>

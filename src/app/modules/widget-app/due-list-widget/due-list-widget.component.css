@@ -1,0 +1,26 @@
+.job-card-heading {
+    background-color: rgb(34, 84, 165);
+    color: #fff;
+    padding: 5px;
+}
+
+.job-card-list {
+    list-style: none;
+    padding: 0;
+}
+
+.list-sec {
+    border-bottom: 1px solid gray;
+    padding: 5px;
+}
+
+.div-count {
+    color: #fff;
+    background-color: #009AD9;
+    padding: 3px 8px 3px 8px;
+    border-radius: 5px;
+}
+
+.div-labels {
+    margin-left: 10px;
+}

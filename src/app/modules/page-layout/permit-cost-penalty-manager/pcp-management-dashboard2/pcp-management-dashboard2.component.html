@@ -1,0 +1,29 @@
+<div class="dashboard-container">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <div class="dashboard-row mb-5" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+      <mat-card class="card-height" fxFlex="50" fxLayout="column" fxLayoutGap="10px"
+        fxLayoutAlign="space-between center">
+        <h4 class="chart-card-heading"> </h4>
+        <div [ngStyle]="{'width':'100%'}">
+          <app-stacked-column-chart [dataModel]="stackedColumnChartDataModel"
+            [configModel]="stackedColumnChartConfigModel"></app-stacked-column-chart>
+        </div>
+      </mat-card>
+      <mat-card class="card-height" fxFlex="50">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="card-heading">
+          <h4 class="chart-card-heading">Permit fines & Penalties | Projections Vs Actual</h4>
+          <mat-form-field class="select-on-chart-card" appearance="outline">
+            <mat-label>WorkStream</mat-label>
+            <mat-select>
+              <mat-option value="WorkStream1">WorkStream 1</mat-option>
+              <mat-option value="WorkStream2">WorkStream 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div [ngStyle]="{'width':'100%'}">
+          <app-line-chart [dataModel]="lineChartDataModel" [configModel]="lineChartConfigModel"></app-line-chart>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

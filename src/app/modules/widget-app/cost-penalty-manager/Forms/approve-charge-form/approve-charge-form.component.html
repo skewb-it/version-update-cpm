@@ -1,0 +1,77 @@
+<div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Number </label>
+    <p class="font-weight-bold">{{this.dataModel.data.chargeNumber}}</p>
+  </div>
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Type </label>
+    <p>{{this.dataModel.data.chargeType}}</p>
+  </div>
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Amount </label>
+    <p>&pound;{{this.dataModel.data.chargeAmount}}</p>
+  </div>
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Permit Type </label>
+    <p>{{this.dataModel.data.permitType}}</p>
+  </div>
+</div>
+<hr>
+<div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+  <div class="info-element" fxFlex="100" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Description </label>
+    <p>{{this.dataModel.data.chargeDesc}}</p>
+  </div>
+</div>
+<hr>
+
+<div class="form-group">
+  <form form [formGroup]="ApproveChargeForm" id="filter-form" class="d-flex flex-column p-3" appInvalidControlScroll>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Charge Amount</mat-label>
+        <input matInput placeholder="Charge Amount" autocomplete="off" formControlName="chargeAmount">
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Notes</mat-label>
+        <input matInput placeholder="Notes" autocomplete="off" formControlName="notes">
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <div fxFlex="60">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Approval required from </mat-label>
+          <input matInput placeholder="Approval required from " autocomplete="off" formControlName="approvalReqFrom">
+          <!-- <mat-error>Field must be valid</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div fxFlex="40">
+        <mat-form-field appearance="fill">
+          <mat-label>Approval by date</mat-label>
+          <input matInput [matDatepicker]="dateOfOffence" (click)="dateOfOffence.open()" (focus)="dateOfOffence.open()"
+            formControlName="approvalDate">
+          <mat-datepicker-toggle matSuffix [for]="dateOfOffence"></mat-datepicker-toggle>
+          <mat-datepicker #dateOfOffence></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Approval Notes</mat-label>
+        <input matInput placeholder="Approval Notes" autocomplete="off" formControlName="approvalNotes">
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Basic fill input</mat-label>
+       <ngx-mat-file-input formControlName="fill" placeholder="Basic fill placeholder"></ngx-mat-file-input>
+        <mat-icon matSuffix>folder</mat-icon>
+      </mat-form-field> -->
+    </div>
+
+  </form>
+</div>

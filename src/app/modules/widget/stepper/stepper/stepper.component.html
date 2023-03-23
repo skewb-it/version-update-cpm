@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-12">
+    <ul class="ml-0 pl-0">
+      <li *ngFor="let item of dataModel.StepperfilterModel">
+        <div [ngClass]="{'not-allow': item.display == '1' }" [ngStyle]="{'display':item.display=='2'?'none':''}">
+          <div class="a pointer" [ngClass]="{
+                a: item.color == '#009AD9',
+                b: item.color == '#06B900',
+                c: item.color == '#FF4500',
+                c1: item.color == '#690096',
+                d: item.display=='1',
+                overlay: item.display == '1'
+              }" [ngStyle]="{ 'pointer-events': item.display == '1' ? 'none' : '', 'backgroundColor': item.display=='1' ? '#b6b7b6':'item.color',
+              'opacity':item.display=='1'?'1':'item.color'}">
+            <i class="material-icons mat_icon_size">
+              {{ item.iconname }}
+            </i>
+          </div>
+          <div class="status_tittle">
+            {{ item.name }}
+            <br />
+            <div class="status_tittle1" *ngIf="item.countvisible == '1'" (click)="onCountClick(item)">
+              <p *ngIf=" item.isValueVisible == 'true'">
+                {{ item.count }}
+              </p> &nbsp;
+              <p *ngIf=" item.isPercentageVisible == 'true'">
+                ({{ item.countpercentage | number: "1.0-2" }}%)
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

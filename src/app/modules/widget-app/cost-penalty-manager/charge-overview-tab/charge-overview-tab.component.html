@@ -1,0 +1,46 @@
+<div class="permit-details">
+  <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Invoice Reference Number</label>
+      <p>{{ dataModel.data.usrndetails }}</p>
+    </div>
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Charge Number</label>
+      <p>{{ dataModel.data.projectReferenceNumber }}</p>
+    </div>
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Permit Reference Number</label>
+      <p>{{ dataModel.data.permitRefNumber }}</p>
+    </div>
+  </div>
+  <hr />
+  <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Works Location Description</label>
+      <p>{{ dataModel.data.worksLocationDescription }}</p>
+    </div>
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Charge Details</label>
+      <p>{{ dataModel.data.chargeDetails }}</p>
+    </div>
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Charge type</label>
+      <p>{{ dataModel.data.roadType }}</p>
+    </div>
+
+  </div>
+  <hr />
+  <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Highway Authority</label>
+      <p>{{ dataModel.data.highwayAuthority }}</p>
+    </div>
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Liability Organisation</label>
+      <p>{{ dataModel.data.promoterOrganisation }}</p>
+    </div>
+    <div class="info-element" fxFlex="33.33" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Assigned By</label>
+      <p>{{ dataModel.data.assignedBy }}</p>
+    </div>
+  </div>

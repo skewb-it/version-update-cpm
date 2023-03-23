@@ -1,0 +1,10 @@
+.failure-reason-container{
+  max-height: 80px;
+  overflow: auto;
+}
+
+.ic-info{
+  cursor: default;
+  color: var(--text-highlighted-2);
+  font-size: 20px !important;
+}

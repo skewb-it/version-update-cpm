@@ -1,0 +1,11 @@
+.custom-checkbox-div p{
+    margin: 0px;
+}
+.custom-checkbox-div{
+    padding-right: 15px;
+}
+.checklist-label{
+    font: normal normal bold 1.5rem Noto Sans;
+    letter-spacing: 0px;
+    color: #706F6F;  
+}

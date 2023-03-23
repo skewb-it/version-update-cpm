@@ -1,0 +1,17 @@
+<form *ngIf="wgFormGroup" [formGroup]="wgFormGroup" fxLayout="column">
+    <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Topic</mat-label>
+        <mat-select required formControlName="topic">
+            <mat-option [value]="topic.value" *ngFor="let topic of arrTopics">{{topic.viewValue}}</mat-option>
+        </mat-select>
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Content</mat-label>
+        <textarea required matInput placeholder="Enter content" autocomplete="off" formControlName="content"></textarea>
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button type="button" mat-raised-button class="primary-button mb-2" color="primary" (click)="onAddCommentButtonClick()">Add</button>
+    </div>
+</form>

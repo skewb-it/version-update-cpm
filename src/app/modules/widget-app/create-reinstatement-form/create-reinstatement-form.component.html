@@ -1,0 +1,138 @@
+<div class="reinstatement-form-container">
+    <form [formGroup]="wgFormGroup">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+            <mat-form-field appearance="outline" fxFlex="25">
+                <mat-label>Reinstatement Type</mat-label>
+                <mat-select (selectionChange)="showHolesField()" formControlName="reinstatementType">
+                    <mat-option *ngFor="let reinstatementType of arrReinstatementType" [value]="reinstatementType.value">{{reinstatementType.displayText}}</mat-option>
+                </mat-select>
+                <mat-error>Field must be valid</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="showField" appearance="outline" fxFlex="20">
+                <mat-label>No of Holes </mat-label>
+                <input matInput placeholder="Enter No of Holes" autocomplete="off" formControlName="numberOfHoles" type="number" />
+                <mat-error>Field must be valid</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Works Location Description </mat-label>
+                <input matInput placeholder="Enter Works Location Description" autocomplete="off" formControlName="workLocationDescription" />
+                <mat-error>Field must be valid</mat-error>
+            </mat-form-field>
+
+        </div>
+        <hr />
+        <div fxLayout="row" fxLayoutGap="20px">
+            <div fxFlex="30">
+                <label class="custom-label" for="">Site Location Area</label>
+                <mat-form-field appearance="outline">
+                    <mat-label>Site Location Area</mat-label>
+                    <mat-select required multiple formControlName="locationTypes">
+                        <mat-option [value]="LocationType.value" *ngFor="let LocationType of arrLocationType">
+                            {{ LocationType.displayText }}</mat-option>
+                    </mat-select>
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="70" fxLayout="column">
+                <label class="custom-label" for="">Inspection Units (Default is 1; Please update the number of inspection
+          units if changed.)</label
+        >
+        <div>
+          <mat-form-field appearance="outline" fxFlex="45">
+            <mat-label>Inspection Units </mat-label>
+            <input
+              matInput
+              placeholder="Enter Inspection Units"
+              autocomplete="off"
+              formControlName="inspectionUnits"
+              type="number"
+            />
+            <mat-error>Field must be valid</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div>
+      <label class="custom-label" for=""
+        >Reinstatement Measurements in metres</label
+      >
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        fxLayoutGap="20px"
+      >
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label>Length </mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Enter Length"
+            autocomplete="off"
+            formControlName="length"
+          />
+          <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <div fxFlex="5">
+          <h1 style="text-align: center">X</h1>
+        </div>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label>Width </mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Enter Width"
+            autocomplete="off"
+            formControlName="width"
+          />
+          <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <div fxFlex="5">
+          <h1 style="text-align: center">X</h1>
+        </div>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label>Depth </mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Enter Depth"
+            autocomplete="off"
+            formControlName="depth"
+          />
+          <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <hr />
+    <div>
+      <label class="custom-label" for="">Reinstatement Options</label>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <mat-form-field appearance="outline" fxFlex="25">
+                        <mat-label>Reinstatement Date</mat-label>
+                        <input matInput autocomplete="off" required [matDatepicker]="startDatePicker" placeholder="Enter Reinstatement Date" [formControl]="wgFormGroup.controls.reinstatementDateTime" (click)="startDatePicker.open()" />
+                        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                        <!-- <ngx-mat-datetime-picker #startDatePicker [showSeconds]="true" [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [enableMeridian]="false">
+                        </ngx-mat-datetime-picker> -->
+                        <mat-datepicker #startDatePicker></mat-datepicker>
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="33.3">
+                        <mat-label>Reinstatement State</mat-label>
+                        <mat-select formControlName="reinstatementState">
+                            <mat-option *ngFor="let reinstatementStatus of arrReinstatementStatus" [value]="reinstatementStatus.value">{{reinstatementStatus.displayText}}</mat-option>
+                        </mat-select>
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="33.3">
+                        <mat-label>Registering Final Site?</mat-label>
+                        <mat-select formControlName="finalSite">
+                            <mat-option [value]="true">Yes</mat-option>
+                            <mat-option [value]="false">No</mat-option>
+                        </mat-select>
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+    </form>
+    </div>

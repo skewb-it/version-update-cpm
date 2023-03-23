@@ -1,0 +1,5 @@
+<div class="helper-text-popover-container">
+  <app-helper-text *ngFor="let helperTextServiceData of helperTextPopoverService.components"
+    [helperTextContent]="helperTextServiceData.helperTextData" [eleRef]="helperTextServiceData.eleRef">
+  </app-helper-text>
+</div>

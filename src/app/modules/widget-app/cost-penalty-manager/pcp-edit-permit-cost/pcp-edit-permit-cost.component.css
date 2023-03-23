@@ -1,0 +1,39 @@
+.border-right {
+    border-right: 1px solid #eee;
+}
+
+.heading {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--theme-color);
+    margin: 15px 0px 25px 0px;
+}
+
+.padding-right {
+    padding-right: 15px;
+}
+
+.stepper-cost-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px 35px 0px;
+}
+
+.centre {
+    text-align: center;
+}
+
+.button-container-row {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.cost-penalty-history-list {
+    height: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 2rem 0 2rem;
+    margin-top: 5rem;
+}

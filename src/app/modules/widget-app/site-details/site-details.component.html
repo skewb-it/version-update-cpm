@@ -1,0 +1,152 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 matDialogTitle>Site Details</h2>
+    <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+        <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+    </button>
+</div>
+<hr> -->
+
+<!-- <div class="siteDetailsPopup">
+    <div class="container">
+        <div class="row"> -->
+<!-- <div class="col-1  px-3"> -->
+
+<!-- <ul class="list-unstyled" >
+                    <li class=" text-center my-3">
+                        <button mat-raised-button class="primary-button " color="primary">V5</button>
+                    </li>
+                    <li class=" text-center my-3">
+                        <button  mat-raised-button class="primary-button unselectedBtn" color="primary">V4</button>
+                    </li>
+                    <li class=" text-center my-3">
+                        <button mat-raised-button class="primary-button unselectedBtn" color="primary">V3</button>
+                    </li>
+                    <li class=" text-center my-3">
+                        <button mat-raised-button class="primary-button unselectedBtn" color="primary">V2</button>
+                    </li>
+                    <li class=" text-center my-3">
+                        <button mat-raised-button class="primary-button unselectedBtn" color="primary">V1</button>
+                    </li>
+                </ul> -->
+
+<!-- </div> -->
+<!-- <div class="col-12 border p-3 mt-3">
+                <mat-tab-group mat-stretch-tabs>
+                    <mat-tab label="Details"> -->
+<div class="change-request-info mt-3" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="0">
+    <div class="left-side" fxFlex="50">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="info-element" fxFlex="100">
+                <label for="">Permit Ref Number </label>
+                <p>{{dataModel.data.permitRefNumber}}</p>
+            </div>
+            <div class="info-element" fxFlex="100">
+                <label for="">Reinstatement Status </label>
+                <p>{{dataModel.data.reinstatementStatus}}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="info-element" fxFlex="100">
+                <label for="">Reinstatement Type </label>
+                <p>{{dataModel.data.reinstatementType}}</p>
+            </div>
+            <div *ngIf="!showNoOfHoles" class="info-element" fxFlex="100">
+                <label for="">Number Of Holes </label>
+                <p>{{dataModel.data.numberOfHoles}}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="info-element" fxFlex="100">
+                <label for="">Inspection Units </label>
+                <p>{{dataModel.data.inspectionUnits}}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="map-container">
+            <ng-content select=".elgin-map-view"> </ng-content>
+        </div>
+        <!-- <div class="map-wrapper" style="background-image: url('/assets/images/map.png');"></div> -->
+    </div>
+
+    <div class="right-side" fxFlex="50">
+        <div class="info-div">
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Work Reference</label>
+                    <p>{{dataModel.data.workReference}}</p>
+                </div>
+                <div class="info-element" fxFlex="100">
+                    <label for="">Site No</label>
+                    <p>{{dataModel.data.siteNo}}</p>
+                </div>
+            </div>
+            <hr>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Dimensions</label>
+                    <p>L {{dataModel.data.length}}, W {{dataModel.data.width}}, D {{dataModel.data.depth}}
+                    </p>
+                </div>
+            </div>
+            <hr>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Reinstatement Date</label>
+                    <p>{{dataModel.data.reinstatementDate | transformDateTime}}</p>
+                </div>
+                <div class="info-element" fxFlex="100">
+                    <label for="">Reinstatement Evidence</label>
+                    <p>{{dataModel.data.reinstatementEvidence}}</p>
+                </div>
+            </div>
+            <hr>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Is Final Reinstatement</label>
+                    <p>{{dataModel.data.isFinalReinstatement}}</p>
+                </div>
+                <div class="info-element" fxFlex="100">
+                    <label for="">Work Location</label>
+                    <p>{{dataModel.data.workLocation == null?'-':dataModel.data.workLocation}}</p>
+                </div>
+            </div>
+            <hr>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Location Description </label>
+                    <p>{{dataModel.data.locationDescription ==null?'-':dataModel.data.locationDescription}}</p>
+                </div>
+            </div>
+            <hr>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Location Types</label>
+                    <p>{{dataModel.data.locationTypes}}</p>
+                    <!-- <p *ngFor="let LocationType of arrLocationType">{{LocationType.displayText}}</p> -->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- </mat-tab>
+
+                    <mat-tab label="Attachments">
+
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,61 @@
+<div class="dashboard-container mb-4">
+
+  <div fxLayout="row" fxLayoutAlign="start center" FxFlex="100" class="page-title m-4">
+
+    <div class="grey-text " FxFlex="98">
+      <span class="blue-text">Dashboard</span> / Operational Dashboard
+    </div>
+
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="m-auto">
+    <mat-card fxFlex="98" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div class="quick-filter">
+        <app-pcp-quick-filter [dataModel]="permitQuickFilterDataModel" [configModel]="permitQuickFilterConfigModel">
+        </app-pcp-quick-filter>
+      </div>
+    </mat-card>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="my-4">
+    <mat-card fxFlex="98" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div class="stepper">
+        <app-pcp-stepper [dataModel]="pcpStepperDataModel" [configModel]="pcpStepperConfigModel">
+        </app-pcp-stepper>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="dashboard-row" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="98" fxLayoutGap="16px">
+      <mat-card fxFlex="45">
+        <app-matrix-a3 [dataModel]="matrixA3DataModel" [configModel]="matrixA3ConfigModel"></app-matrix-a3>
+      </mat-card>
+      <div fxFlex="55" fxLayout="column" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayoutGap="16px">
+          <mat-card fxFlex="50">
+            <app-pcp-charges-list [dataModel]="pcpChargesListDataModel" [configModel]="pcpChargesListConfigModel">
+            </app-pcp-charges-list>
+          </mat-card>
+          <mat-card fxFlex="50">
+            <app-pcp-charges-list [dataModel]="pcpChargesList2DataModel" [configModel]="pcpChargesList2ConfigModel">
+            </app-pcp-charges-list>
+          </mat-card>
+        </div>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-card fxFlex="100">
+            <div class="d-flex justify-content-start align-items-center" fxLayoutGap=" 10px">
+              <app-multi-tab [dataModel]="mutliTabDataModel" [configModel]="multiTabConfigModel" fxFlex="100">
+              </app-multi-tab>
+              <app-multi-tab [dataModel]="mutliTab2DataModel" [configModel]="multiTab2ConfigModel" fxFlex="100">
+              </app-multi-tab>
+              <app-multi-tab [dataModel]="mutliTab3DataModel" [configModel]="multiTab3ConfigModel" fxFlex="100">
+              </app-multi-tab>
+              <app-multi-tab [dataModel]="mutliTab4DataModel" [configModel]="multiTab4ConfigModel" fxFlex="100">
+              </app-multi-tab>
+
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

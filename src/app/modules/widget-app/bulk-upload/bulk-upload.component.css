@@ -1,0 +1,32 @@
+.drop-zone{
+    border: 2px dashed #706F6F;
+border-radius: 39px;
+}
+.drop-zone h1{
+    font: normal normal bold 2rem Noto Sans;
+    letter-spacing: 0px;
+    color: var(--theme-color);
+}
+.drop-container{
+    padding: 35px;
+}
+.selector-control{
+    border: 1px solid #2B5C4169;
+border-radius: 4px;
+padding: 5px;
+padding-left: 15px;
+}
+.file-selector .selector-control p{
+    text-align: left;
+    font: normal normal normal 1.3rem Noto Sans;
+    letter-spacing: 0px;
+    color: #43425D;
+    margin:0px;
+}
+.file-selector p{
+    margin-top: 10px;
+    font: italic normal normal 1.3rem Noto Sans;
+letter-spacing: 0px;
+color: #838296;
+
+}

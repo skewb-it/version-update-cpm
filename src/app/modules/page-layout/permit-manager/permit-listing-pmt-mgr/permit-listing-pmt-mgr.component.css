@@ -1,0 +1,17 @@
+.page-top-left {
+    width: 220px;
+}
+
+.page-top-right {
+    width: calc(100% - 240px);
+}
+
+.errorlabel {
+    font-size: 18px;
+    text-align: left;
+}
+
+.errorbtn {
+    min-width: 100px;
+    margin-top: 20px;
+}

@@ -1,0 +1,31 @@
+.key-details-container {
+  display: block !important;
+}
+
+.completed,
+.in_progress,
+.cancelled {
+  background-color: #50AA4E;
+  padding: 3px 20px;
+  border-radius: 4px;
+  color: #fff;
+  width: 100%;
+  font-size: 80%;
+}
+
+.cancelled {
+  background-color: red;
+
+}
+
+.in_progress {
+  background-color: #ffb300;
+}
+.status-value{
+  min-width: 150px;
+}
+.status-value span {
+  width: 100% !important;
+  display: block;
+  text-align: left;
+}

@@ -1,0 +1,32 @@
+.map-wrapper{
+    min-width: 500px;
+    min-height: 300px;
+    border:1px solid beige;
+    border-radius: 4px;
+}
+.mat-checkbox-layout .mat-checkbox-label{
+    line-height: 30px;
+}
+.action-checkbox-container{
+  margin-top: 27px;
+}
+
+/* .RemoveSpin
+{
+  -webkit-appearance: none;
+  appearance: none;  
+  margin: 0;
+  
+  -moz-appearance: textfield;
+  -webkit-inner-spin-button:none;
+  -webkit-outer-spin-button:none;
+} */
+
+#txtContactNo::-webkit-inner-spin-button, 
+#txtContactNo::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0; 
+}

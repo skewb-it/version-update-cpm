@@ -1,0 +1,6 @@
+<p-dialog #dialogRef [(visible)]="dialogModel.visible" [modal]="true" [responsive]="true" [closable]="false"
+  [style]="{width: dialogModel.width, minWidth: dialogModel.minWidth, 'text-align' : dialogModel.textAlign, 'font-size': dialogModel.fontSize}"
+  [minY]="dialogModel.minY" [maximizable]="dialogModel.maximizable" [header]="dialogModel.header"
+  [baseZIndex]="dialogModel.baseZIndex" [closable]="dialogModel.closable" (onHide)="closeDialog()">
+  <ng-content select=".dialog-content-slot"></ng-content>
+</p-dialog>

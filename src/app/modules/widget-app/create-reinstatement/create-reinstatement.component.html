@@ -1,0 +1,278 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 matDialogTitle>Create Reinstatement</h2>
+    <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+        <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+    </button>
+</div>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <mat-horizontal-stepper #stepper>
+        <mat-step label="Reinstatement Map" [stepControl]="FirstSection">
+            <div class="change-request-info" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="0">
+                <div class="left-side" fxFlex="65">
+                    <div class="map-wrapper" style="background-image: url('/assets/images/map.png');"></div>
+                </div>
+                <div class="right-side" fxFlex="35">
+                    <div class="info-div">
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div class="info-element" fxFlex="100">
+                                <label for="">Permit Number </label>
+                                <p>9487592475237</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div class="info-element" fxFlex="100">
+                                <label for="">Works Location Description</label>
+                                <p>Opp Salford Priors C of E Primary School, School Road, Salford Priors, Evesham</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div class="info-element" fxFlex="100">
+                                <label for="">Location details</label>
+                                <p>Opp Salford Priors C of E Primary School, FWY</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="selection-field" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-radio-group fxLayout="column" fxLayoutAlign="space-between stretch">
+                            <mat-radio-button value="1">
+                                <div class="pin-div" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div class="pin-title">
+                                        <h3>Draw Polygon</h3>
+                                        <p>Select here and draw polygon on the map</p>
+                                    </div>
+                                    <button mat-icon-button matTooltip="Click to drop Pin" class="iconbutton"
+                                        color="warn">
+                                        <mat-icon>star_outline</mat-icon>
+                                    </button>
+                                </div>
+                            </mat-radio-button>
+                            <mat-radio-button value="2">
+                                <div class="pin-div" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div class="pin-title">
+                                        <h3>Draw Line</h3>
+                                        <p>Select here and draw Line on the map</p>
+                                    </div>
+                                    <button mat-icon-button matTooltip="Click to drop Pin" class="iconbutton"
+                                        color="warn">
+                                        <mat-icon>horizontal_rule</mat-icon>
+                                    </button>
+                                </div>
+                            </mat-radio-button>
+                            <mat-radio-button value="3">
+                                <div class="pin-div" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div class="pin-title">
+                                        <h3>Drop Pin</h3>
+                                        <p>Select here and drop Pin on the map</p>
+                                    </div>
+                                    <button mat-icon-button matTooltip="Click to drop Pin" class="iconbutton"
+                                        color="warn">
+                                        <mat-icon>push_pin</mat-icon>
+                                    </button>
+                                </div>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step label="Fill out Details" [stepControl]="SecondSection" >
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="25">
+                    <mat-label>Reinstatement Type</mat-label>
+                    <mat-select  >
+                        <mat-option >Excavation</mat-option>
+                        <mat-option >Bar Holes</mat-option>
+                        <mat-option > Core Holes</mat-option>
+                        <mat-option >Pole Testing</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" fxFlex="75">
+                    <mat-label>Works Location Description
+                    </mat-label>
+                    <input matInput placeholder="Enter Works Location Description" autocomplete="off">
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <hr>
+            <div>
+                <label class="custom-label" for="">Site Location Area</label>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox>Footway</mat-checkbox>
+                    </div>
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox>Carriageway</mat-checkbox>
+                    </div>
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox>Verge</mat-checkbox>
+                    </div>
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox>Cycle way</mat-checkbox>
+                    </div>
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox>Footpath</mat-checkbox>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+                <div fxFlex="50">
+                    <label class="custom-label"  for="">Site Location Coordinates</label>
+                    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                        <mat-form-field appearance="outline" fxFlex="50">
+                            <mat-label>Easting
+                            </mat-label>
+                            <input matInput placeholder="Enter easting" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="50">
+                            <mat-label>Northing
+                            </mat-label>
+                            <input matInput placeholder="Enter Northing" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div fxFlex="50">
+                    <label class="custom-label"  for="">Secondary Site Location Coordinates</label>
+                    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                        <mat-form-field appearance="outline" fxFlex="50">
+                            <mat-label>Easting
+                            </mat-label>
+                            <input matInput placeholder="Enter easting" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" fxFlex="50">
+                            <mat-label>Northing
+                            </mat-label>
+                            <input matInput placeholder="Enter Northing" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <label class="custom-label"  for="">Reinstatement Measurements in metres</label>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <mat-form-field appearance="outline" fxFlex="30">
+                        <mat-label>Length
+                        </mat-label>
+                        <input matInput placeholder="Enter Length" autocomplete="off">
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                    <div fxFlex="5">
+                        <h1 style="text-align: center;">X</h1>
+                    </div>
+                    <mat-form-field appearance="outline" fxFlex="30">
+                        <mat-label>Width
+                        </mat-label>
+                        <input matInput placeholder="Enter Width" autocomplete="off">
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                    <div fxFlex="5">
+                        <h1 style="text-align: center;">X</h1>
+                    </div>
+                    <mat-form-field appearance="outline" fxFlex="30">
+                        <mat-label>Depth
+                        </mat-label>
+                        <input matInput placeholder="Enter Depth" autocomplete="off">
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <hr>
+            <div>
+                <label class="custom-label"  for="">Reinstatement Options</label>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <mat-form-field appearance="outline" fxFlex="33.3">
+                        <mat-label>Reinstatement Date
+                        </mat-label>
+                        <input matInput placeholder="Enter Reinstatement Date" autocomplete="off">
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" fxFlex="33.3">
+                        <mat-label>Reinstatement State</mat-label>
+                        <mat-select  >
+                            <mat-option >Interim</mat-option>
+                            <mat-option >Final</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" fxFlex="33.3">
+                        <mat-label>Registering Final Site?</mat-label>
+                        <mat-select  >
+                            <mat-option >Yes</mat-option>
+                            <mat-option >No</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <label class="custom-label"  for="">Inspection Units (Default is 1; Please update the number of inspection units if changed.)</label>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <mat-form-field appearance="outline" fxFlex="33.3">
+                        <mat-label>Inspection Units
+                        </mat-label>
+                        <input matInput placeholder="Enter Inspection Units" autocomplete="off">
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step label="Upload Pictures" [stepControl]="ThirdSection">
+            <div class="drop-zone">
+                <div class="drop-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px">
+                    <h1>Select or drag pictures here</h1>
+                    <div class="file-selector">
+                       <input type="file" style="display: none" #fileInput accept="*" (change)="onChangeFileInput()" />
+                        <div class="selector-control" fxLayout="row" fxLayoutAlign="space-between center" >
+                           <p class="file-name" *ngIf="!file; else fileName">File Not selected</p>
+                           <ng-template #fileName>
+                             <p class="file-name">{{ file?.name }}</p>
+                           </ng-template>
+                           
+                        <button mat-raised-button color="primary" class="primary-button file-select-button" (click)="onClickFileInputButton()">
+                          <mat-icon>attach_file</mat-icon>
+                        Browse
+                        </button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div> 
+            <div class="uploaded-images"  fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="25px">
+                <div class="single-image-container" fxFlex="25" style="background-image: url('https://www.designingbuildings.co.uk/w/images/2/24/Road_surfacing.jpg');" fxLayout="column" fxLayoutAlign="end end">
+                    <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" >
+                        <mat-icon aria-label="Delete">delete_forever</mat-icon>
+                      </button>
+                </div>
+                <div class="single-image-container" fxFlex="25" style="background-image: url('https://www.designingbuildings.co.uk/w/images/2/24/Road_surfacing.jpg');" fxLayout="column" fxLayoutAlign="end end">
+                    <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" >
+                        <mat-icon aria-label="Delete">delete_forever</mat-icon>
+                      </button>
+                </div>
+                <div class="single-image-container" fxFlex="25" style="background-image: url('https://www.designingbuildings.co.uk/w/images/2/24/Road_surfacing.jpg');" fxLayout="column" fxLayoutAlign="end end">
+                    <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" >
+                        <mat-icon aria-label="Delete">delete_forever</mat-icon>
+                      </button>
+                </div>
+                <div class="single-image-container" fxFlex="25" style="background-image: url('https://www.designingbuildings.co.uk/w/images/2/24/Road_surfacing.jpg');" fxLayout="column" fxLayoutAlign="end end">
+                    <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" >
+                        <mat-icon aria-label="Delete">delete_forever</mat-icon>
+                      </button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="primary-button mb-2" color="primary">Send Registration Details</button>
+    <button mat-raised-button class="primary-button mb-2" color="primary">Update</button>
+</mat-dialog-actions>

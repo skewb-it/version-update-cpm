@@ -1,0 +1,95 @@
+<hr>
+<div fxLayout="row" fxLayoutGap="20px">
+    <div fxFlex="25" fxFlex.gt-lg="28" class="border-right padding-right">
+        <!-- <h3 class="heading">Permit Cost</h3> -->
+        <div class="detail-container" fxLayout="column" fxLayout.lt-sm="row wrap" fxLayoutAlign="flex-start">
+            <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                <label for="">Permit Ref. Number</label>
+                <p>{{permitCostDetails.permitRefNumber}}</p>
+            </div>
+            <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                <label for="">Location details</label>
+                <p>{{permitCostDetails.locationdetails}}</p>
+            </div>
+            <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                <label for="">Highway Authority</label>
+                <p>{{permitCostDetails.highwayAuthority}}</p>
+            </div>
+            <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                <label for="">Start Date</label>
+                <p>{{permitCostDetails.endDateTime | transformDateTime}}</p>
+            </div>
+            <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                <label for="">End Date</label>
+                <p>{{permitCostDetails.startDateTime | transformDateTime}}</p>
+            </div>
+            <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                <label for="">Permit Type</label>
+                <p>{{permitCostDetails.permitType}}</p>
+            </div>
+        </div>
+        <div class="stepper-cost-container">
+            <app-stepper-cost [dataModel]="stepperCostDataModel" [configModel]="stepperCostConfigModel"></app-stepper-cost>
+        </div>
+        <button mat-raised-button color="primary" class="primary-button mb-3" style="width: 100%;">Record Invoice Amount</button>
+        <button mat-raised-button class="payment-button-1 primary-button mb-3" color="primary" style="width: 100%;">Record
+      Payment</button>
+        <button mat-raised-button class="request-payment-btn primary-button" color="primary" style="width: 100%;">Request Payment Approval</button>
+    </div>
+    <div fxFlex="75" fxFlex.gt-lg="72" class="ml-4 position-relative">
+        <h3 class="heading">Avoidable Cost</h3>
+        <div class="permit-list custom-table border-padding">
+            <table mat-table [dataSource]="dataSource">
+
+                <ng-container matColumnDef="Select">
+                    <th mat-header-cell *matHeaderCellDef style="padding-left: 10px !important;">Select</th>
+                    <td mat-cell *matCellDef="let element" style="padding-left: 10px !important;">
+                        <mat-radio-button></mat-radio-button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="CostType">
+                    <th mat-header-cell *matHeaderCellDef>Cost Type</th>
+                    <td mat-cell *matCellDef="let element">{{element.costType}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="Description">
+                    <th mat-header-cell *matHeaderCellDef>Description</th>
+                    <td mat-cell *matCellDef="let element">{{element.description}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="Value">
+                    <th mat-header-cell *matHeaderCellDef>Value</th>
+                    <td mat-cell *matCellDef="let element"> {{element.value | transformCurrency}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Date">
+                    <th mat-header-cell *matHeaderCellDef>Date</th>
+                    <td mat-cell *matCellDef="let element"> {{element.date | transformDateTime}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="DueDate">
+                    <th mat-header-cell *matHeaderCellDef>DueDate</th>
+                    <td mat-cell *matCellDef="let element"> {{element.dueDate | transformDateTime}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef class="centre">Status</th>
+                    <td mat-cell *matCellDef="let element" class="centre"> {{element.status}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="detail-element-row"></tr>
+            </table>
+        </div>
+        <div class="cost-penalty-history-list" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="15px">
+            <h3 class="heading">History of costs and penalties</h3>
+            <ul class="list pl-4">
+                <li class="li-class row" *ngFor="let item of historyList; let i = index">
+                    <div class="index mr-4">{{i+1}}.</div>
+                    <div class="list-detail">{{ item.detail }} </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

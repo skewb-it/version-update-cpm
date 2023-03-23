@@ -1,0 +1,137 @@
+.detail-row {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.element-detail {
+    overflow: hidden;
+    background: rgb(255, 255, 255) none no-repeat scroll 0% 0% padding-box;
+    box-shadow: rgba(193, 203, 255, 0.23) 0px 3px 4px;
+    border-radius: 4px;
+}
+
+.element-wrapper {
+    padding: 15px;
+}
+
+.info-element label {
+    font: Noto Sans;
+    font-size: 0.9rem;
+    letter-spacing: 0px;
+    color: #838296;
+    margin-bottom: 0px;
+}
+
+.info-element p {
+    font: Noto Sans;
+    font-size: 1.2rem;
+    letter-spacing: 0px;
+    color: #2B5C41;
+}
+
+.ColWidth {
+    min-width: 100px;
+}
+
+.CollaborativeCell {
+    padding-left: 20px !important;
+}
+
+.CollaborativeImg {
+    width: 25px;
+    height: 25px;
+}
+
+.icon-color {
+    color: var(--icon-theme-color);
+}
+
+.centre {
+    text-align: center;
+}
+
+.long-and-truncated {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.nxtlineText {
+    min-width: 65px;
+    max-width: 100px;
+    white-space: normal;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    cursor: default;
+}
+
+.custom-table-popover td,
+th {
+    text-align: center;
+}
+
+.custom-table-popover th {
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table-popover {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.custom-table-popover th,
+td {
+    padding: 7px 20px;
+}
+
+.completed {
+    background-color: #50AA4E;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color: #fff;
+    width: 100%;
+}
+
+.planned {
+    background-color: blue;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color: #fff;
+    width: 100%;
+}
+
+.in_progress {
+    background-color: #ffb300;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color: #fff;
+    width: 100%;
+}
+
+.unattributable,
+.cancelled,
+.non_notifiable {
+    background-color: red;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color: #fff;
+    width: 100%;
+}
+
+.section_81 {
+    background-color: purple;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color: #fff;
+    width: 100%;
+}
+
+.historical {
+    background-color: orange;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color: #fff;
+    width: 100%;
+}

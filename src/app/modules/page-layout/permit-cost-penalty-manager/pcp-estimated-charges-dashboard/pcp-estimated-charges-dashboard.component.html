@@ -1,0 +1,274 @@
+<div class="dashboard-container mb-4">
+  <div fxLayout="row" fxLayoutAlign="space-between" FxFlex="100" class="page-title m-4">
+
+      <div class="grey-text " FxFlex="90">
+          <span class="blue-text">Dashboard</span> / Charges Listing
+      </div>
+      <div class="grey-text " FxFlex="10">
+        <button mat-stroked-button class="estimated-btn" (click)="goto()">Invoice</button>
+      </div>
+
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="m-auto">
+      <mat-card fxFlex="98" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" class="position-relative">
+        <div class="export-btn-wrap">
+          <button mat-stroked-button (click)="chargesList.downloadPdf()" class="export-btn"><mat-icon>file_download</mat-icon>Export</button>
+        </div>
+          <mat-tab-group class="w-100">
+              <mat-tab label="MY WORK LIST">
+                  <div class="row">
+                      <div class="col-md-12 mt-3">
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                              <div fxFlex="30">
+
+                                  <div style="padding:5px 10px;" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="15px">
+                                      <div>
+                                          <button *ngIf="filterhide" class="createpermitbtn" (click)="filterhideshow()" mat-stroked-button class="plain-btn">
+                      <mat-icon>filter_alt</mat-icon>
+                    </button>
+                                      </div>
+                                      <div>
+                                          <input type="text" placeholder="Search" class="search-input" [formControl]="searchInput">
+                                      </div>
+
+                                      <div>
+                                          <button class="createpermitbtn" (click)="openDialog()" mat-stroked-button class="plain-btn">
+                      <mat-icon class="pr-5">add_circle</mat-icon>
+                    </button>
+                                      </div>
+                                      <div>
+                                          <button class="createpermitbtn" (click)="openDialog()" mat-stroked-button class="plain-btn">
+                      <mat-icon class="pr-5">file_upload</mat-icon>
+                    </button>
+                                      </div>
+
+                                  </div>
+
+                              </div>
+                              <div fxFlex="70">
+                                  <app-pcp-quick-filter [dataModel]="pcpPermitQuickFilterDataModel" [configModel]="pcpPermitQuickFilterConfigModel">
+                                  </app-pcp-quick-filter>
+
+                              </div>
+                          </div>
+
+                      </div>
+                      <!-- <div class="row no-gutters mt-4">
+            <div class="col-md-2">
+              <app-sidebar (onSidebarClose)="onSidebarClosed()">
+                <ng-container class="sidebar-content-slot">
+                  <app-pcp-filter [dataModel]="pcpFilterDataModel" [configModel]="pcpFilterConfigModel">
+                  </app-pcp-filter>
+                </ng-container>
+
+              </app-sidebar>
+            </div>
+
+          </div> -->
+                      <div class="col-12 mt-4">
+                          <app-charges-list #chargesList [dataModel]="chargesListDataModel" [configModel]="chargesListConfigModel">
+                          </app-charges-list>
+                      </div>
+                  </div>
+              </mat-tab>
+
+              <mat-tab label="MY TEAM'S WORK LIST">
+                  <div class="row">
+                      <div class="col-md-12 mt-3">
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                              <div fxFlex="30">
+
+                                  <div style="padding:5px 10px;" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="15px">
+                                      <div>
+                                          <button *ngIf="filterhide" class="createpermitbtn" (click)="filterhideshow()" mat-stroked-button class="plain-btn">
+                                             <mat-icon>filter_alt</mat-icon>
+                                          </button>
+                                      </div>
+                                      <div>
+                                          <input type="text" placeholder="Search" class="search-input" [formControl]="searchInput">
+                                      </div>
+
+                                      <div>
+                                          <button class="createpermitbtn" (click)="openDialog()" mat-stroked-button class="plain-btn">
+                                            <mat-icon class="pr-5">add_circle</mat-icon>
+                                          </button>
+                                      </div>
+                                      <div>
+                                          <button class="createpermitbtn" (click)="openDialog()" mat-stroked-button class="plain-btn">
+                  <mat-icon class="pr-5">file_upload</mat-icon>
+                </button>
+                                      </div>
+
+                                  </div>
+
+                              </div>
+                              <div fxFlex="70">
+                                  <app-pcp-quick-filter [dataModel]="pcpPermitQuickFilterDataModel" [configModel]="pcpPermitQuickFilterConfigModel">
+                                  </app-pcp-quick-filter>
+
+                              </div>
+                          </div>
+
+                      </div>
+                      <!-- <div class="row no-gutters mt-4">
+        <div class="col-md-2">
+          <app-sidebar (onSidebarClose)="onSidebarClosed()">
+            <ng-container class="sidebar-content-slot">
+              <app-pcp-filter [dataModel]="pcpFilterDataModel" [configModel]="pcpFilterConfigModel">
+              </app-pcp-filter>
+            </ng-container>
+
+          </app-sidebar>
+        </div>
+
+      </div> -->
+                      <div class="col-12 mt-4">
+                          <app-charges-list [dataModel]="chargesListDataModel" [configModel]="chargesListConfigModel">
+                          </app-charges-list>
+                      </div>
+                  </div>
+              </mat-tab>
+          </mat-tab-group>
+
+
+      </mat-card>
+  </div>
+</div>
+
+
+<app-dialog [dialogModel]="dialogModel">
+  <ng-container class="dialog-content-slot">
+
+      <div class="add-charge">
+          <!-- <div class="heading">
+      <h4>Manually Add Charge</h4>
+    </div> -->
+          <div class="form-group">
+              <form [formGroup]="createChargeForm" id="filter-form" class="d-flex flex-column p-3">
+
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Charge Number</mat-label>
+                          <input matInput placeholder="Charge Number" autocomplete="off" formControlName="chargeNumber">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Charge Type</mat-label>
+                          <mat-select multiple formControlName="chargeType">
+                              <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrChargeType">
+                                  {{permitStatus.displayText}}</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Charge Amount</mat-label>
+                          <input matInput placeholder="Charge Amount" autocomplete="off" formControlName="chargeAmount">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Charge Receipt Date</mat-label>
+                          <input matInput [matDatepicker]="chargeReceiptDate" (click)="chargeReceiptDate.open()" (focus)="chargeReceiptDate.open()" formControlName="chargeReceiptDate">
+                          <mat-datepicker-toggle matSuffix [for]="chargeReceiptDate"></mat-datepicker-toggle>
+                          <mat-datepicker #chargeReceiptDate></mat-datepicker>
+                      </mat-form-field>
+                  </div>
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Invoice Reference Number</mat-label>
+                          <input matInput placeholder="Invoice Reference Number" autocomplete="off" formControlName="invoiceReferenceNumber">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Charge Approval Date</mat-label>
+                          <input matInput [matDatepicker]="chargeApprovalDate" (click)="chargeApprovalDate.open()" (focus)="chargeApprovalDate.open()" formControlName="chargeApprovalDate">
+                          <mat-datepicker-toggle matSuffix [for]="chargeApprovalDate"></mat-datepicker-toggle>
+                          <mat-datepicker #chargeApprovalDate></mat-datepicker>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Permit Reference Number</mat-label>
+                          <input matInput placeholder="Permit Reference number" autocomplete="off" formControlName="PermitReferenceNumber">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Highway Authority</mat-label>
+                          <mat-select multiple formControlName="highwayAuthority">
+                              <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrHighwayAuthority">
+                                  {{permitStatus.displayText}}</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="100">
+                          <mat-label>Location</mat-label>
+                          <input matInput placeholder="Location" autocomplete="off" formControlName="location">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                  </div>
+
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="100">
+                          <mat-label>Charge Details</mat-label>
+                          <input matInput placeholder="Charge Details" autocomplete="off" formControlName="chargeDetails">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                  </div>
+
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Status</mat-label>
+                          <input matInput placeholder="Status" autocomplete="off" formControlName="status">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill" fxFlex="50">
+                          <mat-label>Liability Organization</mat-label>
+                          <input matInput placeholder="Liability Organization" autocomplete="off" formControlName="liabilityOrganization">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+                  </div>
+                  <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+                      <mat-form-field appearance="fill" fxFlex="33.3">
+                          <mat-label>Estimated Charge</mat-label>
+                          <input matInput placeholder="Estimated Charge" autocomplete="off" formControlName="estimatedCharge">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+
+                      <mat-form-field appearance="fill" fxFlex="33.3">
+                          <mat-label>Invoice Charge</mat-label>
+                          <input matInput placeholder="Invoice Charge" autocomplete="off" formControlName="invoiceCharge">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+
+                      <mat-form-field appearance="fill" fxFlex="33.3">
+                          <mat-label>Agreed Charge</mat-label>
+                          <input matInput placeholder="Agreed Charge" autocomplete="off" formControlName="agreedCharge">
+                          <!-- <mat-error>Field must be valid</mat-error> -->
+                      </mat-form-field>
+
+                  </div>
+              </form>
+              <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                  <button type="button" fxflex="100" mat-stroked-button (click)="onCancelCreateChargeForm()">CANCEL</button>
+                  <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onSaveCreateChargeForm()">SAVE</button>
+              </div>
+          </div>
+      </div>
+  </ng-container>
+</app-dialog>
+<div *ngIf="!filterhide" class="row no-gutters mt-4">
+  <div class="col-md-2">
+      <app-sidebar (onSidebarClose)="onSidebarClosed()">
+          <ng-container class="sidebar-content-slot">
+              <app-pcp-filter [dataModel]="pcpFilterDataModel" [configModel]="pcpFilterConfigModel">
+              </app-pcp-filter>
+          </ng-container>
+
+      </app-sidebar>
+  </div>
+
+</div>

@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="info-element col-12 col-md-4">
+            <label>Charge Type</label>
+            <p>INSP-123456</p>
+        </div>
+
+        <div class="info-element col-12 col-md-4 ">
+            <label>Charge Amount</label>
+            <p>&pound; 123456</p>
+        </div>
+
+        <div class="info-element col-12 col-md-4 ">
+            <label>Challenged By</label>
+            <p>Admin</p>
+        </div>
+
+
+    </div>
+
+
+    <div class="info-element">
+        <label>Charge Description</label>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+    </div>
+
+    <hr/>
+
+
+    <form [formGroup]="wgFormGroup" class="form-container">
+
+        <div fxLayout="row">
+            <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>Payment Amount</mat-label>
+                <input matInput autocomplete="off" formControlName="paymentamount">
+            </mat-form-field>
+        </div>
+
+
+
+        <div fxLayout="row">
+
+
+
+            <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>Payment Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="paymentdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+
+            </mat-form-field>
+        </div>
+
+    </form>
+
+
+</div>

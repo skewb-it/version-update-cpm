@@ -1,0 +1,87 @@
+<div class="table-responsive" fxFlex="100">
+  <table class="w-100" fxFlex="100">
+    <tr class="head-row">
+      <th></th>
+      <th *ngFor="let item of dataModel.headers">
+        {{item}}
+      </th>
+    </tr>
+    <tr *ngFor="let items of dataModel.rowData" class="row-span">
+      <td *ngFor="let item of dataModel.keys;" class="td-content">
+        <p>
+          {{ items[item] }}
+        </p>
+      </td>
+    </tr>
+    <!-- <tr class="final-row">
+      <td class="th-heading">
+        Total
+      </td>
+      <td class="th-content">
+        <p class="bg-grey">
+          {{getTotalCount()}}
+        </p>
+      </td>
+      <td class="th-content">
+        <p class="bg-blue">
+          {{'&pound;'+ getTotalAmount()}}
+        </p>
+      </td>
+    </tr> -->
+    <div>
+    </div>
+  </table>
+  <!-- <table mat-table [dataSource]="dataModel.rowData" class=" demo-table">
+      <th class="row-span hiddenth bg-white" [ngStyle]="{ width: dataModel.tableRowHeadingLeft }"></th>
+    <ng-container matColumnDef="col_name">
+      <th mat-header-cell *matHeaderCellDef> Charge </th>
+      <td mat-cell *matCellDef="let element"> {{element.col_name}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="col_count">
+      <th mat-header-cell *matHeaderCellDef> Count </th>
+      <td mat-cell *matCellDef="let element"> {{element.col_count}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amount2">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount2}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amount3">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount3}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amount4">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount4}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amount5">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount5}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="dataModel.keys"></tr>
+    <tr mat-row *matRowDef="let row; columns: dataModel.keys"></tr>
+
+    <tr class="final-row">
+      <td>
+        Total
+      </td>
+      <td>
+        {{getTotalCount()}}
+      </td>
+      <td>
+        {{'&pound;'+ getTotalAmount()}}
+      </td>
+    </tr>
+
+
+  </table> -->
+
+</div>

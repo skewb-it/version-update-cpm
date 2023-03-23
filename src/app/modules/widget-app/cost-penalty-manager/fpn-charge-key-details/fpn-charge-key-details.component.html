@@ -1,0 +1,187 @@
+<div class="key-details-container">
+  <div class="status-container" fxFlex="100" class="p-4">
+      <!-- <div class="d-flex justify-content-between align-items-center pb-3">
+      <div class="status-text">
+        <span class="fw-bold">Matched Status</span>
+      </div>
+      <div class="status-value">
+        <span class="fw-bold"
+          [ngClass]="{'completed':MatchStatus=='Matched','cancelled':MatchStatus=='Not Matched'}">{{MatchStatus}}</span>
+      </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+        <div class="status-text">
+          <span class="fw-bold">Accountability Status</span>
+        </div>
+        <div class="status-value">
+          <span class="fw-bold"
+            [ngClass]="{'in_progress':AccountabilityStatus=='Open','cancelled':AccountabilityStatus=='Not Open'}">{{AccountabilityStatus}}</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+        <div class="status-text">
+          <span class="fw-bold">Reconcillation Status</span>
+        </div>
+        <div class="status-value">
+          <span class="fw-bold"
+            [ngClass]="{'in_progress':ReconcillationStatus=='Open','cancelled':ReconcillationStatus=='Not Open'}">{{ReconcillationStatus}}</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+        <div class="status-text">
+          <span class="fw-bold">Payment Status</span>
+        </div>
+        <div class="status-value">
+          <span class="fw-bold"
+            [ngClass]="{'in_progress':PaymentStatus=='Open','cancelled':PaymentStatus=='Not Open'}">{{PaymentStatus}}</span>
+        </div>
+      </div> -->
+      <div class="d-flex justify-content-between align-items-center pb-3">
+        <div class="status-text">
+          <span class="fw-bold">Charge Validation</span>
+        </div>
+        <div class="status-value">
+          <span class="fw-bold"
+            [ngClass]="{'in_progress':ChargeValidation=='Validated','cancelled':AccountabilityStatus=='challenged'}">{{ChargeValidation}}</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+          <div class="status-text">
+            <span class="fw-bold">Invoice Status</span>
+          </div>
+          <div class="status-value">
+            <span class="fw-bold"
+              [ngClass]="{'in_progress':InvoiceStatus=='Under Investigation','cancelled':InvoiceStatus=='challenged'}">{{InvoiceStatus}}</span>
+          </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+          <div class="status-text">
+            <span class="fw-bold">Invoice Status</span>
+          </div>
+          <div class="status-value">
+            <span class="fw-bold"
+              [ngClass]="{'in_progress':InvoiceStatus=='Under Investigation','cancelled':InvoiceStatus=='challenged'}">{{InvoiceStatus}}</span>
+          </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+          <div class="status-text">
+            <span class="fw-bold">Invoice DOA Status</span>
+          </div>
+          <div class="status-value">
+            <span class="fw-bold"
+              [ngClass]="{'in_progress':InvoiceDOAStatus=='Not Requested','cancelled':InvoiceDOAStatus=='Requested'}">{{InvoiceDOAStatus}}</span>
+          </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+        <div class="status-text">
+          <span class="fw-bold">Liability Status</span>
+        </div>
+        <div class="status-value">
+          <span class="fw-bold"
+            [ngClass]="{'in_progress':LiabilityStatus=='Not Assigned','cancelled':LiabilityStatus=='Assigned'}">{{LiabilityStatus}}</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center pb-3">
+        <div class="status-text">
+          <span class="fw-bold">Payment Status</span>
+        </div>
+        <div class="status-value">
+          <span class="fw-bold"
+            [ngClass]="{'in_progress':PaymentStatus=='Open','cancelled':PaymentStatus=='Not Open'}">{{PaymentStatus}}</span>
+        </div>
+      </div>
+  </div>
+  <hr>
+  <div class="stepper-container d-flex justify-content-center" xFlex="100">
+    <app-pcp-stepper-cost [dataModel]="stepperCostDataModel" [configModel]="stepperCostConfigModel">
+    </app-pcp-stepper-cost>
+  </div>
+  <hr>
+  <div class="permit-details-container p-4">
+    <!-- <div class="info-element info-element-button mb-2">
+      <button mat mat-stroked-button>View Permit <span class="material-icons icon-style">link</span></button>
+    </div> -->
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="info-element" fxFlex="27">
+        <label for="">Permit <br> Type</label>
+        <!-- <p>{{chargeOverviewDataModel.data}}</p> -->
+        <p>Fixed Type</p>
+      </div>
+      <div class="info-element" fxFlex="23">
+        <label for="">Permit <br> Status</label>
+        <!-- <p>{{chargeOverviewDataModel.data}}</p> -->
+        <p>Active</p>
+      </div>
+      <div class="info-element" fxFlex="25" >
+        <label for="">Traffic <br> Sensitive</label>
+        <!-- <p>{{chargeOverviewDataModel.data}}</p> -->
+        <p class="traffic-image">
+          <img class="flag-image ng-tns-c443-7" src="assets/images/flags/green.png">
+        </p>
+      </div>
+      <div class="info-element" fxFlex="25">
+        <label class="view-permit-label" for="">View Permit</label>
+        <button  mat mat-stroked-button><span class="material-icons icon-style">link</span></button>
+      </div>
+    </div>
+
+
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px"
+      fxLayoutAlign="flex-start">
+      <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Proposed Start Date/Time </label>
+        <!-- <p>{{ 17-02-2023 }}</p> -->
+        <p>{{ dataModel.data.proposedStartDateTime}}</p>
+        <!-- | transformDateTime  -->
+      </div>
+      <!-- <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Proposed End Date/Time </label>
+        <p>{{ 18-07-2023 }}</p>
+        <p>{{ dataModel.data.proposedEndDateTime}}</p>
+      </div> -->
+      <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Reasonable End Date/Time </label>
+        <p>{{ dataModel.data.reasonablePeriodEndDate  }}</p>
+        <!-- | transformDateTime -->
+      </div>
+    </div>
+
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px"
+      fxLayoutAlign="flex-start">
+      <!-- <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Proposed Duration</label>
+        <p>{{ dataModel.data.proposedDuration }}</p>
+      </div> -->
+      <!-- <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Expected End Date/Time </label>
+        <p>{{ dataModel.data.expectedEndDateTime | transformDateTime }}</p>
+      </div> -->
+      <div class="info-element" fxFlex="75" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Assesment Status and Comments</label>
+        <p>{{ dataModel.data.assesmentStatus }}</p>
+      </div>
+    </div>
+
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px"
+      fxLayoutAlign="flex-start">
+      <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Actual Start Date/Time </label>
+        <p>{{ dataModel.data.actualStartDateTime}}</p>
+        <!-- | transformDateTime  -->
+      </div>
+      <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+        <label for="">Actual End Date/Time </label>
+        <p>{{ dataModel.data.actualEndDateTime}}</p>
+        <!-- | transformDateTime  -->
+      </div>
+
+    </div>
+
+    <div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="10px"
+      fxLayoutAlign="flex-start">
+      <button mat-raised-button color="primary" fxFlex="50" (click)="onApproveChargeClick()">Approve Charge</button>
+
+      <button mat-raised-button color="primary" fxFlex="50" (click)="onAuditChargeClick()">Audit Charge</button>
+    </div>
+  </div>
+</div>

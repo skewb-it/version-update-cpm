@@ -1,0 +1,92 @@
+.blue-text {
+  color: var(--stroked-button-bg-color);
+}
+
+.grey-text {
+  color: var(--dark-gray-text-color);
+}
+
+.switch-tab {
+  width: 100%;
+}
+
+.blue-btn {
+  background-color: var(--stroked-button-bg-color) !important;
+  color: #fff;
+}
+
+.plain-btn {
+  background-color: none;
+  /* color: black; */
+  border-color: none;
+  border-radius: 5px !important;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: .75rem 1.25rem;
+  border: 1px solid var(--dark-gray-text-color);
+}
+
+/* Mat styling */
+
+::ng-deep .mat-tab-label {
+  height: 48px;
+  min-width: 135px !important;
+  padding: 0px 10px !important;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.mat-tab-link:hover {
+  text-decoration: none !important;
+
+}
+
+.mat-tab-label-active {
+  color: var(--theme-color);
+}
+
+.mat-card {
+  padding: 16px 0 !important;
+  overflow: hidden;
+}
+
+.mat-stroked-button {
+  background-color: #f9f9f9;
+  border: 1px solid #696969;
+}
+
+element.style {
+  transform: none;
+}
+
+
+::ng-deep .mat-tab-body-content {
+  height: 100%;
+  overflow: hidden !important;
+}
+
+::ng-deep .mat-card {
+  border-radius: 0 !important;
+}
+.export-btn-wrap {
+  margin-bottom: 10px;
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  color: var(--theme-color);
+  z-index: 999;
+}
+.export-btn{
+  border-color: var(--theme-color)!important;
+  background-color: #fff;
+}
+.estimated-btn{
+  border: 1px solid var(--theme-color);
+  color: var(--theme-color);
+  background-color: #fff;
+}
+

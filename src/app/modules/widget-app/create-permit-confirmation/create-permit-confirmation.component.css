@@ -1,0 +1,25 @@
+.success-div h1{
+    font: normal normal bold 3rem Noto Sans;
+    letter-spacing: 0px;
+    color: #00A63D;
+    }
+    .success-div h5{
+      font: normal normal bold 1.8rem Noto Sans;
+      letter-spacing: 0px;
+      color: #00A63D;
+      }
+
+
+.success-div{
+    text-align: center;
+}
+.mat-icon-green-big{
+    color: #00A63D ;
+    font-size: 8rem;
+height: 80px;
+width: 80px;
+  }
+
+  .main-container{
+    width:550px;
+  }

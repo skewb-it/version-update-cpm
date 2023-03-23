@@ -1,0 +1,176 @@
+.topbar {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px -2px 11px #00000029;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+}
+
+.app-logo img {
+  height: 4rem;
+  margin-left: 2rem;
+}
+
+.navCont-container {
+  border-top: 1px solid #7D8B92;
+  margin-top: 6px;
+}
+
+.home-button {
+  margin-left: 2rem;
+}
+
+.home-button button {
+  height: 4rem;
+  width: 4rem;
+  ;
+  line-height: normal;
+  box-shadow: none;
+  border: 2px solid #2b5c41;
+  background-color: transparent;
+  padding: 0px;
+}
+
+.home-button mat-icon {
+  color: #2b5c41;
+}
+
+.profile-icon button {
+  height: 4rem;
+  width: 4rem;
+  ;
+  line-height: normal;
+  box-shadow: none;
+  background: #EDF2E4 0% 0% no-repeat padding-box;
+  padding: 0px;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 2rem;
+}
+
+.toolbar-profile-btn {
+  color: #2B5C41;
+}
+
+.profile-menu {
+  padding: 2rem;
+}
+
+.profile-menu span {
+  margin-top: 1rem;
+  font: normal normal normal 1.2rem Noto Sans;
+  letter-spacing: 0px;
+  color: #706F6F;
+}
+
+.profile-menu button {
+  margin-top: 2rem;
+  font: Noto Sans;
+}
+
+.drawer-container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--drawer-container-bg-color);
+}
+
+.drawer-sidenav {
+  width: 100%;
+  padding-top: 9rem;
+}
+
+.powered-by-logo {
+  border-right: 1px solid var(--theme-color-border-light);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  margin-right: 20px;
+}
+
+.powered-by-logo img {
+  /* height: 4.2rem; */
+  height: 3rem;
+  /* filter: grayscale(100%); */
+}
+
+
+/* .powered-by-logo img:hover {
+    filter: grayscale(0%);
+} */
+
+.powered-by-logo p {
+  margin: 0;
+  font: normal normal normal 1.2rem Noto Sans;
+  letter-spacing: 0px;
+  color: #706F6F;
+}
+
+.nav-card {
+  background: var(--theme-color) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 14px 7px #00000029;
+  border-radius: 22px;
+  color: white;
+  text-align: center;
+  height: 150px;
+  background-image: url('/assets/images/nav-menu-lines.png');
+  background-position: left bottom 15px;
+  background-size: 30%;
+  margin-bottom: 25px;
+}
+
+.breadcrumbs p {
+  margin: 0;
+  font: normal normal normal 1.5rem Noto Sans;
+  letter-spacing: 0px;
+  color: #706F6F;
+}
+
+.breadcrumbs span {
+  color: #706F6F;
+}
+
+.main-div {
+  padding-top: 7rem;
+}
+
+.ic-helper-text {
+  margin-right: 20px;
+  font-size: 40px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.user-display-name {
+  cursor: pointer;
+}
+
+hr.separator-line {
+  border-top: 1px solid #706F6F;
+  margin: 4px 0 4px;
+}
+
+.main-heading {
+  color: var(--theme-color);
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 2rem;
+}
+.top-middle {
+  position: absolute;
+  left: 46%;
+  right: 33%;
+  margin: auto;
+  background: var(--theme-color);
+  text-align: center;
+  border-radius: 20px;
+  /* border: 1px solid var(--theme-color); */
+}
+.inner-text {
+  padding: 5px 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

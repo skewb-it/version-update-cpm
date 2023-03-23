@@ -1,0 +1,616 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "skewb": {
+            "projectType": "application",
+            "schematics": {},
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/skewb",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "allowedCommonJsDependencies": [
+                            "chart.js",
+                            "crypto-js"
+                        ],
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/skewb",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [{
+                                "input": "src/custom-theme.scss"
+                            },
+                            "./node_modules/bootstrap/dist/css/bootstrap.css",
+                            "./node_modules/primeicons/primeicons.css",
+                            "./node_modules/primeng/resources/themes/saga-blue/theme.css",
+                            "./node_modules/primeng/resources/primeng.min.css",
+                            "src/styles.css"
+                        ],
+                        "scripts": [
+                            "src/assets/js/geotools2.js"
+                        ],
+                        "fileReplacements": [{
+                                "replace": "src/app/theme/all-theme/default-theme.ts",
+                                "with": "src/app/theme/all-theme/blue-theme.ts"
+                            },
+                            {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/skewb/environment.ts"
+                            }
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/skewb/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "skewb:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "skewb:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "skewb:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/skewb",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+                            "src/styles.css",
+                            "./node_modules/ngx-toastr/toastr.css"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "e2e/tsconfig.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "skewb:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "skewb:serve:production"
+                        }
+                    }
+                }
+            }
+        },
+        "murphy": {
+            "projectType": "application",
+            "schematics": {},
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/murphy",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "allowedCommonJsDependencies": [
+                            "chart.js",
+                            "crypto-js"
+                        ],
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/murphy",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [{
+                                "input": "src/custom-theme.scss"
+                            },
+                            "./node_modules/bootstrap/dist/css/bootstrap.css",
+                            "./node_modules/primeicons/primeicons.css",
+                            "./node_modules/primeng/resources/themes/saga-blue/theme.css",
+                            "./node_modules/primeng/resources/primeng.min.css",
+                            "src/styles.css"
+                        ],
+                        "scripts": [
+                            "src/assets/js/geotools2.js"
+                        ],
+                        "fileReplacements": [{
+                                "replace": "src/app/theme/all-theme/default-theme.ts",
+                                "with": "src/app/theme/all-theme/orange-theme.ts"
+                            },
+                            {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/murphy/environment.ts"
+
+                            }
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/murphy/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "murphy:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "murphy:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "murphy:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/murphy",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+                            "src/styles.css",
+                            "./node_modules/ngx-toastr/toastr.css"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "e2e/tsconfig.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "murphy:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "murphy:serve:production"
+                        }
+                    }
+                }
+            }
+        },
+        "nwl": {
+            "projectType": "application",
+            "schematics": {},
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/nwl",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "allowedCommonJsDependencies": [
+                            "chart.js",
+                            "crypto-js"
+                        ],
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/nwl",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [{
+                                "input": "src/custom-theme.scss"
+                            },
+                            "./node_modules/bootstrap/dist/css/bootstrap.css",
+                            "./node_modules/primeicons/primeicons.css",
+                            "./node_modules/primeng/resources/themes/saga-blue/theme.css",
+                            "./node_modules/primeng/resources/primeng.min.css",
+                            "src/styles.css"
+                        ],
+                        "scripts": [
+                            "src/assets/js/geotools2.js"
+                        ],
+                        "fileReplacements": [{
+                                "replace": "src/app/theme/all-theme/default-theme.ts",
+                                "with": "src/app/theme/all-theme/nwl-theme.ts"
+                            },
+                            {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/nwl/environment.ts"
+                            }
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/nwl/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "nwl:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "nwl:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "nwl:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/nwl",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+                            "src/styles.css",
+                            "./node_modules/ngx-toastr/toastr.css"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "e2e/tsconfig.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "nwl:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "nwl:serve:production"
+                        }
+                    }
+                }
+            }
+        },
+        "uu": {
+            "projectType": "application",
+            "schematics": {},
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/uu",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "allowedCommonJsDependencies": [
+                            "chart.js",
+                            "crypto-js"
+                        ],
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/uu",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [{
+                                "input": "src/custom-theme.scss"
+                            },
+                            "./node_modules/bootstrap/dist/css/bootstrap.css",
+                            "./node_modules/primeicons/primeicons.css",
+                            "./node_modules/primeng/resources/themes/saga-blue/theme.css",
+                            "./node_modules/primeng/resources/primeng.min.css",
+                            "src/styles.css"
+                        ],
+                        "scripts": [
+                            "src/assets/js/geotools2.js"
+                        ],
+                        "fileReplacements": [{
+                                "replace": "src/app/theme/all-theme/default-theme.ts",
+                                "with": "src/app/theme/all-theme/blue-theme.ts"
+                            },
+                            {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/uu/environment.ts"
+                            }
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/uu/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "uu:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "uu:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "uu:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets/uu",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.ico",
+                                "input": "src/",
+                                "output": "/"
+                            }
+                        ],
+                        "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+                            "src/styles.css",
+                            "./node_modules/ngx-toastr/toastr.css"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "e2e/tsconfig.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "uu:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "uu:serve:production"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "skewb",
+    "cli": {
+        "analytics": "3696e32c-2fe8-4495-a741-57008c2d1d4f"
+    }
+}

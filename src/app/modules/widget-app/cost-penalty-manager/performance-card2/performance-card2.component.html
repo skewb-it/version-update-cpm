@@ -1,0 +1,24 @@
+<div class="performance-card my-3" *ngFor="let data of dataModel.data" [ngStyle]="{background:data.backgroundColor}">
+
+    <div class="row m-0">
+        <!-- <div class="col-2 pr-md-0">
+      <mat-icon [inline]="true" class="count-icon">
+        {{data.icon}}
+      </mat-icon>
+    </div> -->
+
+        <div class="col-10 pr-md-0">
+            <div class="card-count my-2" (click)="onClick(data.filter_code, data.filter_display_text)">
+                <span *ngIf="data.isCurrency">&euro;{{data.count}}</span>
+                <span *ngIf="!data.isCurrency">{{data.count}}</span>
+            </div>
+            <div class="performance-card-lable my-2">
+                {{data.text}}
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

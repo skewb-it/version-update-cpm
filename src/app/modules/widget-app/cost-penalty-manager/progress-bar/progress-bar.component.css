@@ -1,0 +1,44 @@
+.performance-card {
+  border-radius: 4px;
+}
+
+.count-icon {
+  font-size: 20px !important;
+  color: #fff;
+}
+
+.card-count {
+  font-weight: bold;
+  font-size: 12px;
+  /* line-height: 10px; */
+  /* margin-top: 2px;
+  color: #fff; */
+}
+
+.performance-card-lable {
+  /* font-weight: bold; */
+  font-size: 14px;
+  margin-bottom: .5rem;
+}
+
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #418B12;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #bbc0c4;
+}
+
+::ng-deep .mat-progress-bar {
+  height: 10px !important;
+  border-radius: 10px;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background-color: #bbc0c4 !important;
+}
+
+.select {
+  background-color: gray;
+}

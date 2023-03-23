@@ -1,0 +1,163 @@
+<div class="pcp-workbench-container">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="page-title">
+            <h1>Cost & Penalty Workbench</h1>
+        </div>
+        <div class="quick-filter">
+            <app-permit-quick-filter [dataModel]="permitQuickFilterDataModel" [configModel]="permitQuickFilterConfigModel">
+            </app-permit-quick-filter>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="25px" class="workbench-row">
+        <app-pcp-advance-filter fxFlex="20" [dataModel]="pcpAdvanceFilterDataModel" [configModel]="pcpAdvanceFilterConfigModel"></app-pcp-advance-filter>
+        <app-pcp-permit-list fxFlex="80" [dataModel]="pcpPermitListDataModel" [configModel]="pcpPermitListConfigModel">
+        </app-pcp-permit-list>
+    </div>
+</div>
+
+<app-dialog [dialogModel]="dialogModel" (onDialogClose)="onAppDialogClose($event)">
+    <ng-container class="dialog-content-slot">
+        <hr>
+        <div fxLayout="row" fxLayoutGap="20px">
+            <div fxFlex="25" fxFlex.gt-lg="28" class="border-right padding-right">
+                <div class="detail-container" fxLayout="column" fxLayout.lt-sm="row wrap" fxLayoutAlign="flex-start">
+                    <h3 class="heading">Summary</h3>
+                    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                        <label for="">Permit Ref. Number</label>
+                        <p>{{workbenchPermitDetails.permitRefNumber}}</p>
+                    </div>
+                    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                        <label for="">Location details</label>
+                        <p>{{workbenchPermitDetails.locationdetails}}</p>
+                    </div>
+                    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                        <label for="">Highway Authority</label>
+                        <p>{{workbenchPermitDetails.highwayAuthority}}</p>
+                    </div>
+                    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                        <label for="">Start Date</label>
+                        <p>{{workbenchPermitDetails.endDateTime | date:'MM/dd/yyy'}}</p>
+                    </div>
+                    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                        <label for="">End Date</label>
+                        <p>{{workbenchPermitDetails.startDateTime | date:'MM/dd/yyy'}}</p>
+                    </div>
+                    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+                        <label for="">Permit Type</label>
+                        <p>{{workbenchPermitDetails.permitType}}</p>
+                    </div>
+                </div>
+                <div class="stepper-cost-container">
+                    <app-stepper-cost [dataModel]="stepperCostDataModel" [configModel]="stepperCostConfigModel"></app-stepper-cost>
+                </div>
+                <button mat-raised-button color="primary" class="primary-button mb-3" style="width: 100%;" (click)="onRecordInvoiceAmountClick()">Record Invoice Amount</button>
+                <button mat-raised-button class="payment-button-1 primary-button mb-3" color="primary" style="width: 100%;" (click)="onRecordPaymentClick()">Record
+      Payment</button>
+                <button mat-raised-button class="request-payment-btn primary-button mb-3" color="primary" style="width: 100%;" (click)="onRequestPaymentApprovalClick()">Request Payment Approval</button>
+                <button mat-raised-button class="primary-button" color="primary" style="width: 100%;">Add Traffic Management Cost</button>
+            </div>
+            <div fxFlex="75" fxFlex.gt-lg="72" class="ml-4 position-relative">
+                <h3 class="heading">Permit - Estimated Charges</h3>
+                <app-edit-permit-cost-list [dataModel]="editPermitCostListDataModel1" [configModel]="editPermitCostListConfigModel1"></app-edit-permit-cost-list>
+                <h3 class="heading mt-5">Permit - Avoidable Charges</h3>
+                <app-edit-permit-cost-list [dataModel]="editPermitCostListDataModel2" [configModel]="editPermitCostListConfigModel2"></app-edit-permit-cost-list>
+                <div class="cost-penalty-history-list" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="15px">
+                    <h3 class="heading">History of costs and penalties</h3>
+                    <ul class="list pl-4">
+                        <li class="li-class row" *ngFor="let item of costPenaltyHistoryList; let i = index">
+                            <div class="index mr-4">{{i+1}}.</div>
+                            <div class="list-detail">{{ item.detail }} </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="mt-4" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="15px">
+            <button mat-raised-button color="primary" class="payment-button-2 primary-button" (click)="onAcceptChargeClick()">Accept charge</button>
+            <button mat-raised-button color="primary" class="primary-button" (click)="onChallengePenaltyClick()">Challenge Penalty/charge</button>
+            <button mat-raised-button color="primary" class="primary-button" (click)="onWriteOffClick()">Write-off</button>
+            <button mat-raised-button color="primary" class="payment-button-3 primary-button" (click)="onRecordNegotiatedClick()">Record Negotiated Charge</button>
+            <button mat-raised-button color="primary" class="payment-button-3 primary-button" (click)="onRecordPayment()">Record Payment</button>
+        </div>
+    </ng-container>
+</app-dialog>
+
+
+<app-dialog [dialogModel]="dialogModelOpen" (onDialogClose)="onDialogModelOpenClose($event)">
+    <ng-container class="dialog-content-slot">
+        <div [ngSwitch]="pcpwWorkbenchDialogMode">
+            <div *ngSwitchCase="pcpworkbenchDialogAcceptCharge">
+
+                <app-pcp-accept-charge [dataModel]="pcpAcceptChargeDataModel" [configModel]="pcpAcceptChargeConfigModel"></app-pcp-accept-charge>
+            </div>
+
+            <div *ngSwitchCase="pcpworkbenchDialogChallengePenalty">
+                <mat-tab-group>
+                    <mat-tab label="Details">
+                        <app-challenge-penalty-charge [dataModel]="pcpChallengePenaltyDataModel" [configModel]="pcpChallengePenaltyConfigModel"></app-challenge-penalty-charge>
+                    </mat-tab>
+                    <mat-tab label="Documents">
+                        <app-pcp-images-and-files [dataModel]="pcpImagesAndFilesDataModel" [configModel]="pcpImagesAndFilesConfigModel"></app-pcp-images-and-files>
+                    </mat-tab>
+                </mat-tab-group>
+
+            </div>
+
+            <div *ngSwitchCase="pcpworkbenchDialogRecordNegotiated">
+
+                <mat-tab-group>
+                    <mat-tab label="Details">
+                        <app-pcp-record-negotiated-cost [dataModel]="pcpRecordNegotiatedCostDataModel" [configModel]="pcpRecordNegotiatedCostConfigModel"></app-pcp-record-negotiated-cost>
+                    </mat-tab>
+                    <mat-tab label="Documents">
+                        <app-pcp-images-and-files [dataModel]="pcpImagesAndFilesDataModel" [configModel]="pcpImagesAndFilesConfigModel"></app-pcp-images-and-files>
+                    </mat-tab>
+                </mat-tab-group>
+
+            </div>
+            <div *ngSwitchCase="pcpworkbenchDialogRecordInvoiceAmount">
+                <app-pcp-record-invoice-amount [dataModel]="pcpRecordInvoiceAmountDataModel" [configModel]="pcpRecordInvoiceAmountConfigModel"></app-pcp-record-invoice-amount>
+            </div>
+            <div *ngSwitchCase="pcpworkbenchDialogRequestPaymentApproval">
+                <app-pcp-request-payment-approval [dataModel]="pcpRequestPaymentApprovalDataModel" [configModel]="pcpRequestPaymentApprovalConfigModel"></app-pcp-request-payment-approval>
+            </div>
+
+            <div *ngSwitchCase="pcpworkbenchDialogWriteOff">
+                <mat-tab-group>
+                    <mat-tab label="Details">
+                        <app-record-write-off [dataModel]="pcpRecordWriteOffDataModel" [configModel]="pcpRecordWriteOffConfigModel"></app-record-write-off>
+                    </mat-tab>
+                    <mat-tab label="Documents">
+                        <app-pcp-images-and-files [dataModel]="pcpImagesAndFilesDataModel" [configModel]="pcpImagesAndFilesConfigModel"></app-pcp-images-and-files>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+
+            <div *ngSwitchCase="pcpworkbenchDialogRecordPayment">
+                <mat-tab-group>
+                    <mat-tab label="Details">
+                        <app-pcp-record-payment [dataModel]="pcpRecordPaymentDataModel" [configModel]="pcpRecordPaymentConfigModel"></app-pcp-record-payment>
+                    </mat-tab>
+                    <mat-tab label="Documents">
+                        <app-pcp-images-and-files [dataModel]="pcpImagesAndFilesDataModel" [configModel]="pcpImagesAndFilesConfigModel"></app-pcp-images-and-files>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+
+        </div>
+        <hr>
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" class="primary-button">Save</button>
+        </div>
+    </ng-container>
+
+</app-dialog>
+
+
+<app-dialog [dialogModel]="dialogModelUpdate" (onDialogClose)="dialogModelUpdateclose($event)">
+    <ng-container class="dialog-content-slot">
+        <app-file-upload [dataModel]="fileUploadDataModel" [configModel]="fileUploadConfigModel">
+        </app-file-upload>
+    </ng-container>
+</app-dialog>

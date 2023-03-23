@@ -1,0 +1,188 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>Penalty Notice Details</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div>
+<hr > -->
+<!-- <mat-dialog-content  class="mat-typography" > -->
+<div class="mat-typography change-request-info" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="0">
+  <div class="left-side" fxFlex="70">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Permit Reference Number</label>
+        <p>{{dataModel.data.WorksReferenceNumber}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">FPN Number</label>
+        <p>{{dataModel.data.FPNNumber}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">FPN Status</label>
+        <p>{{dataModel.data.FPNStatus}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="0 1 calc(66.6% + 20px)">
+        <label for="">Offence code</label>
+        <p>{{dataModel.data.Offencecode}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="0 1 calc(33.3%)">
+        <label for="">Offence date</label>
+        <p>{{dataModel.data.OffenceDate | transformDateTime}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="0 1 calc(66.6% + 20px)">
+        <label for="">Offence details</label>
+        <p>{{dataModel.data.OffenceDetails}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="0 1 calc(33.3%)">
+        <label for="">Issue date and time</label>
+        <p>{{dataModel.data.IssueDateAndTime | transformDateTime}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Issuing authority</label>
+        <p>{{dataModel.data.IssuingAuthority}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Authorised officer name</label>
+        <p>{{dataModel.data.AuthorisedOfficerName}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Officer contact details</label>
+        <p>{{dataModel.data.OfficerContactDetails}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Works promoter</label>
+        <p>{{dataModel.data.WorksPromoter}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Promoter prefix</label>
+        <p>{{dataModel.data.PromoterPrefix}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Workstream</label>
+        <p>{{dataModel.data.WorkStream}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Street name</label>
+        <p>{{dataModel.data.StreetName}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Town</label>
+        <p>{{dataModel.data.Town}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Post Code</label>
+        <p>{{dataModel.data.PostCode}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Accountability</label>
+        <p>{{dataModel.data.Accountability}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Area name</label>
+        <p>{{dataModel.data.AreaName}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">USRN</label>
+        <p>{{dataModel.data.USRN}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="100">
+        <label for="">Cost</label>
+        <p>{{dataModel.data.FPNCost | transformCurrency}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="showForm">
+    <form *ngIf="wgFormGroup" [formGroup]="wgFormGroup" fxLayout="row" fxLayoutAlign="space-evenly start"
+      fxLayoutGap="20px">
+      <mat-form-field appearance="outline" fxFlex="50">
+        <mat-label>Select Action</mat-label>
+        <mat-select required formControlName="action">
+          <mat-option *ngFor="let action of actionList" [value]="action.value">{{action.displayText}}</mat-option>
+        </mat-select>
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="50">
+        <mat-label>Comment
+        </mat-label>
+        <textarea matInput placeholder="Enter your comment" formControlName="comment"></textarea>
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  </div>
+  <div class="image-container" fxFlex="30">
+
+    <!-- <div class="all-images-container" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+      <div class="single-image-container" *ngFor="let i of dataModel.data.FpnFiles" fxLayout="column" fxLayoutAlign="start stretch" fxFlex="0 1 calc(25% - 32px)"
+      fxFlex.lt-md="0 1 calc(50% - 32px)"
+      fxFlex.lt-sm="100%">
+
+          <div class="image-wrapper"  fxLayout="column" fxLayoutAlign="center center">
+              <img class="fileuplod" [src]="i.ImageSrc" alt="">
+
+          </div>
+          <div class="image-info-wrapper"  fxLayout="row" fxLayoutAlign="space-between center">
+              <div class="image-info">
+                  <h3>{{i?.FileName}}</h3>
+                  <p>Created By: {{i?.CreatedBy}}</p>
+                  <p>Created on: {{i?.CreatedDate | transformDateTime}}</p>
+              </div>
+              <div class="image-action">
+                  <button mat-icon-button matTooltip="Click to Download" class="iconbutton"
+                  (click)="getFileApiData(i.FileId, i.FileName)">
+                      <mat-icon aria-label="Download">get_app</mat-icon>
+                    </button>
+              </div>
+          </div>
+      </div>
+
+  </div> -->
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" *ngFor="let i of dataModel.data.FpnFiles"
+      fxLayoutGap="50px" (click)="onFileClick(i.ImageSrc)">
+
+      <div class="image-wrapper" fxLayout="row" fxLayoutAlign="center center">
+        <img class="fileuplod" [src]="i.ImageSrc" alt="">
+      </div>
+
+      <!-- <div class="image-info-wrapper"  fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="image-info">
+        <div class="image-action">
+          <button mat-icon-button matTooltip="Click to Download" class="iconbutton"
+          (click)="getFileApiData(i.FileId, i.FileName)">
+              <mat-icon aria-label="Download">get_app</mat-icon>
+            </button>
+      </div>
+      </div>
+  </div> -->
+
+
+
+    </div>
+  </div>
+</div>
+<!-- </mat-dialog-content> -->
+<hr>
+<!-- <mat-dialog-actions align="end"> -->
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button *ngIf="!isFPNStatusAcceptedOrWithdrawn(dataModel.data.FPNStatus); else showOkBtn" mat-raised-button
+    class="primary-button mb-2" color="primary" (click)="onUpdateBtnClick()">Update</button>
+  <ng-template #showOkBtn>
+    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onOkBtnClick()">Ok</button>
+  </ng-template>
+</div>
+<!-- </mat-dialog-actions> -->

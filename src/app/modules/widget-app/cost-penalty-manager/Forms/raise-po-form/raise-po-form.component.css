@@ -1,0 +1,17 @@
+.black-tab,
+.blue-tab,
+.green-tab {
+  background-color: black;
+  text-align: center;
+  padding: 2px 10px;
+  color: #fff;
+  border-radius: 30px;
+}
+
+.blue-tab {
+  background-color: #3D6EB5;
+}
+
+.green-tab {
+  background-color: #4CAF50;
+}

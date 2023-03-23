@@ -1,0 +1,98 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="CR-list custom-table">
+                <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="CRReferenceNumber">
+                        <th mat-header-cell *matHeaderCellDef>CR Reference Number </th>
+                        <td mat-cell *matCellDef="let element" style="padding-left: 20px !important;">
+                            {{element.CRReferenceNumber}}
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="WorksRefNumber">
+                        <th mat-header-cell *matHeaderCellDef>Works Ref. Number</th>
+                        <td mat-cell *matCellDef="let element"> {{element.WorksRefNumber}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ChangeRequestType">
+                        <th mat-header-cell *matHeaderCellDef>ChangeRequest Type</th>
+                        <td mat-cell *matCellDef="let element"> {{element.ChangeRequestType}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ChangeRequestStatus">
+                        <th mat-header-cell *matHeaderCellDef>Change Request Status</th>
+                        <td mat-cell *matCellDef="let element"> {{element.ChangeRequestStatus}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="StatusChangeDate">
+                        <th mat-header-cell *matHeaderCellDef>Status Change Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.StatusChangeDate | transformDate}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="SubmissionDate">
+                        <th mat-header-cell *matHeaderCellDef>Submission Date</th>
+                        <td mat-cell *matCellDef="let element"> {{element.SubmissionDate | transformDate}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ChangeReason">
+                        <th mat-header-cell *matHeaderCellDef>Change Reason</th>
+                        <td mat-cell *matCellDef="let element"> {{element.ChangeReason}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Done">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" class="green-status" fxLayoutAlign="center center">
+                                <mat-icon aria-label="Edit">task_alt</mat-icon>
+                                <!-- check_circle  -->
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;">Actions </th>
+                        <td mat-cell *matCellDef="let row">
+                            <div fxLayout="row" fxLayoutAlign="center center">
+                                <!-- <button (click)="onTrackChangeReqChangesClick(row)" mat-icon-button
+                                    matTooltip="Show changes" class="iconbutton" color="primary">
+                                    <mat-icon aria-label="Changes">article</mat-icon>
+                                </button>
+                                <button *ngIf="row.CRReferenceNumber" mat-icon-button matTooltip="Click to view"
+                                    class="iconbutton" color="primary">
+                                    <mat-icon aria-label="Edit">visibility</mat-icon>
+                                </button>
+                                <button *ngIf="!row.CRReferenceNumber" mat-icon-button matTooltip="Click to Edit"
+                                    class="iconbutton" color="primary">
+                                    <mat-icon aria-label="Edit">edit</mat-icon>
+                                </button> -->
+
+
+
+
+                                <button (click)="onTrackChangeReqChangesClick(row)" mat-icon-button matTooltip="Show changes" class="iconbutton" color="primary">
+                  <mat-icon aria-label="Changes">article</mat-icon>
+                </button>
+                                <button (click)="onViewChangeReqClick(row)" *ngIf="row.ChangeRequestStatus" mat-icon-button matTooltip="Click to view" class="iconbutton" color="primary">
+                  <mat-icon aria-label="Edit">visibility</mat-icon>
+                </button>
+                                <button (click)="onEditChangeReqClick(row)" *ngIf="!row.ChangeRequestStatus" mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary">
+                  <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+                                <button (click)="onDeleteChangeReqClick(row)" *ngIf="!row.ChangeRequestStatus" mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="primary">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+                </table>
+                <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+            </div>
+
+        </div>
+    </div>
+</div>

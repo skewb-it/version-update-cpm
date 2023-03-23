@@ -1,0 +1,65 @@
+<div class="form-group">
+  <form form [formGroup]="SplitInvoiceForm" id="filter-form" class="d-flex flex-column p-3" appInvalidControlScroll>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Charge Number</mat-label>
+        <input matInput placeholder="Charge Number" autocomplete="off" formControlName="chargeNumber">
+        <!-- <mat-error>Field must be valid</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Charge Type</mat-label>
+        <mat-select multiple formControlName="chargeType">
+          <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrChargeType">
+            {{permitStatus.displayText}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Draft Charge Amount</mat-label>
+        <input matInput placeholder="Draft Charge Amount" autocomplete="off" formControlName="draftChargeAmount">
+        <!-- <mat-error>Field must be valid</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Charge Approval Date</mat-label>
+        <input matInput [matDatepicker]="chargeApprovalDate" (click)="chargeApprovalDate.open()"
+          (focus)="chargeApprovalDate.open()" formControlName="chargeApprovalDate">
+        <mat-datepicker-toggle matSuffix [for]="chargeApprovalDate"></mat-datepicker-toggle>
+        <mat-datepicker #chargeApprovalDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Negotiated Charge</mat-label>
+        <input matInput placeholder="Negotiated Charge" autocomplete="off" formControlName="negotiatedCharge">
+        <!-- <mat-error>Field must be valid</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Liability Organisation</mat-label>
+        <mat-select multiple formControlName="liabiltyOrg">
+          <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrLiabilityOrg">
+            {{permitStatus.displayText}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="fixed-underline" class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Notes</mat-label>
+        <input matInput placeholder="Notes" autocomplete="off" formControlName="notes">
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <!-- <mat-label>Upload Evidence(Optional)</mat-label> -->
+        <input matInput placeholder="Upload Evidence(Optional)" autocomplete="off" formControlName="fileUp" readonly
+          value="Upload Evidence(Optional)" (click)="openFileUpload()">
+        <mat-icon matSuffix>attach_file</mat-icon>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

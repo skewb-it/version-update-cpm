@@ -1,0 +1,24 @@
+<!-- <mat-card class="progress-bar" > -->
+<div class="row m-0">
+  <div class="col-12">
+    <div *ngFor="let data of dataModel.data" class="row justify-content-center mt-5 align-self-center">
+      <div class="col-10">
+        <span class="performance-card-lable" fxLayout="row" fxLayoutAlign="left left">
+          {{data.text}}
+        </span>
+
+      </div>
+      <div class="col-2">
+        <div class="card-count" fxFlex="50" fxLayout="row" fxLayoutAlign="right right ">
+          {{data.count}}
+        </div>
+      </div>
+
+      <mat-progress-bar mode="determinate" [value]="data.value" [appProgressBarColor]="data.valuecolor">
+
+      </mat-progress-bar>
+
+    </div>
+  </div>
+</div>
+<!-- </mat-card> -->

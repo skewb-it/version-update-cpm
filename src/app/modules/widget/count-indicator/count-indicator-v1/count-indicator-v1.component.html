@@ -1,0 +1,41 @@
+<div [ngStyle]="dataModel.data.widgetStyle">
+    <div [ngStyle]="dataModel.data.countStyle" [matTooltip]="dataModel.data.count" [matMenuTriggerFor]="afterMenu">
+        <span class="long-and-truncated">{{dataModel.data.count | transformCurrencyOrg}}
+    </span>
+    </div>
+    <!-- <span [ngStyle]="dataModel.data.labelStyle" *ngFor="let textIn of dataModel.data.lable.split(' ')">
+    {{textIn}}
+  </span> -->
+    <span [ngStyle]="dataModel.data.labelStyle">
+    {{dataModel.data.lable}}
+  </span>
+</div>
+
+<mat-menu #afterMenu="matMenu" yPosition="below" class="count-indicator custom-mat-menu">
+    <table class="custom-table-popover">
+        <tr>
+            <th>Cost Type</th>
+            <th>Estimated</th>
+            <th>Invoiced</th>
+            <th>Paid</th>
+        </tr>
+        <tr>
+            <td>PC</td>
+            <td>{{70 | transformCurrency}}</td>
+            <td>{{0 | transformCurrency}}</td>
+            <td>{{0 | transformCurrency}}</td>
+        </tr>
+        <tr>
+            <td>VC</td>
+            <td>{{45 | transformCurrency}}</td>
+            <td>{{0 | transformCurrency}}</td>
+            <td>{{0 | transformCurrency}}</td>
+        </tr>
+        <tr>
+            <td>FPN</td>
+            <td>{{15 | transformCurrency}}</td>
+            <td>{{0 | transformCurrency}}</td>
+            <td>{{0 | transformCurrency}}</td>
+        </tr>
+    </table>
+</mat-menu>

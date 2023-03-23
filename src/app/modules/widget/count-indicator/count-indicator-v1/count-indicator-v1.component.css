@@ -1,0 +1,25 @@
+.long-and-truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.custom-table-popover td,
+th {
+    text-align: center;
+}
+
+.custom-table-popover th {
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table-popover {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.custom-table-popover th,
+td {
+    padding: 7px 20px;
+}

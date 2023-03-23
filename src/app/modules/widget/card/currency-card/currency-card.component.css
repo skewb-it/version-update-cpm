@@ -1,0 +1,12 @@
+.currency-card{
+  padding: 7px 0 !important;
+}
+
+.count-card-count{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.count-card-label{
+  font-size: 15px;
+}

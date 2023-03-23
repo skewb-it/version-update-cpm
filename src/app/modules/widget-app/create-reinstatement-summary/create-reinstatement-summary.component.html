@@ -1,0 +1,71 @@
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Permit Ref Number </label>
+        <p>{{dataModel.data.permitRefNumber}}</p>
+    </div>
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Reinstatement Status </label>
+        <p>{{dataModel.data.reinstatementStatus}}</p>
+    </div>
+    <div *ngIf="!showNoOfHoles" class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Number Of Holes </label>
+        <p>{{dataModel.data.numberOfHoles}}</p>
+    </div>
+   
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Reinstatement Type </label>
+        <p>{{dataModel.data.reinstatementType}}</p>
+    </div>
+    <div *ngIf="showNoOfHoles" class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Inspection Units </label>
+        <p>{{dataModel.data.inspectionUnits}}</p>
+    </div>
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Work Reference</label>
+        <p>{{dataModel.data.workReference}}</p>
+    </div>
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Site No</label>
+        <p>{{dataModel.data.siteNo}}</p>
+    </div>
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Dimensions</label>
+        <p>L {{dataModel.data.length}}, W {{dataModel.data.width}}, D {{dataModel.data.depth}}</p>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Reinstatement Date</label>
+        <p>{{dataModel.data.reinstatementDate | transformDateTime}}</p>
+    </div>
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Reinstatement Evidence</label>
+        <p>{{dataModel.data.reinstatementEvidence}}</p>
+    </div>
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Is Final Reinstatement</label>
+        <p>{{dataModel.data.isFinalReinstatement}}</p>
+    </div>
+    <div class="info-element" fxFlex="33.3" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Work Location</label>
+        <p>{{dataModel.data.workLocation == null?'-':dataModel.data.workLocation}}</p>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="20px" xLayoutAlign="space-between center">
+    <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Location Description </label>
+        <p>{{dataModel.data.locationDescription ==null?'-':dataModel.data.locationDescription}}</p>
+    </div>
+    <div class="info-element" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)">
+        <label for="">Location Types</label>
+        <p>{{dataModel.data.locationTypes}}</p>
+    </div>
+</div>

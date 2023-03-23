@@ -1,0 +1,60 @@
+<div class="filter-card">
+    <div class="filter-title-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Filter</h2>
+        <mat-icon class="ic-reset-filter" matTooltip="Clear" color="primary" (click)="onResetFilterClick()">refresh
+        </mat-icon>
+    </div>
+    <form [formGroup]="wgFormGroup" id="filter-form">
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="enter search term" autocomplete="off" formControlName="search">
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="filterFromDatepicker" (click)="filterFromDatepicker.open()" (focus)="filterFromDatepicker.open()" formControlName="fromDate">
+            <mat-datepicker-toggle matSuffix [for]="filterFromDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #filterFromDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="filterToDatepicker" (click)="filterToDatepicker.open()" (focus)="filterToDatepicker.open()" formControlName="toDate">
+            <mat-datepicker-toggle matSuffix [for]="filterToDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #filterToDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Highway Authority</mat-label>
+            <mat-select multiple formControlName="highwayAuthority">
+                <mat-option [value]="highWayAuthority.authorityId" *ngFor="let highWayAuthority of arrHighWayAuthorities">
+                    {{highWayAuthority.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Permit Status</mat-label>
+            <mat-select multiple formControlName="permitStatus">
+                <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrPermitStatus">
+                    {{permitStatus.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Work Status</mat-label>
+            <mat-select multiple formControlName="workStatus">
+                <mat-option [value]="workStatus.value" *ngFor="let workStatus of arrWorkStatus">
+                    {{workStatus.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Contractor</mat-label>
+            <mat-select multiple formControlName="contractor">
+                <mat-option [value]="contractor.contractorId" *ngFor="let contractor of arrContractor">
+                    {{contractor.contractor_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <div class="text-center mt-3">
+        <div class="page-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <button type="button" mat-stroked-button color="primary" (click)="applyFilter()">Apply </button>
+            <button type="button" mat-stroked-button color="primary" (click)="onResetFilterClick()">Reset</button>
+        </div>
+    </div>
+</div>

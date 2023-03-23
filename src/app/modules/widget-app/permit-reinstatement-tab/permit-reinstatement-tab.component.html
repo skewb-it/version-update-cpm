@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="reinstatement-list custom-table ">
+                <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="SiteNumber">
+                        <th mat-header-cell *matHeaderCellDef style="padding-left: 20px !important;">Site Number</th>
+                        <td mat-cell *matCellDef="let element" style="padding-left: 20px !important;">
+                            {{element.SiteNumber}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="Description">
+                        <th mat-header-cell *matHeaderCellDef>Description</th>
+                        <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="Dimentions">
+                        <th mat-header-cell *matHeaderCellDef>Dimentions</th>
+                        <td mat-cell *matCellDef="let element"> {{element.Dimentions}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ReinstatementDate">
+                        <th mat-header-cell *matHeaderCellDef>Reinstatement Date</th>
+                        <td mat-cell *matCellDef="let element"> {{element.ReinstatementDate | transformDateTime}} </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ExpiryDate">
+                        <th mat-header-cell *matHeaderCellDef>Expiry Date</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.ExpiryDate | transformDateTime}}
+                        </td>
+                    </ng-container>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ReinstatementStatus">
+                        <th mat-header-cell *matHeaderCellDef>Status</th>
+                        <td mat-cell *matCellDef="let element"> {{element.ReinstatementStatus}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="Actions">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;">Actions </th>
+                        <td mat-cell *matCellDef="let row">
+                            <div fxLayout="row" fxLayoutAlign="center center">
+                                <button *ngIf="checkEditPermitEnable(PERMIT_ACTIONS_CONFIG.EDIT_REINSTATEMENT,row)" (click)="editReinstatement(row)" mat-icon-button matTooltip="Click to edit" class="iconbutton" color="primary">
+                  <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+
+                                <button (click)="viewSiteDetails(row)" mat-icon-button matTooltip="Click to view" class="iconbutton" color="primary">
+                    <mat-icon aria-label="View">visibility</mat-icon>
+                  </button>
+
+                                <div *ngIf="checkEditPermitEnable(PERMIT_ACTIONS_CONFIG.DELETE_REINSTATEMENT,row)">
+                                    <button (click)="deleteReinstatement(row)" mat-icon-button matTooltip="Click to delete" class="iconbutton" color="primary">
+                        <mat-icon aria-label="View">delete</mat-icon>
+                      </button>
+                                </div>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+                </table>
+                <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [length]="length"></mat-paginator> -->
+            </div>
+        </div>
+    </div>
+</div>

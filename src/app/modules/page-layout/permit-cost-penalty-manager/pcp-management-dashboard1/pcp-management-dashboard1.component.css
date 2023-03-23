@@ -1,0 +1,11 @@
+.dashboard-container {
+    padding: 15px 25px 50px 25px;
+}
+
+.dashboard-row {
+    margin-top: 25px;
+}
+
+.mat-card-padding-0 {
+    padding: 0 !important;
+}

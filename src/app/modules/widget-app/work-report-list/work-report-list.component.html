@@ -1,0 +1,57 @@
+<div class="container-fluid mt-4">
+    <div class="col-12 col-sm-12 col-md-12 pl-0 pr-0 data-table-shadow ">
+        <mat-card class="custom-mat-card">
+            <div class="mb-2" style="text-align: right">
+                <i class="fa fa-search" style="margin:4px 4px 0 0; color:#c8c8c8;"></i>
+                <input type="text" style="border-radius:4px;" pInputText size="25" placeholder="Search" (keyup.enter)="globalSearch($event.target.value)" style="width:auto" [(ngModel)]="globalSerachInput">
+            </div>
+            <p-table [columns]="cols" [value]="worklistresponse" [lazy]="true" [lazyLoadOnInit]="false" (onLazyLoad)="customSort($event)" [totalRecords]="dataListLength" [responsive]="true">
+                <ng-template pTemplate="header" let-columns>
+                    <tr style="text-align: center;">
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field" [ngStyle]="{'background-color':'rgb(34, 84, 165)','color':'#fff'}">
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns" let-index="rowIndex">
+                    <tr [pReorderableRow]="index" (click)="singlepermitview(rowData,$event)" style="text-align:center">
+                        <td id="td_data">
+                            {{rowData.workreferencenumber}}
+                        </td>
+                        <td id="td_data">
+                            {{rowData.proposedstartdate | date:'MM/dd/yyy'}}
+                        </td>
+                        <td id="td_data">
+                            {{rowData.proposedenddate | date:'MM/dd/yyy'}}
+                        </td>
+                        <td id="td_data">
+                            {{rowData.workstatus}}
+                        </td>
+                        <td id="td_data">
+                            {{rowData.permitstatus}}
+                        </td>
+                        <td id="td_data">
+                            {{rowData.permitreferencenumber}}
+                        </td>
+                        <td id="td_data">
+                            {{rowData.actualstartdate | date:'MM/dd/yyy'}}
+                        </td>
+                        <td id="td_data">
+                            {{rowData.actualenddate | date:'MM/dd/yyy'}}
+                        </td>
+                        <td id="td_data">
+                            <mat-icon aria-label="Edit" [ngStyle]="{'cursor':'pointer'}">visibility</mat-icon>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            <div class="pagintor-style">
+                <p-paginator [rowsPerPageOptions]="[10,25,50]" [rows]="10" [totalRecords]="filteredrecords" pageLinkSize="10" (onPageChange)="paginate($event)">
+                </p-paginator>
+            </div>
+
+        </mat-card>
+    </div>
+
+</div>

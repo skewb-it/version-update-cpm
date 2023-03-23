@@ -1,0 +1,126 @@
+.black-tab,
+.blue-tab,
+.green-tab {
+    background-color: black;
+    text-align: center;
+    padding: 2px 10px;
+    color: #fff;
+    border-radius: 30px;
+}
+
+.blue-tab {
+    background-color: #3D6EB5;
+}
+
+.green-tab {
+    background-color: #4CAF50;
+}
+
+.blue-text {
+    color: var(--stroked-button-bg-color);
+}
+
+.grey-text {
+    color: var(--dark-gray-text-color);
+}
+
+.switch-tab {
+    width: 100%;
+}
+
+.blue-btn {
+    background-color: var(--stroked-button-bg-color) !important;
+    color: #fff;
+}
+
+.plain-btn {
+    background-color: none;
+    /* color: black; */
+    border-color: none;
+    border-radius: 5px !important;
+    text-align: center;
+}
+
+.key-details-container {
+    display: block !important;
+}
+
+@media screen and (min-device-width: 1401px) and (max-device-width: 1600px) {
+    li .a {
+        width: 3em !important;
+        height: 3em !important;
+        margin: 0 !important;
+        margin-right: 30px !important;
+    }
+}
+
+@media screen and (min-device-width: 1401px) and (max-device-width: 1600px) {
+    li .a::before {
+        top: 1.4em !important;
+        left: 15px !important;
+        width: 37px !important;
+    }
+}
+
+.completed,
+.in_progress,
+.cancelled {
+    background-color: #50AA4E;
+    padding: 3px 20px;
+    border-radius: 4px;
+    color: #fff;
+    width: 100%;
+    font-size: 80%;
+}
+
+.cancelled {
+    background-color: red;
+}
+
+.in_progress {
+    background-color: #ffb300;
+}
+
+
+/* Mat Styling  */
+
+.mat-tab-group {
+    width: 100% !important;
+}
+
+::ng-deep .mat-tab-label {
+    height: 48px;
+    min-width: 135px !important;
+    padding: 0px 10px !important;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.mat-tab-label-container {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+
+::ng-deep .mat-card {
+    border-radius: 0 !important;
+}
+
+.mat-form-field-underline {
+    position: unset !important;
+}
+
+.mat-form-field-underline {
+    position: initial !important;
+    width: 100%;
+    pointer-events: none;
+    transform: scale3d(1, 1.0001, 1);
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
+    padding: 1.5em 1em !important;
+}

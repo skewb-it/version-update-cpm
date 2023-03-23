@@ -1,0 +1,20 @@
+<div class="ratio-chart-container" [ngStyle]="{'background-color': 'var('+dataModel.data.backgroundColor+')'}"
+  fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <div class="ratio-count-bar" fxLayout="row">
+    <div class="label-entity-count"
+      [ngStyle]="{'color': 'var('+dataModel.data.labelColor+')', 'min-width': getEntityWidth(1)}">
+      {{dataModel.data.entity1Count}}</div>
+    <div class="label-entity-count marin-left"
+      [ngStyle]="{'color': 'var('+dataModel.data.labelColor+')', 'min-width': getEntityWidth(1)}">
+      {{dataModel.data.entity2Count}}</div>
+  </div>
+  <div class="ratio-bar" fxLayout="row">
+    <div class="ratio-entity entity1"
+      [ngStyle]="{'border-color': 'var('+dataModel.data.labelColor+')', 'background-color': 'var('+dataModel.data.entity1Color+')', 'min-width': getEntityWidth(1)}">
+    </div>
+    <div class="ratio-entity"
+      [ngStyle]="{'border-color': 'var('+dataModel.data.labelColor+')', 'background-color': 'var('+dataModel.data.entity2Color+')', 'min-width': getEntityWidth(2)}">
+    </div>
+  </div>
+  <div class="label" [ngStyle]="{'color': 'var('+dataModel.data.labelColor+')'}">FPN/PERMIT RAISED RATION: 4%</div>
+</div>

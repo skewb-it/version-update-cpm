@@ -1,0 +1,49 @@
+<div>
+    <div class="row ">
+        <div class="info-element col-12 col-md-4">
+            <label>Charge Type</label>
+            <p>INSP-123456</p>
+        </div>
+
+        <div class="info-element col-12 col-md-4 ">
+            <label>Charge Amount</label>
+            <p>&pound; 123456</p>
+        </div>
+
+        <div class="info-element col-12 col-md-4 ">
+            <label>Accepted By</label>
+            <p>Admin</p>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="info-element">
+        <label>Charge Description</label>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+    </div>
+
+    <hr/>
+
+
+    <form [formGroup]="wgFormGroup" class="form-container">
+
+
+
+
+
+        <div fxLayout="row">
+            <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>Notes accompanying acceptance</mat-label>
+                <textarea matInput required formControlName="notesaccompnyingacceptance" rows="4"></textarea>
+
+            </mat-form-field>
+        </div>
+
+    </form>
+
+
+</div>

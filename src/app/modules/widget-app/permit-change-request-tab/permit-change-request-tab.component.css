@@ -1,0 +1,8 @@
+.CR-list{
+  margin-top: 15px;
+  margin-bottom: 30px;
+    
+}
+  .green-status mat-icon{
+    color:green !important;
+  }

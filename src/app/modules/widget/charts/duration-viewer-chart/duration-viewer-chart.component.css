@@ -1,0 +1,224 @@
+li {
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    line-height: 2em;
+    border-radius: 50%;
+    margin: 0 4.4em;
+    display: inline-block;
+    color: white;
+    position: relative;
+}
+
+li::before {
+    /* content: ''; */
+    content: attr(my-attr);
+    /* content: "2 Days"; */
+    color: #000;
+    position: absolute;
+    /* top: 1.5em; */
+    top: -0.5em;
+    left: -9.6em;
+    width: 9.6em;
+    /* height: .2em; */
+    border-bottom: 2px solid;
+    /* background: grey; */
+    z-index: 0;
+}
+
+.li1::before {
+    border-color: dodgerblue;
+    /* background: dodgerblue; */
+}
+
+.li2::before {
+    /* background: green; */
+    border-color: green;
+}
+
+.li3::before {
+    /* background: red; */
+    border-color: red;
+}
+
+li:first-child::before {
+    display: none;
+}
+
+.active {
+    background: dodgerblue;
+}
+
+.active~li {
+    background: lightblue;
+}
+
+.active~li::before {
+    background: lightblue;
+}
+
+.svgdot {
+    position: relative;
+    padding-left: 30px;
+}
+
+.svgdot::after {
+    content: '';
+    position: absolute;
+    /* top: 1em;
+    left: 2.7em;
+    width: 4em; */
+    top: 1.3em;
+    left: 3.5em;
+    width: 6.5em;
+    height: .2em;
+    z-index: 0;
+    /* z-index: -1; */
+}
+
+.svgdot1::after {
+    background: green;
+}
+
+.svgdot2::after {
+    background: rgb(125, 14, 199);
+}
+
+.svgdot3::after {
+    background: red;
+}
+
+.svgdot3:last-child {
+    text-align: center;
+}
+
+
+/* .svgdot3:nth-child(1)::after {
+    display: none;
+    background: chartreuse!important;
+} */
+
+.col1 {
+    border-right: 1px solid grey;
+}
+
+.col2 {
+    color: rgb(125, 14, 199);
+    margin-right: 15px;
+}
+
+.info1 {
+    color: green;
+}
+
+.info2 {
+    color: red;
+}
+
+.info3 {
+    color: rgb(125, 14, 199);
+}
+
+.infoStyle {
+    display: flex;
+    align-items: center;
+}
+
+.bgBlue {
+    background: dodgerblue;
+}
+
+.bgGreen {
+    background: green;
+}
+
+.bgRed {
+    background: red;
+}
+
+.table-header {
+    text-align: center;
+}
+
+.col-width {
+    column-width: 115px;
+}
+
+.table-header:first-child {
+    border-right: 1px solid grey;
+}
+
+.bluecolor {
+    color: #007bff;
+}
+
+table,
+thead,
+th,
+td {
+    border: 1px solid #f8f8f8!important;
+}
+
+@media(min-width:1170px) and (max-width:1340px) {
+    li {
+        margin: 0 3.5em!important;
+    }
+    li::before {
+        left: -7em;
+        width: 7em;
+    }
+}
+
+@media(min-width:1015px) and (max-width:1170px) {
+    li {
+        margin: 0 2.5em!important;
+    }
+    li::before {
+        left: -5em;
+        width: 5em;
+    }
+}
+
+@media(min-width:900px) and (max-width:1014px) {
+    li {
+        margin: 0 1.8em!important;
+    }
+    li::before {
+        left: -3.6em;
+        width: 3.6em;
+    }
+}
+
+@media(min-width:800px) and (max-width:900px) {
+    li {
+        margin: 0 1.3em!important;
+    }
+    li::before {
+        left: -2.6em;
+        width: 2.6em;
+    }
+}
+
+@media(min-width:768px) and (max-width:800px) {
+    li {
+        margin: 0 1em!important;
+    }
+    li::before {
+        left: -2em;
+        width: 2em;
+    }
+}
+
+@media (max-width:767px) {
+    li {
+        margin: 0 !important;
+    }
+    li::before {
+        display: none;
+    }
+}
+
+
+/* .table thead th {
+    border: none;
+} */

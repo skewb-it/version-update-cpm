@@ -1,0 +1,14 @@
+.custom-mat-card {
+    padding: 2% 2% 15% 2%;
+}
+
+.pagintor-style {
+    border: 1px solid #c8c8c8;
+    float: right;
+    margin-top: 3px;
+    margin-bottom: 3%;
+}
+
+:host ::ng-deep .pi-sort-alt:before {
+    color: #fff !important;
+}

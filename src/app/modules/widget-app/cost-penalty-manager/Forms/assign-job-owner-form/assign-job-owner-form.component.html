@@ -1,0 +1,47 @@
+<div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Number </label>
+    <p class="font-weight-bold">{{this.dataModel.data.chargeNumber}}</p>
+  </div>
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Type </label>
+    <p>{{this.dataModel.data.chargeType}}</p>
+  </div>
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Amount </label>
+    <p>&pound;{{this.dataModel.data.chargeAmount}}</p>
+  </div>
+  <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Permit Type </label>
+    <p>{{this.dataModel.data.permitType}}</p>
+  </div>
+</div>
+<hr>
+<div class="detail-container" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+  <div class="info-element" fxFlex="100" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+    <label for="">Charge Description </label>
+    <p>{{this.dataModel.data.chargeDesc}}</p>
+  </div>
+</div>
+<hr>
+
+<div class="form-group">
+  <form form [formGroup]="assignJobOwnerForm" id="filter-form" class="d-flex flex-column p-3" appInvalidControlScroll>
+    <div class="fixed-underline" class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Select Job Owner</mat-label>
+        <mat-select multiple>
+          <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrJobOwner">
+            {{permitStatus.displayText}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="fixed-underline" class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+      <mat-form-field appearance="fill" fxFlex="100">
+        <mat-label>Notes</mat-label>
+        <input matInput placeholder="Notes" autocomplete="off" formControlName="notes">
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<ng-container>
+  <p-fileUpload name="files" [multiple]="dataModel.item.multiple" [maxFileSize]="dataModel.item.maxFileSize"
+    [accept]="dataModel.item.accept" [auto]="dataModel.item.auto" styleClass="file-upload" [customUpload]="true"
+    [files]="selectedFiles" (onUpload)="onUpload($event)" (uploadHandler)="uploadHandler($event)"
+    (onSelect)="onSelect($event)" [showCancelButton]="dataModel.item.multiple" [disabled]="uploadedFiles.length >= 1" chooseLabel="Browse" uploadLabel="Upload"
+    cancelLabel="Remove">
+    <ng-template let-file let-files pTemplate="file">
+      <p-progressBar class="label-value" [value]="progressValue"></p-progressBar>
+      <div class="ui-fileupload-row d-flex justify-content-start align-items-center">
+        <div >{{ file.name }}</div>
+        <div class="ml-2">{{ file.size }}</div>
+        <div class="ml-2">
+          <button type="button" icon="pi pi-times" pbutton="" ng-reflect-icon="pi pi-times"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" (click)="onRemove(file)">
+            <span aria-hidden="true" class="ui-button-icon-left ui-clickable pi pi-times"></span>
+           
+          </button>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <ul *ngIf="uploadedFiles.length">
+        <li *ngFor="let file of uploadedFiles">
+          {{ file.name }} - {{ file.size }} bytes
+        </li>
+      </ul>
+    </ng-template>
+  </p-fileUpload>
+</ng-container>

@@ -1,0 +1,91 @@
+.li-class {
+  /* display: inline-block !important; */
+  cursor: pointer;
+  color: #727577;
+}
+
+.dropdown ul {
+  list-style: none;
+}
+
+.material-icons.icon-size {
+  font-size: 15px;
+}
+
+.list-group .active .material-icons {
+  color: #fff;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 270px !important;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  font-size: 12px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  font-size: 12px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.menu-name {
+  margin-top: -3px !important;
+}
+
+.list-inline-item {
+  margin-top: 10px;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 2rem;
+}
+
+/* Mat tab */
+
+.mat-tab-link {
+  height: 43px;
+  min-width: none !important;
+  padding: 0 14px !important;
+}
+
+.mat-tab-link:hover {
+  text-decoration: none !important;
+
+}

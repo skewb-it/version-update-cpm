@@ -1,0 +1,42 @@
+<div class="d-flex flex-column">
+  <div class="form-group">
+    <form form [formGroup]="emailFormControl" id="filter-form" class="d-flex flex-column p-3" appInvalidControlScroll>
+      <div class="fixed-underline" class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <app-chip-list-email-input [formControl]="emailFormControl" placeholder="Add emails here" required>
+          </app-chip-list-email-input>
+          <mat-error>
+            Enter a valid email!
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div class="fixed-underline" class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="12"
+            cdkAutosizeMaxRows="12" value="
+  Dear User,
+
+  Please review attached defect charges that need to be accepted.
+
+  Please respond to this email within five working days. If not, these charges will be deemed as accepted.
+
+  Regards,
+
+  Street Works Admin" readonly></textarea>
+
+        </mat-form-field>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="file-container p-3" fxFlex="100" fxLayoutGap="10px">
+    <div class="charge-item m-2">
+      <p class="charge-name p-3">ChargeList-4 Charges.xlsl</p>
+    </div>
+    <div class="charge-item">
+      <p class="charge-name p-3">ChargeList-4 Charges.xlsl</p>
+    </div>
+  </div>
+</div>

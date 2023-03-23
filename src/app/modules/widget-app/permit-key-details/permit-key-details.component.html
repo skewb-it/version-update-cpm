@@ -1,0 +1,113 @@
+<div class="permit-key-details mb-2" *ngIf="hideWidget">
+    <app-stepper-cost [dataModel]="dataModel.stepperCostDataModel" [configModel]="configModel.stepperCostConfigModel">
+    </app-stepper-cost>
+</div>
+<div class="permit-key-details">
+
+    <div class="detail-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="info-element" fxFlex="33" fxLayout="column" fxLayoutAlign="space-around center">
+            <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.costRisk)" alt="" />
+            <label for="">Cost Risk</label>
+        </div>
+        <div class="info-element" fxFlex="33" fxLayout="column" fxLayoutAlign="space-around center">
+            <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.customerRisk)" alt="" />
+            <label for="">Customer Risk</label>
+        </div>
+        <div class="info-element" fxFlex="33" fxLayout="column" fxLayoutAlign="space-around center">
+            <img [src]="
+      DATA_HELPER.getPermitIconURL(
+        dataModel.data.trafficManagementRisk
+      )
+    " alt="" />
+            <label for="">Traffic Sensitive</label>
+        </div>
+    </div>
+    <hr />
+    <div class="detail-container" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between start">
+        <div class="info-element" fxFlex="33.3">
+            <label for="">Permit Status</label>
+            <p>{{ dataModel.data.permitStatus }}</p>
+        </div>
+        <div class="info-element" fxFlex="33.3">
+            <label for="">Work Status</label>
+            <p>{{ dataModel.data.workStatus }}</p>
+        </div>
+        <div class="info-element" fxFlex="33.3">
+            <label for="">Cost</label>
+            <p fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start end">
+                {{ dataModel.data.cost | transformCurrency }}
+                <mat-icon class="cost-tag" matTooltip="Click to view Cost Details" (click)="onShowCostSplitClick()">
+                    info_outline</mat-icon>
+            </p>
+        </div>
+    </div>
+    <hr />
+    <div class="detail-container" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+        <div class="info-element" fxFlex="50">
+            <label for="">Proposed Start Date/Time</label>
+            <p>
+                {{ dataModel.data.proposedStartDateTime | transformDateTime }}
+            </p>
+        </div>
+        <div class="info-element" fxFlex="50">
+            <label for="">Proposed End Date/Time</label>
+            <p>{{ dataModel.data.proposedEndDateTime | transformDateTime }}</p>
+        </div>
+    </div>
+    <hr />
+    <div class="detail-container" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+        <div class="info-element" fxFlex="50">
+            <label for="">Proposed Duration</label>
+            <p>{{ dataModel.data.proposedDuration }}</p>
+        </div>
+        <div class="info-element" fxFlex="50">
+            <label for="">Expected End Date/Time</label>
+            <p fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start end">
+                {{ dataModel.data.expectedEndDateTime | transformDateTime }}
+            </p>
+        </div>
+    </div>
+    <hr />
+    <div class="detail-container" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+        <div class="info-element" fxFlex="50">
+            <label for="">Actual Start Date/Time</label>
+            <p>{{ dataModel.data.actualStartDateTime | transformDateTime }}</p>
+        </div>
+        <div class="info-element" fxFlex="50">
+            <label for="">Actual End Date/Time</label>
+            <p>{{ dataModel.data.actualEndDateTime | transformDateTime }}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="permit-actions" fxLayout="column" fxLayoutAlign="space-around stretch">
+
+        <button mat-raised-button class="moderate-orange-button" color="primary" fxFlex="100" *ngIf="hasPermission(PERMIT_ACTIONS_CONFIG.NEW_PERMIT)" (click)="onNewPermitClick()">New
+              Phase</button>
+
+        <button mat-raised-button class="green-button" color="primary" fxFlex="100" *ngIf="hasPermission(PERMIT_ACTIONS_CONFIG.ALTERATION)" (click)="onRaiseChangeReqClick()">
+              Raise Change Request
+          </button>
+
+        <button mat-raised-button class="yellow-button" color="primary" fxFlex="100" (click)="onProgreesToPAClick()" *ngIf="hasPermission(PERMIT_ACTIONS_CONFIG.PROCEED_TO_PA)">
+              Progress to PA
+          </button>
+        <button mat-raised-button class="red-button" color="primary" fxFlex="100" (click)="onCancelPermitBtnClick()" *ngIf="hasPermission(PERMIT_ACTIONS_CONFIG.CANCEL)">
+              Cancel Permit
+          </button>
+
+        <button mat-raised-button class="dark-gray-button" color="primary" fxFlex="100" *ngIf="hasPermission(PERMIT_ACTIONS_CONFIG.REGISTER)" (click)="onRegisterClick()">
+              Register
+          </button>
+
+        <button mat-raised-button class="light-green-button" color="primary" fxFlex="100" *ngIf="hasPermission(PERMIT_ACTIONS_CONFIG.EXTENSION_REQUEST)" (click)="onExtensionRequestBtnClick()">
+              Extension Request
+          </button>
+
+        <button mat-raised-button class="navy-blue-button" disabled color="primary" fxFlex="100">
+              Notify Customers
+          </button>
+        <button mat-raised-button class="sky-blue-button" disabled color="primary" fxFlex="100">
+              Notify Client/Contractor
+          </button>
+    </div>
+</div>

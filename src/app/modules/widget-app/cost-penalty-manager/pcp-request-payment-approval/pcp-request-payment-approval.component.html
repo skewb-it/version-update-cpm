@@ -1,0 +1,53 @@
+<div class="record-invoice-amount dialog-container">
+    <div fxLayout="column" fxLayoutGap="5px">
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div class="info-element" fxFlex="50">
+                <label>Permit Type</label>
+                <p>{{dataModel.data.permitType}}</p>
+            </div>
+            <div class="info-element ml-5" fxFlex="50">
+                <label>Invoice Details Logged By</label>
+                <p>{{dataModel.data.invoiceDetailsLoggedBy}}</p>
+            </div>
+        </div>
+        <div class="info-element" fxFlex="100">
+            <label>Invoice Description</label>
+            <p>{{dataModel.data.invoiceDescription}}</p>
+        </div>
+        <div class="form-element" fxFlex="100">
+            <hr>
+            <form [formGroup]="wgFormGroup" class="form-container">
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+                    <mat-form-field fxFlex="50" appearance="outline">
+                        <mat-label>Invoice Amount</mat-label>
+                        <input matInput placeholder="Invoice Amount" formControlName="invoiceamount">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="50" appearance="outline">
+                        <mat-label>Invoice receipt date</mat-label>
+                        <input matInput [matDatepicker]="invoiceReceiptDate" (click)="invoiceReceiptDate.open()" (focus)="invoiceReceiptDate.open()" formControlName="invoicereceiptdate">
+                        <mat-datepicker-toggle matSuffix [for]="invoiceReceiptDate"></mat-datepicker-toggle>
+                        <mat-datepicker #invoiceReceiptDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+                    <mat-form-field fxFlex="50" appearance="outline">
+                        <mat-label>Approval required from</mat-label>
+                        <input matInput formControlName="emailaddress">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="50" appearance="outline">
+                        <mat-label>Approval by date</mat-label>
+                        <input matInput [matDatepicker]="invoicePaymentDueDate" (click)="invoicePaymentDueDate.open()" (focus)="invoicePaymentDueDate.open()" formControlName="invoicepaymentduedate">
+                        <mat-datepicker-toggle matSuffix [for]="invoicePaymentDueDate"></mat-datepicker-toggle>
+                        <mat-datepicker #invoicePaymentDueDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Notes accompanying approval request</mat-label>
+                        <textarea matInput formControlName="notesaccompnyingapprovalreq" rows="4"></textarea>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

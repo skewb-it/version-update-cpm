@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-sm-4 pl-0" (click)="onCountClick()">
+      <div class="count-container cursor-style"
+        [ngStyle]="{'background': dataModel.data.countBackground,'color':dataModel.data.countColor }">
+        {{dataModel.data.count}}
+      </div>
+    </div>
+    <div class="col col-sm-8 pl-0">
+      <div class="text-container" [ngStyle]="{'color':dataModel.data.textColor }">
+        {{dataModel.data.text}}
+      </div>
+    </div>
+  </div>
+</div>

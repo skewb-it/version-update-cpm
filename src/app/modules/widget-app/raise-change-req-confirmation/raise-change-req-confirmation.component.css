@@ -1,0 +1,15 @@
+.confirm-msg-container {
+    padding: 20px 10px;
+}
+
+.charge-tag {
+    font-size: 20px;
+    margin: 0 5px;
+    font-weight: 600;
+    color: var(--theme-color);
+}
+
+.warning-confirmation {
+    color: var(--warning-massage-color);
+    margin-bottom: 10px;
+}

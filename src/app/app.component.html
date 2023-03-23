@@ -1,0 +1,19 @@
+<!-- Test Merging -->
+<ngx-spinner type="ball-spin-fade-rotating"></ngx-spinner>
+<router-outlet></router-outlet>
+<app-dialog [dialogModel]="_errorDialogService.dialogModel">
+    <ng-container class="dialog-content-slot">
+        <div class="error-status" [hidden]="_errorDialogService.dialogModel?.data?.status=='BAD_REQUEST'">
+            {{_errorDialogService.dialogModel?.data?.status}}
+        </div>
+        <div>
+            {{_errorDialogService.dialogModel?.data?.message}}
+        </div>
+        <hr class="mt-5">
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button (click)="closeDialog()" mat-raised-button class="primary-button mb-2" color="primary">Ok
+      </button>
+        </div>
+    </ng-container>
+</app-dialog>
+<app-helper-text-popover-container></app-helper-text-popover-container>

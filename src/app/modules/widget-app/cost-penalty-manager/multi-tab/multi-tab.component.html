@@ -1,0 +1,36 @@
+<div fxFlex="100" fxLayout="column" class=" border-grey">
+    <div>
+        <div>
+            <!-- <span class="" [style.color]="item.iconColor" class="material-icons">
+          shop_2
+        </span> -->
+            <span>
+        <i class="{{dataModel.content?.iconName}}" [style.color]="dataModel.content.iconColor"
+          style=" font-size: 19px;margin-left: 5px;"></i>
+      </span>
+
+        </div>
+        <div class="rowheadingCss">
+            {{ dataModel.content.heading}}
+        </div>
+    </div>
+    <div class="d-flex justify-content-between mt-2">
+
+        <div class="today">
+            Today
+        </div>
+        <div class="today-amount" style="cursor: pointer;" [routerLink]="['/admin/pcp-charges-dashboard']">
+            <p>{{'&pound;'+ dataModel.content.today }}</p>
+        </div>
+
+    </div>
+    <div class="d-flex justify-content-between">
+        <div class="this-week">
+            This Week
+        </div>
+
+        <div class="this-week-amount" style="cursor: pointer;" [routerLink]="['/admin/pcp-charges-dashboard']">
+            <p>{{'&pound;'+ dataModel.content.thisWeek }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Permit Ref. Number</label>
+            <p>{{dataModel.data.permitRefNumber}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Permit Type</label>
+            <p>{{dataModel.data.permitType}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33"></div>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Proposed Start Date</label>
+            <p>{{dataModel.data.proposedStartDateTime | transformDateTime}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33">
+            <label for=""> Proposed End Date</label>
+            <p>{{dataModel.data.proposedEndDateTime | transformDateTime}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33"></div>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Actual Start Date</label>
+            <p>{{dataModel.data.actualStartDateTime | transformDateTime}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33">
+            <label for=""> Actual End Date</label>
+            <p>{{dataModel.data.actualEndDateTime | transformDateTime}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33">
+            <label for=""> Expected End Date</label>
+            <p>{{dataModel.data.expectedEndDateTime | transformDateTime}}</p>
+        </div>
+    </div>
+
+    <hr>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <div class="info-element" fxFlex="50">
+            <label for="">Highway Authority</label>
+            <p>{{dataModel.data.highwayAuthority}}</p>
+        </div>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <div class="info-element" fxFlex="50">
+            <label for="">Location details</label>
+            <p>{{dataModel.data.locationdetails}}</p>
+        </div>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Road Type</label>
+            <p>{{dataModel.data.roadType}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Work Stream</label>
+            <p>{{dataModel.data.workStream}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Accountabilty</label>
+            <p>{{dataModel.data.accountabilty}}</p>
+        </div>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Traffic Sensitive</label>
+            <p>{{dataModel.data.trafficSensitive}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33">
+            <label for="">Traffic Management Required</label>
+            <p>{{dataModel.data.trafficManagementRequired}}</p>
+        </div>
+        <div class="info-element" fxFlex="33.33"></div>
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+.count-card{
+  border-radius: 4px;
+}
+
+.left-strip{
+  border-left-width: 5px;
+  border-left-style: solid;
+}
+
+.count-icon{
+  font-size: 40px !important;
+}
+
+.card-count{
+  font-weight: bold;
+  font-size: 18px;
+}

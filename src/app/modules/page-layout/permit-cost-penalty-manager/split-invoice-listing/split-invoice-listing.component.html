@@ -1,0 +1,87 @@
+<div class="dashboard-container mb-4">
+
+    <div fxLayout="row" fxLayoutAlign="start center" FxFlex="100" class="page-title m-4">
+
+        <div class="grey-text " FxFlex="98">
+            <span class="blue-text">Dashboard</span> / Invoices
+        </div>
+
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" class="m-auto">
+        <mat-card fxFlex="98" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
+            <mat-tab-group>
+                <mat-tab label="OPEN">
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                                <div fxFlex="25">
+
+                                    <div style="padding:5px 10px;" fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="15px">
+                                        <div>
+                                            <button class="createpermitbtn" (click)="filterhideshow()" mat-stroked-button class="plain-btn">
+                        <mat-icon>filter_alt</mat-icon>
+                      </button>
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Search" class="search-input" [formControl]="searchInput">
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+                                <div fxFlex="75" class="d-flex " style="overflow-x:scroll">
+                                    <app-pcp-quick-filter [dataModel]="pcpPermitQuickFilterDataModel" [configModel]="pcpPermitQuickFilterConfigModel">
+                                    </app-pcp-quick-filter>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- <div class="row no-gutters mt-4">
+              <div class="col-md-2">
+                <app-sidebar (onSidebarClose)="onSidebarClosed()">
+                  <ng-container class="sidebar-content-slot">
+                    <app-pcp-filter [dataModel]="pcpFilterDataModel" [configModel]="pcpFilterConfigModel">
+                    </app-pcp-filter>
+                  </ng-container>
+
+                </app-sidebar>
+              </div>
+
+            </div> -->
+                        <div class="col-12 mt-4">
+                            <app-split-invoices-list [dataModel]="splitInvoicesListDataModel" [configModel]="splitInvoicesListConfigModel">
+                            </app-split-invoices-list>
+                        </div>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="PROCESSED/PAID">
+                    <div>
+                        this is team's list
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
+
+        </mat-card>
+    </div>
+
+
+
+</div>
+
+<div *ngIf="!filterhide" class="row no-gutters mt-4">
+    <div class="col-md-2">
+        <app-sidebar (onSidebarClose)="onSidebarClosed()">
+            <ng-container class="sidebar-content-slot">
+                <app-pcp-filter [dataModel]="pcpFilterDataModel" [configModel]="pcpFilterConfigModel">
+                </app-pcp-filter>
+            </ng-container>
+
+        </app-sidebar>
+    </div>
+
+</div>

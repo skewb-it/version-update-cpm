@@ -1,0 +1,47 @@
+<form [formGroup]="wgFormGroup" class="form-container">
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+        <mat-form-field fxFlex="50" appearance="outline">
+            <mat-label>Invoice Number</mat-label>
+            <input matInput autocomplete="off" formControlName="invoiceNumber">
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="50" appearance="outline">
+            <mat-label>Invoice Date</mat-label>
+            <input matInput [matDatepicker]="invoiceDate" (click)="invoiceDate.open()" (focus)="invoiceDate.open()" formControlName="invoiceDate">
+            <mat-datepicker-toggle matSuffix [for]="invoiceDate"></mat-datepicker-toggle>
+            <mat-datepicker #invoiceDate></mat-datepicker>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+        <mat-form-field fxFlex="50" appearance="outline">
+            <mat-label>Invoice Amount</mat-label>
+            <input matInput autocomplete="off" formControlName="invoiceAmount" type="number">
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50">
+            <mat-label>Cost Type</mat-label>
+            <mat-select formControlName="costType">
+                <mat-option [value]="c.value" *ngFor="let c of arrCostType">{{c.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+        <mat-form-field fxFlex="50" appearance="outline">
+            <mat-label>Invoice Description</mat-label>
+            <textarea matInput placeholder="Enter Invoice Description" formControlName="invoiceDesc"></textarea>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="50">
+            <mat-label>Charge Description</mat-label>
+            <textarea matInput placeholder="Enter Charge Description" formControlName="chargesDesc"></textarea>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end end">
+        <button type="button" mat-raised-button color="primary" class="primary-button" (click)="addRecordInvoiceCharges()">Save</button>
+    </div>
+</form>

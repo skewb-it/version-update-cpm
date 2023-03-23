@@ -1,0 +1,7 @@
+<mat-card class="currency-card" fxLayout="column" fxLayoutAlign="center center"
+  [ngStyle]="{'background-color': 'var('+dataModel.data.backgroundColor+')'}">
+  <span class="count-card-count"
+    [ngStyle]="{'color': 'var('+dataModel.data.countColor+')'}">{{dataModel.data.count | transformCurrency}}</span>
+  <span class="count-card-label" [ngStyle]="{'color': 'var('+dataModel.data.labelColor+')'}"
+    *ngIf="dataModel.data.isLabelEnable">{{dataModel.data.label}}</span>
+</mat-card>

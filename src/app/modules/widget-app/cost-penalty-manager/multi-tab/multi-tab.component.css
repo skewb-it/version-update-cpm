@@ -1,0 +1,32 @@
+.border-grey {
+  border: 1px solid #9b9b9b;
+  border-radius: 1rem;
+  padding: 1rem;
+  min-width: 160px;
+}
+
+.rowheadingCss {
+  font-weight: bold;
+  /* padding: 0.5rem; */
+}
+
+.today,
+.this-week {
+  color: #696969;
+  /* font-size: .8rem; */
+  font-size: 1.2rem;
+}
+
+.today-amount p,
+.this-week-amount p {
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #222;
+  color: #fff;
+  width: 40px;
+}
+
+.this-week-amount p {
+  background-color: var(--theme-color);
+}

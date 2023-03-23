@@ -1,0 +1,232 @@
+/* .permit-list {
+    padding-left: 25px;
+} */
+
+.detail-row {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.element-detail {
+    overflow: hidden;
+    background: rgb(255, 255, 255) none no-repeat scroll 0% 0% padding-box;
+    box-shadow: rgba(193, 203, 255, 0.23) 0px 3px 4px;
+    border-radius: 4px;
+}
+
+.element-wrapper {
+    padding: 15px;
+    max-width: 100%;
+}
+
+.info-element label {
+    font: Noto Sans;
+    font-size: 0.9rem;
+    letter-spacing: 0px;
+    color: #838296;
+    margin-bottom: 0px;
+}
+
+.info-element p {
+    font: Noto Sans;
+    font-size: 1.2rem;
+    letter-spacing: 0px;
+    color: #2B5C41;
+}
+
+.ColWidth {
+    min-width: 100px;
+}
+
+.iconColWidth {
+    min-width: 80px;
+}
+
+.iconColWidth120 {
+    width: 125px;
+}
+
+.pRNColWidth120 {
+    min-width: 125px;
+}
+
+.CollaborativeCell {
+    padding-left: 20px !important;
+}
+
+.CollaborativeImg {
+    width: 25px;
+    height: 25px;
+}
+
+.icon-color {
+    color: var(--icon-theme-color);
+}
+
+.work-location-description {
+    max-width: 150px !important;
+    /* word-break: break-all; */
+    overflow-wrap: break-word;
+}
+
+.word-break {
+    overflow-wrap: break-word;
+}
+
+#container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    background: #444;
+    display: flex;
+    overflow: auto;
+}
+
+#flex-scroll {
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.box {
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+}
+
+.box:nth-child(3n-2) {
+    background-color: #EF5350;
+}
+
+.box:nth-child(3n-1) {
+    background-color: #2E7D32;
+}
+
+.box:nth-child(3n) {
+    background-color: #03A9F4;
+}
+
+.expandul li {
+    width: 300px;
+}
+
+.cancelstatusborder {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 5px solid gray !important;
+    border-radius: 5px;
+    color: gray;
+}
+
+.cancelstatusborder:hover {
+    border: 1px solid gray;
+}
+
+
+/* .cancelstatusborder .info-element:nth-child(2) {
+    color: gray!important
+} */
+
+
+/* .cancelstatusborder :hover {
+    border: 1px solid green;
+} */
+
+.closedstatusborder {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 5px solid rgb(116, 116, 116) !important;
+    border-radius: 5px;
+    color: rgb(116, 116, 116) !important
+}
+
+.closedstatusborder:hover {
+    border: 1px solid rgb(116, 116, 116);
+}
+
+
+/* .closedstatusborder .info-element:nth-child(2) {
+    color: rgb(116, 116, 116)!important
+} */
+
+.refusedstatusborder,
+.revokedstatusborder {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 5px solid red !important;
+    border-radius: 5px;
+    color: red;
+}
+
+.refusedstatusborder:hover,
+.revokedstatusborder:hover {
+    border: 1px solid red;
+}
+
+
+/* .refusedstatusborder .info-element:nth-child(2),
+.revokedstatusborder .info-element:nth-child(2) {
+    color: red!important
+} */
+
+.grantedstatusborder {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 5px solid green !important;
+    border-radius: 5px;
+    color: green
+}
+
+
+/*
+.grantedstatusborder .info-element:nth-child(2) {
+    color: green!important
+} */
+
+.grantedstatusborder:hover {
+    border: 1px solid green;
+}
+
+
+/* .statusbox .grantedstatusborder:hover {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-color: green!important;
+} */
+
+.submittedstatusborder {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 5px solid blue !important;
+    border-radius: 5px;
+    color: blue;
+}
+
+
+/* .submittedstatusborder .info-element:nth-child(2) {
+    color: blue!important
+} */
+
+.submittedstatusborder:hover {
+    border: 1px solid blue;
+}
+
+.permintnumberlink {
+    color: blue;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+
+/* div.statusbox :hover {
+    border: 1px solid;
+} */
+
+.info-element :hover {
+    border: none !important;
+}
+
+.inprogress {
+    background: orange;
+    padding: 4px 20px!important;
+    border-radius: 15px;
+    color: white;
+}

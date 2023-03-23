@@ -1,0 +1,127 @@
+<div class="container-fluid">
+    <div fxLayout="row">
+        <div fxFlex="90" *ngIf="dataModel.widgetStyle.isShowChartLabels">
+        </div>
+        <div fxFlex="100" *ngIf="!dataModel.widgetStyle.isShowChartLabels">
+            <div class="table-responsive">
+                <table class="table w-100">
+                    <thead>
+                        <tr>
+                            <th *ngIf="dataModel.widgetStyle.isFirstColumnVisible" [ngStyle]="dataModel.widgetStyle.headerWidth" scope="col"></th>
+                            <th colspan="2">
+                                <ul class="pl-0">
+                                    <li *ngFor="let item of dataModel.durationViewerStepper1Data" [attr.my-attr]="item.nodeText" class="bgBlue" [ngClass]="{'bgBlue':item.iconBgColor=='blue', 'bgGreen':item.iconBgColor=='green', 'bgRed':item.iconBgColor=='red','li1':true}">
+                                        <span class="material-icons mt-3">
+                                          {{item.iconName}}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </th>
+                            <th colspan="3">
+                                <ul class="pl-0">
+                                    <li *ngFor="let item of dataModel.durationViewerStepper2Data" [attr.my-attr]="item.nodeText" class="bgBlue" [ngClass]="{'bgBlue':item.iconBgColor=='blue', 'bgGreen':item.iconBgColor=='green', 'bgRed':item.iconBgColor=='red','li2':item.iconBgColor=='red','li3':item.iconBgColor=='green'}">
+                                        <span class="material-icons mt-3">
+                                          {{item.iconName}} 
+                                        </span>
+                                    </li>
+                                </ul>
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr *ngIf="!dataModel.widgetStyle.isFirstColumnVisible">
+                            <ng-container *ngFor="let item of dataModel.columnDisplay">
+                                <th class="table-header" scope="col" *ngIf="item.tableHeader!='' &&  item.tableHeader!='info'" [ngClass]="{'col1':item.tableHeader==''}">
+                                    <div class="col-width">{{item.tableHeader}}</div>
+                                </th>
+                                <th class="table-header" scope="col" *ngIf="item.tableHeader!='' &&  item.tableHeader=='info' ">
+                                    <div class="col-width"></div>
+                                </th>
+                            </ng-container>
+                        </tr>
+                        <tr *ngIf="dataModel.widgetStyle.isFirstColumnVisible">
+                            <th class="table-header" scope="col" *ngFor="let item of dataModel.columnDisplay">
+                                <div class="col-width">{{item.tableHeader}}</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataModel.durationViewerMap | keyvalue">
+                            <th *ngIf="dataModel.widgetStyle.isFirstColumnVisible" class="col1">
+                                {{item.key}}
+                            </th>
+                            <td *ngFor="let element of item.value" [ngClass]="{'svgdot':element.isChildNode,'text-center':!element.isChildNode,'svgdot1':element.iconColor=='green','svgdot2':false,'svgdot3':element.iconColor=='red'}">
+                                <span class="material-icons" *ngIf="element.iconName!='info'" [ngClass]="{'text-success':element.iconColor=='green','text-danger':element.iconColor=='red','col2':element.iconColor=='purple','bluecolor':element.iconColor=='blue','graycolor':element.iconColor=='gray'}">
+                                    {{element.iconName}}
+                                </span>
+                                <span class="material-icons pointer" [matMenuTriggerFor]="aboveMenu" (click)="oninfoclick(element)" *ngIf="element.iconName=='info'" [ngClass]="{'text-success':element.iconColor=='green','text-danger':element.iconColor=='red','col2':element.iconColor=='purple','bluecolor':element.iconColor=='blue','graycolor':element.iconColor=='gray'}">
+                                    {{element.iconName}}
+                                </span>
+                            </td>
+                            <mat-menu #aboveMenu="matMenu" yPosition="below" class="custom-mat-menu">
+                                <table class="custom-table-popover">
+                                    <tr>
+                                        <th>Actual Start Date</th>
+                                        <td>{{infoData.actualStartDate | transformDateTime}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Actual End Date</th>
+                                        <td>{{infoData.actualEndDate | transformDateTime}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Expected End Date</th>
+                                        <td>{{infoData.expectedEndDate | transformDateTime}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Validity Start Date</th>
+                                        <td>{{infoData.validityStartDate | transformDateTime}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Registration Due Date</th>
+                                        <td>{{infoData.registrationDueDate | transformDateTime}}</td>
+                                    </tr>
+                                </table>
+                            </mat-menu>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div fxFlex="20" *ngIf="dataModel.widgetStyle.isShowChartLabels">
+            <div class="table-responsive">
+                <table class="float-right">
+                    <tr>
+                        <td>
+                            <span class="material-icons info1">
+                                stop_circle
+                            </span>
+                        </td>
+                        <td class="infoStyle">
+                            On Time
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="material-icons info2">
+                                stop_circle
+                            </span>
+                        </td>
+                        <td class="infoStyle">
+                            Late
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="material-icons info3">
+                                stop_circle
+                            </span>
+                        </td>
+                        <td class="infoStyle">
+                            Early Start
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

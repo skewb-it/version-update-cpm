@@ -1,0 +1,56 @@
+<div fxLayout="column" fxLayoutAlign="start space-between" fxLayoutGap="5px">
+    <div class="record-invoice-amount dialog-container">
+        <hr>
+        <div fxLayout="column" fxLayoutGap="5px">
+            <div fxLayout="row" fxLayoutGap="22px" fxLayoutAlign="space-between start">
+                <div class="info-element" fxFlex="50">
+                    <label>Permit Number</label>
+                    <p>{{dataModel.data.permitNumber}}</p>
+                </div>
+                <div class="info-element ml-2" fxFlex="50">
+                    <label>Permit Type</label>
+                    <p>{{dataModel.data.permitType}}</p>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="22px" fxLayoutAlign="space-between start">
+                <div class="info-element" fxFlex="50">
+                    <label>Invoice Amount</label>
+                    <p>{{dataModel.data.invoiceAmount | transformCurrency}}</p>
+                </div>
+                <div class="info-element ml-2" fxFlex="50">
+                    <label>Invoice Details Logged By</label>
+                    <p>{{dataModel.data.invoiceDetailsLoggedBy}}</p>
+                </div>
+            </div>
+            <div class="form-element" fxFlex="100">
+                <hr>
+                <form [formGroup]="wgFormGroup" class="form-container">
+                    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+                        <mat-form-field fxFlex="50" appearance="outline">
+                            <mat-label>Invoice receipt date</mat-label>
+                            <input matInput [matDatepicker]="invoiceReceiptDate" (click)="invoiceReceiptDate.open()" (focus)="invoiceReceiptDate.open()" formControlName="invoicereceiptdate">
+                            <mat-datepicker-toggle matSuffix [for]="invoiceReceiptDate"></mat-datepicker-toggle>
+                            <mat-datepicker #invoiceReceiptDate></mat-datepicker>
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="48" appearance="outline">
+                            <mat-label>Invoice payment due date</mat-label>
+                            <input matInput [matDatepicker]="invoicePaymentDueDate" (click)="invoicePaymentDueDate.open()" (focus)="invoicePaymentDueDate.open()" formControlName="invoicepaymentduedate">
+                            <mat-datepicker-toggle matSuffix [for]="invoicePaymentDueDate"></mat-datepicker-toggle>
+                            <mat-datepicker #invoicePaymentDueDate></mat-datepicker>
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between end">
+                        <mat-form-field appearance="outline" fxFlex="100">
+                            <mat-label>Invoice Description</mat-label>
+                            <textarea matInput formControlName="invoiceDescription" placeholder="Enter Invoice Description"></textarea>
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

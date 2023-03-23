@@ -1,0 +1,13 @@
+.count-card {
+    padding: 5px 5px !important;
+    margin: 0 !important;
+}
+
+.card-text {
+    font-size: 12px;
+}
+
+.card-count {
+    font-weight: bold;
+    font-size: 15px;
+}

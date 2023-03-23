@@ -1,0 +1,521 @@
+<div class="d-flex">
+  <div class="table-responsive">
+    <table class="w-100 bg-white-table">
+      <tr>
+        <th class="row-span hiddenth bg-white" [ngStyle]="{ width: dataModel.tableRowHeadingLeft }"></th>
+
+        <th id="kniwabi" [ngStyle]="{'width':dataModel.tableRowHeadingRight,'padding':dataModel.tabletitlePadding}"
+          [ngClass]="{'row-span': dataModel.headerCirlceClassFlag == false, 'circle_drow': dataModel.headerCirlceClassFlag == true}"
+          class="bg-white">
+
+          <!-- this div only header set cirlce with text header -->
+          <div *ngIf="dataModel.headerCirlceClassFlag" style="margin-top: 10px;">
+            <div class="a" [style.backgroundColor]="getHeaderItem(headerIndex).headerColor">
+              <!-- <i class="material-icons mat_icon_size" style=" margin-top: 11px;">
+                              {{getHeaderItem(headerIndex).headerIcon}}
+                            </i> -->
+            </div>
+            <div style="height: 36px;">
+              {{getHeaderItem(headerIndex).headerText}}
+            </div>
+          </div>
+
+
+          <!-- this div only header set text with background color blue -->
+          <div *ngIf="dataModel.headerCirlceClassFlag == false" class="py-2  row-span">
+            {{this.dataModel.colHeading[0]}}
+          </div>
+
+
+        </th>
+      </tr>
+      <tr>
+        <th class="row-span hiddenth bg-white" [ngStyle]="{ width: dataModel.tableRowHeadingLeft }"></th>
+        <!-- <th *ngFor="let item of dataModel.headers; let headerIndex = index" class="row-span" [ngStyle]="{ width: dataModel.tableRowHeadingRight }">
+                  {{ getHeaderItem(headerIndex).headerText }}
+              </th> -->
+        <th *ngFor="let item of dataModel.headers;let headerIndex = index"
+          [ngStyle]="{'width':dataModel.tableRowHeadingRight,'padding':dataModel.tabletitlePadding}"
+          [ngClass]="{'row-span': dataModel.headerCirlceClassFlag == false, 'circle_drow': dataModel.headerCirlceClassFlag == true}"
+          class="bg-white">
+
+          <!-- this div only header set cirlce with text header -->
+          <div *ngIf="dataModel.headerCirlceClassFlag" style="margin-top: 10px;">
+            <div class="a" [style.backgroundColor]="getHeaderItem(headerIndex).headerColor">
+              <!-- <i class="material-icons mat_icon_size" style=" margin-top: 11px;">
+                  {{getHeaderItem(headerIndex).headerIcon}}
+                </i> -->
+            </div>
+            <div style="height: 36px;">
+              {{getHeaderItem(headerIndex).headerText}}
+            </div>
+          </div>
+
+
+          <!-- this div only header set text with background color blue -->
+          <div *ngIf="dataModel.headerCirlceClassFlag == false" class="py-2  row-span">
+            {{getHeaderItem(headerIndex).headerText}}
+          </div>
+
+
+        </th>
+      </tr>
+      <tr *ngFor="let field of counter(dataModel.rowLength); let rowIndex = index;">
+
+        <td class="posrel" nowrap="nowrap" [ngStyle]="{ height: dataModel.tableTdHeight }" *ngFor="
+            let column of counter(dataModel.columnLength);
+            let colIndex = index
+          ">
+          <div *ngIf="colIndex == 0">
+            <!-- <i class="{{ getRowHeaderItem(rowIndex).rowIcon }} font25"
+                [style.color]="getRowHeaderItem(rowIndex).rowIconColor"></i> -->
+            <div class="rowheadingCss">
+              {{ getRowHeaderItem(rowIndex).displayRowHeaderText }}
+            </div>
+          </div>
+
+          <!-- template 1 html  start -->
+          <div *ngIf="dataModel.templateid == 'Template1' && colIndex != 0" class="countsection">
+            <div *ngIf="!checkIsRatioChartCol(rowIndex, colIndex - 1)" class="pointer tdycount" (click)="
+                onClick(
+                  rowIndex,
+                  colIndex - 1,
+                  dataModel.items[rowIndex][colIndex - 1],
+                  dataModel.rowHeaders[rowIndex],
+                  dataModel.headers[colIndex - 1]
+                )
+              ">
+              {{ getItem(rowIndex, colIndex - 1) }}
+            </div>
+            <div *ngIf="dataModel.showBottonText" class="small-label tdycss">
+              Today
+            </div>
+
+            <div
+              *ngIf="dataModel.showProgressBar && !checkIsRatioChartCol(rowIndex, colIndex - 1) && !checkfiltervaluetotoal(rowIndex, colIndex - 1)"
+              class="mt-2">
+              <!-- <mat-progress-bar class="matrix-progress-bar" mode="determinate"
+                  [value]="getProgressValue(rowIndex, colIndex - 1)">
+                </mat-progress-bar> -->
+            </div>
+
+            <!-- <div *ngIf="checkIsRatioChartCol(rowIndex, colIndex - 1)" fxLayout="row" fxLayoutAlign="center center"
+                fxLayoutGap="2px">
+                <div fxLayout="column" class="ratio-bar-container mt-4">
+                  <div class="ratio-count-bar" fxLayout="row">
+                    <div class="label-entity-count"
+                      [ngStyle]="{'color': getRatioChartCount1Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,1)}">
+                      {{getRatioChartCount1(rowIndex, colIndex - 1)}}</div>
+                    <div class="label-entity-count marin-left"
+                      [ngStyle]="{'color': getRatioChartCount2Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,2)}">
+                      {{getRatioChartCount2(rowIndex, colIndex - 1)}}</div>
+                  </div>
+                  <div class="ratio-bar" fxLayout="row">
+                    <div class="ratio-entity entity1"
+                      [ngStyle]="{'border-color':'#FFF','background-color': getRatioChartCount1Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,1)}">
+                    </div>
+                    <div class="ratio-entity"
+                      [ngStyle]="{'border-color': '#FFF','background-color': getRatioChartCount2Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,2)}">
+                    </div>
+                  </div>
+                  <div class="label" fxLayout="row" fxLayoutAlign="space-between center"
+                    [ngStyle]="{'color': getRatioChartLabelColor(rowIndex, colIndex - 1)}">
+                    <div fxFlex="50" fxLayoutAlign="start center">
+                      {{getRatioChartLable1(rowIndex, colIndex - 1)}}
+                    </div>
+                    <div fxFlex="50" fxLayoutAlign="start center">
+                      {{getRatioChartLable2(rowIndex, colIndex - 1)}}
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+            <div class="pointer tmwcount" (click)="
+                onClick(
+                  clickEvent.ON_BOTTOM_TEXT,
+                  rowIndex,
+                  colIndex - 1,
+                  dataModel.rowHeaders[rowIndex],
+                  dataModel.headers[colIndex - 1]
+                )
+              " *ngIf="dataModel.showBottonText">
+              {{ getBottonText(rowIndex, colIndex - 1) }}
+              <div class="small-label tmwcss ">Tomorrow</div>
+            </div>
+          </div>
+          <!-- template 1 html  end -->
+
+          <!-- template 2 html  start -->
+          <div *ngIf="
+              dataModel.templateid == 'Template2' &&
+              colIndex != 0 &&
+              getItemText1(rowIndex, colIndex - 1)
+            ">
+            <div class="tdsubtext">
+              <div>
+                {{ getItemText1(rowIndex, colIndex - 1) }}
+              </div>
+              <div>
+                {{ getItemText2(rowIndex, colIndex - 1) }}
+              </div>
+            </div>
+
+            <div class="pt-1">
+              <table class="w-100 text-center colorblue">
+                <tr class="content-table">
+                  <td class="small-lable">
+                    <div class="pointer" (click)="
+                        onClick(
+                          clickEvent.ON_CLICK_VAL1,
+                          rowIndex,
+                          colIndex - 1,
+                          dataModel.rowHeaders[rowIndex],
+                          dataModel.headers[colIndex - 1]
+                        )
+                      ">
+                      {{ getItem(rowIndex, colIndex - 1) }}
+                    </div>
+                  </td>
+                  <td class="px-0 font-weight-bold">
+                    <h2 class="pointer" (click)="
+                        onClick(
+                          clickEvent.ON_CLICK_VAL2,
+                          rowIndex,
+                          colIndex - 1,
+                          dataModel.rowHeaders[rowIndex],
+                          dataModel.headers[colIndex - 1]
+                        )
+                      ">
+                      {{ getBottonText(rowIndex, colIndex - 1) }}
+                    </h2>
+                  </td>
+                </tr>
+                <tr class="content-table">
+                  <td class="small-lable">
+                    tomorrow
+                  </td>
+                  <td class="px-0 font-weight-bold">
+                    Today
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- template 2 html  end -->
+
+          <!-- template 3 html  start -->
+          <div *ngIf="dataModel.templateid == 'Template3' &&  colIndex != 0
+          ">
+            <div class="pointer" style="margin-bottom:0px;font-size: 25px;font-weight: 700;color:#4D9BDA;">
+              <span style="margin-bottom:0px;font-size: 14px;font-weight: 500;color:#4D9BDA;" class="ng-star-inserted">
+                <!-- 3 -->
+                {{getItem(rowIndex,colIndex-1) }}
+              </span>
+              <span>
+                <!-- <i
+                  style="font-size: 19px; margin-left: 5px; color: green;"
+                  class="fa fa-long-arrow-down"
+                ></i
+              > -->
+                <!-- <i *ngIf="dataModel.showArrowIcon" class="{{getIconName(rowIndex,colIndex-1)}}"
+                    [style.color]="getIconColor(rowIndex,colIndex-1)" style=" font-size: 19px;margin-left: 5px;"></i> -->
+              </span>
+
+              <div style="margin-bottom:0px;font-size: 12px;font-weight: 500;color:#4D9BDA;" class="ng-star-inserted">
+                <!-- (3) -->
+                ({{getBottonText(rowIndex,colIndex-1)}})
+              </div>
+            </div>
+          </div>
+          <!-- template 3 html  end -->
+
+          <!-- template 4 html  start -->
+          <div *ngIf="dataModel.templateid == 'Template4' &&  colIndex != 0
+           " (click)="
+           onClick(
+             clickEvent.ON_CLICK,
+             rowIndex,
+             colIndex - 1,
+             dataModel.rowHeaders[rowIndex],
+             dataModel.headers[colIndex - 1]
+           )
+         ">
+            <div class="pointer" style="margin-bottom:0px;font-size: 25px;font-weight: 700;color:#4D9BDA;">
+              <p style="margin-bottom:0px;font-size: 10px;font-weight: 300;color:#696969;padding-bottom:10px;min-height: 55px;"
+                class="ng-star-inserted">
+                <!-- 2 -->
+                {{getItem(rowIndex,colIndex-1) }}
+              </p>
+
+              <div style="margin-bottom:0px;font-size: 18px;font-weight: 600;color:#4D9BDA;" class="ng-star-inserted">
+                <!-- (3) -->
+                {{getBottonText(rowIndex,colIndex-1)}}
+              </div>
+            </div>
+          </div>
+          <!-- template 4 html  end -->
+
+
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="dataModel.colHeading[1]" class="table-extras">
+    <table class="w-100 bg-white-table">
+      <tr>
+        <th id="kniwabino" [ngStyle]="{'width':dataModel.tableRowHeadingRight,'padding':dataModel.tabletitlePadding}"
+          [ngClass]="{'row-span2': dataModel.headerCirlceClassFlag == false, 'circle_drow': dataModel.headerCirlceClassFlag == true}"
+          class="bg-white">
+
+          <!-- this div only header set cirlce with text header -->
+          <div *ngIf="dataModel.headerCirlceClassFlag" style="margin-top: 10px;">
+            <div class="a" [style.backgroundColor]="getHeaderItem(headerIndex).headerColor">
+              <!-- <i class="material-icons mat_icon_size" style=" margin-top: 11px;">
+                          {{getHeaderItem(headerIndex).headerIcon}}
+                        </i> -->
+            </div>
+            <div style="height: 36px;">
+              {{getHeaderItem(headerIndex).headerText}}
+            </div>
+          </div>
+
+
+          <!-- this div only header set text with background color blue -->
+          <div *ngIf="dataModel.headerCirlceClassFlag == false" class="py-2  row-span2">
+            {{this.dataModel.colHeading[1]}}
+          </div>
+
+
+        </th>
+      </tr>
+      <tr>
+        <!-- <th class="row-span2 hiddenth bg-white" [ngStyle]="{ width: dataModel.tableRowHeadingLeft }"></th> -->
+        <!-- <th *ngFor="let item of dataModel.headers; let headerIndex = index" class="row-span2" [ngStyle]="{ width: dataModel.tableRowHeadingRight }">
+              {{ getHeaderItem(headerIndex).headerText }}
+          </th> -->
+        <th *ngFor="let item of dataModel.headers2;let headerIndex = index"
+          [ngStyle]="{'width':dataModel.tableRowHeadingRight,'padding':dataModel.tabletitlePadding}"
+          [ngClass]="{'row-span2': dataModel.headerCirlceClassFlag == false, 'circle_drow': dataModel.headerCirlceClassFlag == true}"
+          class="bg-white">
+
+          <!-- this div only header set cirlce with text header -->
+          <div *ngIf="dataModel.headerCirlceClassFlag" style="margin-top: 10px;">
+            <div class="a" [style.backgroundColor]="getHeader2Item(headerIndex).headerColor">
+              <!-- <i class="material-icons mat_icon_size" style=" margin-top: 11px;">
+              {{getHeaderItem(headerIndex).headerIcon}}
+            </i> -->
+            </div>
+            <div style="height: 36px;">
+              {{getHeaderItem2(headerIndex).headerText}}
+            </div>
+          </div>
+
+
+          <!-- this div only header set text with background color blue -->
+          <div *ngIf="dataModel.headerCirlceClassFlag == false" class="py-2  row-span2">
+            {{getHeader2Item(headerIndex).headerText}}
+          </div>
+
+
+        </th>
+      </tr>
+      <tr *ngFor="let field of counter(dataModel.row2Length); let rowIndex = index;">
+
+        <td class="posrel2" nowrap="nowrap" [ngStyle]="{ height: dataModel.tableTdHeight }" *ngFor="
+        let column of counter(dataModel.column2Length);
+        let colIndex = index
+      ">
+          <!-- <div *ngIf="!colIndex == 0">
+            <i class="{{ getRowHeaderItem(rowIndex).rowIcon }} font25"
+            [style.color]="getRowHeaderItem(rowIndex).rowIconColor"></i> -->
+          <!-- <div class="rowheadingCss">
+              {{ getRowHeaderItem(rowIndex).displayRowHeaderText }}
+            </div>
+          </div> -->
+
+          <!-- template 1 html  start -->
+          <div *ngIf="dataModel.templateid == 'Template1'" class="countsection">
+            <div *ngIf="!checkIsRatioChartCol(rowIndex, colIndex)" class="pointer tdycount" (click)="
+            onClick(
+              rowIndex,
+              colIndex ,
+              dataModel.items2[rowIndex][colIndex],
+              dataModel.rowHeaders[rowIndex],
+              dataModel.headers[colIndex]
+            )
+          ">
+              {{ getItem2(rowIndex, colIndex) }}
+            </div>
+            <div *ngIf="dataModel.showBottonText" class="small-label tdycss">
+              Today
+            </div>
+
+            <div
+              *ngIf="dataModel.showProgressBar && !checkIsRatioChartCol(rowIndex, colIndex) && !checkfiltervaluetotoal(rowIndex, colIndex)"
+              class="mt-2">
+              <!-- <mat-progress-bar class="matrix-progress-bar" mode="determinate"
+              [value]="getProgressValue(rowIndex, colIndex - 1)">
+            </mat-progress-bar> -->
+            </div>
+
+            <!-- <div *ngIf="checkIsRatioChartCol(rowIndex, colIndex - 1)" fxLayout="row" fxLayoutAlign="center center"
+            fxLayoutGap="2px">
+            <div fxLayout="column" class="ratio-bar-container mt-4">
+              <div class="ratio-count-bar" fxLayout="row">
+                <div class="label-entity-count"
+                  [ngStyle]="{'color': getRatioChartCount1Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,1)}">
+                  {{getRatioChartCount1(rowIndex, colIndex - 1)}}</div>
+                <div class="label-entity-count marin-left"
+                  [ngStyle]="{'color': getRatioChartCount2Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,2)}">
+                  {{getRatioChartCount2(rowIndex, colIndex - 1)}}</div>
+              </div>
+              <div class="ratio-bar" fxLayout="row">
+                <div class="ratio-entity entity1"
+                  [ngStyle]="{'border-color':'#FFF','background-color': getRatioChartCount1Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,1)}">
+                </div>
+                <div class="ratio-entity"
+                  [ngStyle]="{'border-color': '#FFF','background-color': getRatioChartCount2Color(rowIndex, colIndex - 1),'min-width': getRatioWidth(rowIndex, colIndex - 1,2)}">
+                </div>
+              </div>
+              <div class="label" fxLayout="row" fxLayoutAlign="space-between center"
+                [ngStyle]="{'color': getRatioChartLabelColor(rowIndex, colIndex - 1)}">
+                <div fxFlex="50" fxLayoutAlign="start center">
+                  {{getRatioChartLable1(rowIndex, colIndex - 1)}}
+                </div>
+                <div fxFlex="50" fxLayoutAlign="start center">
+                  {{getRatioChartLable2(rowIndex, colIndex - 1)}}
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+            <div class="pointer tmwcount" (click)="
+            onClick(
+              clickEvent.ON_BOTTOM_TEXT,
+              rowIndex,
+              colIndex - 1,
+              dataModel.rowHeaders[rowIndex],
+              dataModel.headers[colIndex - 1]
+            )
+          " *ngIf="dataModel.showBottonText">
+              {{ getBottonText(rowIndex, colIndex) }}
+              <div class="small-label tmwcss ">Tomorrow</div>
+            </div>
+          </div>
+          <!-- template 1 html  end -->
+
+          <!-- template 2 html  start -->
+          <div *ngIf="
+          dataModel.templateid == 'Template2' &&
+          getItem2Text1(rowIndex)
+        ">
+            <div class="tdsubtext">
+              <div>
+                {{ getItem2Text1(rowIndex, colIndex - 1) }}
+              </div>
+              <div>
+                {{ getItem2Text2(rowIndex, colIndex - 1) }}
+              </div>
+            </div>
+
+            <div class="pt-1">
+              <table class="w-100 text-center colorblue">
+                <tr class="content-table">
+                  <td class="small-lable">
+                    <div class="pointer" (click)="
+                    onClick(
+                      clickEvent.ON_CLICK_VAL1,
+                      rowIndex,
+                      colIndex,
+                      dataModel.rowHeaders[rowIndex],
+                      dataModel.headers[colIndex]
+                    )
+                  ">
+                      {{ getItem2(rowIndex, colIndex) }}
+                    </div>
+                  </td>
+                  <td class="px-0 font-weight-bold">
+                    <h2 class="pointer" (click)="
+                    onClick(
+                      clickEvent.ON_CLICK_VAL2,
+                      rowIndex,
+                      colIndex - 1,
+                      dataModel.rowHeaders[rowIndex],
+                      dataModel.headers[colIndex]
+                    )
+                  ">
+                      {{ getBottonText(rowIndex, colIndex) }}
+                    </h2>
+                  </td>
+                </tr>
+                <tr class="content-table">
+                  <td class="small-lable">
+                    tomorrow
+                  </td>
+                  <td class="px-0 font-weight-bold">
+                    Today
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- template 2 html  end -->
+
+          <!-- template 3 html  start -->
+          <div *ngIf="dataModel.templateid == 'Template3' &&  colIndex
+      ">
+            <div class="pointer" style="margin-bottom:0px;font-size: 25px;font-weight: 700;color:#4D9BDA;">
+              <span style="margin-bottom:0px;font-size: 14px;font-weight: 500;color:#4D9BDA;" class="ng-star-inserted">
+                <!-- 3 -->
+                {{getItem2(rowIndex,colIndex) }}
+              </span>
+              <span>
+                <!-- <i
+              style="font-size: 19px; margin-left: 5px; color: green;"
+              class="fa fa-long-arrow-down"
+            ></i
+          > -->
+                <!-- <i *ngIf="dataModel.showArrowIcon" class="{{getIconName(rowIndex,colIndex-1)}}"
+                [style.color]="getIconColor(rowIndex,colIndex-1)" style=" font-size: 19px;margin-left: 5px;"></i> -->
+              </span>
+
+              <div style="margin-bottom:0px;font-size: 12px;font-weight: 500;color:#4D9BDA;" class="ng-star-inserted">
+                <!-- (3) -->
+                ({{getBottonText(rowIndex,colIndex)}})
+              </div>
+            </div>
+          </div>
+          <!-- template 3 html  end -->
+
+          <!-- template 4 html  start -->
+          <div *ngIf="dataModel.templateid == 'Template4' &&  colIndex != 0
+       " (click)="
+       onClick(
+         clickEvent.ON_CLICK,
+         rowIndex,
+         colIndex,
+         dataModel.rowHeaders[rowIndex],
+         dataModel.headers[colIndex]
+       )
+     ">
+            <div class="pointer" style="margin-bottom:0px;font-size: 25px;font-weight: 700;color:#4D9BDA;">
+              <p style="margin-bottom:0px;font-size: 10px;font-weight: 300;color:#696969;padding-bottom:10px;min-height: 55px;"
+                class="ng-star-inserted">
+                <!-- 2 -->
+                {{getItem2(rowIndex,colIndex) }}
+              </p>
+
+              <div style="margin-bottom:0px;font-size: 18px;font-weight: 600;color:#4D9BDA;" class="ng-star-inserted">
+                <!-- (3) -->
+                {{getBottonText(rowIndex,colIndex)}}
+              </div>
+            </div>
+          </div>
+          <!-- template 4 html  end -->
+
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

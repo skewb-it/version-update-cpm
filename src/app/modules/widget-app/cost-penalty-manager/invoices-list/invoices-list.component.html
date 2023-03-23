@@ -1,0 +1,352 @@
+<div class="permit-list custom-table low-border-padding">
+    <div class="d-flex ">
+        <div class="">
+            <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
+                <!-- Position Column -->
+                <ng-container matColumnDef="tag_matrix">
+                    <th mat-header-cell *matHeaderCellDef class="iconColWidth120 text-center">To Do</th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+                        <div *ngIf="element.tag_matrix.length">
+                            <!-- {{element.tag_matrix.length}} -->
+                            <span *ngFor="let item of element.tag_matrix">
+                <mat-icon [style.color]="item.color_code" [matTooltip]="item.helper_text">{{item.resource_name}}
+                </mat-icon>
+              </span>
+                            <!-- <mat-icon class="icon-color" matTooltip="OPEN_DEFECT" style="color:red">bug_report</mat-icon>
+                                      <mat-icon class="icon-color" matTooltip="FPN" style="color:green">file_present</mat-icon>
+                                      <mat-icon class="icon-color" matTooltip="OPEN_PMR" style="color:aqua">lock_open</mat-icon>
+                                      <mat-icon class="icon-color" matTooltip="REGISTRATION_OVERDUE" style="color:gray">gavel</mat-icon>
+                                      <mat-icon class="icon-color" matTooltip="WORKS_START_DUE" style="color: blueviolet;">person</mat-icon>
+                                      <mat-icon class="icon-color" matTooltip="REFUSED" style="color:brown">no_accounts</mat-icon>
+                                      <mat-icon class="icon-color" matTooltip="WORKS_STOP_DUE" style="color: firebrick;">work_off</mat-icon> -->
+                            <!-- <mat-icon class="icon-color" matTooltip="UNREAD_COMMENT" style="color:gold">analytics</mat-icon> -->
+                            <!-- <img src="assets/images/PastedGraphic-4.png" alt="" class="CollaborativeImg" -->
+                        </div>
+                    </td>
+                </ng-container>
+                <!-- Position Column -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="CollaborativeWorkingFlag">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngIf="element.CollaborativeWorkingFlag">
+                            <mat-icon class="icon-color">group_work</mat-icon>
+                        </div>
+                    </td>
+                </ng-container>
+                <!-- Position Column -->
+
+                <ng-container matColumnDef="InvoiceRefNumber">
+                    <th mat-header-cell *matHeaderCellDef class="pRNColWidth120 word-break"> Invoice Ref Number </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.InvoiceRefNumber}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="PermitRefNumber">
+                    <th mat-header-cell *matHeaderCellDef class="pRNColWidth120 word-break"> Invoice Ref Number </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.PermitRefNumber}} </td>
+                </ng-container>
+                <!-- Position Column -->
+                <!-- <ng-container matColumnDef="WorkOrder">
+                        <th mat-header-cell *matHeaderCellDef class="ColWidth"> Work Order Number</th>
+                        <td mat-cell *matCellDef="let element">
+                          {{element.WorkOrder}}</td>
+                      </ng-container> -->
+                <!-- Position Column -->
+                <ng-container matColumnDef="WorksLocationDescription">
+                    <th mat-header-cell *matHeaderCellDef class="word-break"> Highway Authority
+                        <th>
+                            <td mat-cell *matCellDef="let element" class="work-location-description">
+                                Oxfordshire
+                            </td>
+                </ng-container>
+                <!-- Position Column -->
+                <!-- <ng-container matColumnDef="WorkDescription">
+                        <th mat-header-cell *matHeaderCellDef class="word-break"> Work Description </th>
+                        <td mat-cell *matCellDef="let element"> {{element.WorkDescription}} </td>
+                      </ng-container> -->
+                <!-- Position Column -->
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Status </th>
+                    <td mat-cell *matCellDef="let element"> <span class="status">Open</span> </td>
+                </ng-container>
+
+                <ng-container matColumnDef="WorksType">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Charge Type </th>
+                    <td mat-cell *matCellDef="let element"> FPN </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="CostRisk">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" appHelperTextPopover [helperTextData]="getHelpTextData('CostRisk')" class="iconColWidth"> Cost Risk </th>
+                    <td mat-cell *matCellDef="let element">
+                        <img class="flag-image" [src]="DATA_HELPER.getPermitIconURL(element.CostRisk)">
+                    </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="CustomerRisk">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" appHelperTextPopover [helperTextData]="getHelpTextData('CustomerRisk')" class="iconColWidth"> Customer Risk </th>
+                    <td mat-cell *matCellDef="let element"><img class="flag-image" [src]="DATA_HELPER.getPermitIconURL(element.CustomerRisk)"></td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="TrafficManagement">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" appHelperTextPopover [helperTextData]="getHelpTextData('TrafficManagement')" class="iconColWidth"> Traffic Sensitive </th>
+                    <td mat-cell *matCellDef="let element"><img class="flag-image" [src]="DATA_HELPER.getPermitIconURL(element.TrafficManagement)"></td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="DeemedDate">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> PO Approved Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DeemedDate | transformDate}} </td>
+                </ng-container>
+                <!-- Position Column -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="InvoiceDate">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Invoice Issued Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DeemedDate | transformDate}} </td>
+                </ng-container>
+                <!-- Position Column -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="PaymentDueDate">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Payment Due Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DeemedDate | transformDate}} </td>
+                </ng-container>
+                <!-- Position Column -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="PORaisedDate">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> PO Raised Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DeemedDate | transformDate}} </td>
+                </ng-container>
+                <!-- Position Column -->
+
+
+                <ng-container matColumnDef="StartDate">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Start Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.StartDate | transformDate}} </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="EndDate">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Invoice Paid Date</th>
+                    <td mat-cell *matCellDef="let element"> {{element.EndDate | transformDate}} </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="PermitStatus">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> # Charges </th>
+                    <td mat-cell *matCellDef="let element">7
+                        <!-- <span [ngClass]="{'completed':element.status=='Matched','cancelled':element.status=='Not Matched', 'in_progress':element.status=='Open'}">
+              {{element.PermitStatus}}
+            </span> -->
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="WorkStatus">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> # Reconciled Charges </th>
+                    <td mat-cell *matCellDef="let element">0
+                        <!-- <p [ngClass]="DATA_HELPER.getWorkStatusClass(element.WorkStatus)">{{element.WorkStatusValue}}</p> -->
+                    </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="AlterationStatus">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Total Invoice Amount </th>
+                    <td mat-cell *matCellDef="let element"> {{674 | transformCurrency }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef class="word-break" style="text-align: center;">Actions </th>
+                    <td mat-cell *matCellDef="let row">
+                        <div (click)="stopPropagation($event)" fxLayout="row" fxLayoutAlign="start center">
+                            <button (click)="onViewClick(row)" mat-icon-button matTooltip="Click to view" class="iconbutton" color="primary">
+                <mat-icon aria-label="Edit">visibility</mat-icon>
+              </button>
+                            <div *ngIf="checkEditPermitEnable(PERMIT_ACTIONS_CONFIG.EDIT_PERMIT,row)">
+                                <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="warn" (click)="onEditPermitIconClick($event, row)">
+                  <mat-icon aria-label="Delete">edit</mat-icon>
+                </button>
+                            </div>
+                            <div *ngIf="checkEditPermitEnable(PERMIT_ACTIONS_CONFIG.DELETE_PERMIT,row)">
+                                <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="onDeletePermitIconClick($event, row)">
+                  <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="expandedDetail">
+                    <td class="w-100" mat-cell *matCellDef="let element" [attr.colspan]="dataModel.columnsToDisplay.length">
+                        <div class="element-detail w-100" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="element-wrapper">
+                                <div class="detail-container" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div class="info-element">
+                                        <label for="">Works Reference Number</label>
+                                        <p>{{element.WorksReferenceNumber}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Highway Authority</label>
+                                        <p>{{element.HighwayAuthority}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Workstream</label>
+                                        <p>{{element.Workstream}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Promoter Prefix</label>
+                                        <p>{{element.PromoterPrefix}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Promoter Organisation</label>
+                                        <p>{{element.PromoterOrganization}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Project Reference Number</label>
+                                        <p>{{element.ProjectReferenceNumber}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Contact</label>
+                                        <p>{{element.Contact}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Proposed Duration</label>
+                                        <p>{{element.ProposedDuration}}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="detail-container" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div class="info-element">
+                                        <label for="">Road Type</label>
+                                        <p>{{element.RoadType}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Traffic Sensitive</label>
+                                        <p>{{DATA_HELPER.booleanToUserText(element.TrafficSensitive)}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Footway Closure</label>
+                                        <p>{{element.FootwayClosureDisplayText}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Excavation Required</label>
+                                        <p>{{DATA_HELPER.booleanToUserText(element.ExcavationRequired)}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Is Lane Rental Applicable?</label>
+                                        <p>{{DATA_HELPER.booleanToUserText(element.IsLaneRentalApplicable)}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Traffic Management Required</label>
+                                        <p>{{element.TrafficManagReqDisplayText}}</p>
+                                    </div>
+                                    <div class="info-element">
+                                        <label for="">Cost</label>
+                                        <p>{{element.Cost | transformCurrency}}</p>
+                                    </div>
+
+                                    <!-- <div class="info-element">
+                                                  <label for="">Deemed Date</label>
+                                                  <p>{{element.DeemedDate | transformDate}}</p>
+                                              </div> -->
+                                    <!-- <ng-container matColumnDef="DeemedDate">
+                              <th mat-header-cell *matHeaderCellDef class="word-break" mat-sort-header> Deemed Date </th>
+                              <td mat-cell *matCellDef="let element"> {{element.DeemedDate | transformDate}} </td>
+                          </ng-container> -->
+
+                                </div>
+
+                                <div class="detail-container" fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div class="info-element">
+                                        <label for="">Work Description</label>
+                                        <p>{{element.WorkDescription}}</p>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- <div class="row">
+                                              <div class="col-2">
+                                                  <div fxLayout="row wrap" style="flex-flow: wrap !important;   width: 100%;
+                                                  max-width: 100%;" fxLayoutGap="30">
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                      <div>asdfsadfsaf</div>
+                                                  </div>
+                                              </div>
+                                              <div class="col"></div>
+                                              <div class="col"></div>
+                                          </div> -->
+
+                                <hr *ngIf="element.inactive_app_list?.length > 0">
+                                <div class="row" *ngIf="element.inactive_app_list?.length > 0">
+                                    <div class="col-12 mb-2">
+                                        <div class="info-element">
+                                            <label for=""> Previous Permit(s)</label>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div fxLayout="row wrap" style="flex-flow: wrap !important;   width: 100%;  max-width: 100%;" fxLayoutGap="30px">
+                                            <div class="statusbox" *ngFor="let item of element.inactive_app_list" fxFlex="12" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-between center">
+                                                <div [hidden]="item.applistStatus==null" [ngClass]="{'cancelstatusborder':item.applistStatus=='Cancelled', 'closedstatusborder':item.applistStatus=='Closed', 'submittedstatusborder':item.applistStatus=='Submitted', 'refusedstatusborder':item.applistStatus=='Refused', 'revokedstatusborder':item.applistStatus=='Revoked',  'grantedstatusborder':item.applistStatus=='Granted' }"
+                                                    (click)="onInactivePermitViewClick(item)" style=" padding:10px; padding-top: 5px; width:100%; margin-top: 15px; height: 40px;">
+                                                    <span class="border-0 info-element permintnumberlink">
+                            <!-- <label for="">Permit Reference Number</label> -->
+                            {{item.permitRefNo}}
+                          </span>
+
+                                                    <span class="border-0 info-element" style="font-size: 9px;">
+                            <!-- <label for="">Permit Status</label> -->
+                            {{item.applistStatus}}
+                          </span>
+                                                </div>
+
+
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- <div class="col-6"></div> -->
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="dataModel.columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let element; columns: dataModel.columnsToDisplay;">
+                </tr>
+                <!-- <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr> -->
+            </table>
+        </div>
+    </div>
+
+
+    <mat-paginator [pageSize]="MAT_HELPER.PAGE_SIZE" [pageSizeOptions]="MAT_HELPER.PAGE_SIZE_OPTIONS" showFirstLastButtons [length]="length"></mat-paginator>
+
+
+
+</div>

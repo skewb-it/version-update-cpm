@@ -1,0 +1,11 @@
+.blue-text {
+  color: var(--stroked-button-bg-color);
+}
+
+.grey-text {
+  color: var(--dark-gray-text-color);
+}
+
+::ng-deep .mat-card {
+  border-radius: 0 !important;
+}

@@ -1,0 +1,8 @@
+<mat-card class="count-card" [ngStyle]="dataModel.widgetStyle.height" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <span class="card-text" [ngStyle]="{'color': dataModel.data.textColor}">{{dataModel.data.text}}</span>
+    </div>
+    <span class="card-count" [ngStyle]="{'color': 'var('+dataModel.data.amountColor+')'}">
+    {{dataModel.data.amount | transformCurrency}}
+  </span>
+</mat-card>

@@ -1,0 +1,23 @@
+.performance-card {
+  border-radius: 8px;
+  padding: 5px 0px;
+  min-height: 80px;
+}
+
+.count-icon {
+  font-size: 20px !important;
+  color: #fff;
+}
+
+.card-count {
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.performance-card-lable {
+  font-size: 13px;
+  color: #fff;
+}

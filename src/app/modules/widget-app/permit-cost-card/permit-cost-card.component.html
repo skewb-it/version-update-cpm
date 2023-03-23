@@ -1,0 +1,16 @@
+<mat-card class="permit-card">
+    <div class="mat-card-header mb-5" fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex="80">{{dataModel.data.permitName}}</div>
+        <div fxFlex="20">{{dataModel.data.permitCount}}</div>
+    </div>
+    <div class="mat-body">
+        <div fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="end">
+            <mat-card *ngFor="let item of dataModel.data.costDetail;let i = index">
+                <div class="permit-cost-list" fxLayout="row" fxLayoutGap="20px">
+                    <div fxFlex="70">{{item.costName}}</div>
+                    <div fxFlex="30">{{item.costAmount | transformCurrency}}</div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</mat-card>

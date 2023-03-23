@@ -1,0 +1,25 @@
+<div class="confirm-msg-container" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="100" class="confirmation" *ngIf="!dataModel.data.ispermitModReqRaised">
+        <p>
+            You are about to raise a promoter-initiated change request. Note that change requests are only applicable under the following conditions:
+        </p>
+        <ol>
+            <li *ngFor="let item of dataModel.data.conditionsForRaiseChangeReq;let i = index">
+                {{ item.condition }}
+            </li>
+        </ol>
+        <p>
+            Note that there is a
+            <span class="charge-tag">&#163; {{
+                dataModel.data.reqRaiseCharges}}</span> charge for raising a change request.
+        </p>
+        <br/>
+        <p>
+            <strong>{{ dataModel.data.conformationStatement }}</strong>
+        </p>
+    </div>
+    <div fxFlex="95" class="warning-confirmation" *ngIf="dataModel.data.ispermitModReqRaised" fxLayout="row" fxLayoutGap="10px">
+        <mat-icon>warning</mat-icon>
+        <div>{{ dataModel.data.warningMassages }}</div>
+    </div>
+</div>

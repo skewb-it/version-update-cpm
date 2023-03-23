@@ -1,0 +1,83 @@
+.permit-details {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 4px #C1CBFF3B;
+  border-radius: 4px;
+  padding: 16px;
+  /* margin-top: 15px; */
+  /* margin-bottom: 30px; */
+}
+
+.permit-key-details {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 4px #C1CBFF3B;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.info-element img {
+  height: 45px;
+  padding: 5px;
+  display: block;
+}
+
+.pmrTrueIconColor {
+  color: var(--theme-color);
+}
+
+.pmrFalseIconColor {
+  color: var(--pmr-false-icon-color);
+}
+
+.permit-actions button {
+  font-weight: normal;
+  font-family: Noto Sans;
+  margin-top: 15px;
+  box-shadow: none;
+}
+
+.map-container {
+  margin: 5px;
+  border: 1px solid;
+  border-radius: 4px;
+  height: 320px;
+}
+
+.cost-tag {
+  cursor: pointer;
+  padding: 3px 0px 0px 3px;
+  color: var(--text-highlighted-2);
+  font-size: 20px !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+
+
+.list-item-background {
+  background-color: #e6e6e6;
+  padding: 3px 3px !important;
+}
+
+.designations-list {
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.alteration_status {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.alteration_number,
+.created_date {
+  font-weight: 700;
+}
+
+.reason {
+  font-size: 14px;
+  font-weight: 400;
+}

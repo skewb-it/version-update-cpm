@@ -1,0 +1,59 @@
+<div class="d-flex flex-column">
+  <form [formGroup]="wgFormGroup">
+    <div fxLayout="column" fxLayoutAlign="end">
+      <mat-form-field appearance="fill">
+        <mat-label>Highway Authority</mat-label>
+        <mat-select (selectionChange)="onChangeHighwayAuthority($event.value)" formControlName="highwayAuthority"
+          multiple>
+          <mat-option [value]="highWayAuthority.authorityId" *ngFor="let highWayAuthority of arrHighwayAuthority">
+            {{highWayAuthority.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Contractor</mat-label>
+        <mat-select (selectionChange)="onChangeContractor($event.value)" formControlName="contractor" multiple>
+          <mat-option [value]="d.contractor_id" *ngFor="let d of arrContractors">{{d.contractor_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Workstream</mat-label>
+        <mat-select multiple formControlName="workstream" (selectionChange)="onChangePromoterOrgnisation($event.value)">
+          <mat-option [value]="d.orgId" *ngFor="let d of arrPromoterOrgnisation">{{d.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startDate" (click)="startDate.open()" (focus)="startDate.open()"
+          formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endDate" (click)="endDate.open()" (focus)="endDate.open()"
+          formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <mat-button-toggle-group (change)="onChangeButtonToggle($event)" class="col-12 p-0 " vertical=true
+    [(ngModel)]="duration" aria-label="Font Style">
+    <mat-button-toggle class="text-left" value="TODAY"> <span class="material-icons">
+        today
+      </span>Today</mat-button-toggle>
+    <mat-button-toggle value="WEEK"> <span class="material-icons">
+        today
+      </span>This Week</mat-button-toggle>
+    <mat-button-toggle value="MONTH"> <span class="material-icons">
+        today
+      </span>This Month</mat-button-toggle>
+    <mat-button-toggle value="FIN_YEAR"> <span class="material-icons">
+        today
+      </span>This Year</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

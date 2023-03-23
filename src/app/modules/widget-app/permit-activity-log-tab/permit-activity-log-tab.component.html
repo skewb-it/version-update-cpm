@@ -1,0 +1,28 @@
+<div class="activity-log-container" [ngClass]="{'container1':dataModel.widgetStyle.scrollbar}">
+    <div [ngClass]="{'scrollbar':dataModel.widgetStyle.scrollbar}" [ngStyle]="dataModel.widgetStyle.containerStyle">
+        <ul class="timeline" [ngClass]="{'timeline1':dataModel.widgetStyle.timelineBeforAfterStyle,timeline2:dataModel.widgetStyle.timelineBeforAfterStyle}">
+            <li class="timeline-item" *ngFor="let i of dataModel.items">
+                <div class="row">
+                    <div class="timeline-badge" [ngStyle]="dataModel.widgetStyle.timelineBadgeStyle">
+                        <i class="material-icons pointer text-white bullet">
+              {{ '' }}
+            </i>
+                    </div>
+                    <div class="timeline-panel col  col-xs-6" [ngStyle]="dataModel.widgetStyle.timelinePanelStyle">
+                        <div fxLayout="row" class="timeline-heading">
+                            <span class="timeline-date" [ngStyle]="dataModel.widgetStyle.timelineDateStyle">
+                {{i.createDate | transformDateTime}}
+              </span>
+                            <span class="timeline-detail" [ngStyle]="dataModel.widgetStyle.timeDetailStyle" fxLayout="column" fxLayoutAlign="start start">
+                <h3>{{i.topic}}</h3>
+                <p><strong>{{i.objectReference}}</strong>{{', '+ i.event}}</p>
+                <p class="user-name">{{i.username}}</p>
+                <p class="details">{{i.details}}</p>
+              </span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

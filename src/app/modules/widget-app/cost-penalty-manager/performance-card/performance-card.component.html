@@ -1,0 +1,41 @@
+<!-- {{item.count}} -->
+<!-- {{dataModel.count}} -->
+<!-- <p>{{title}}</p>
+<p>{{dataModel.title1}}</p> -->
+<div class="col-12 p-0">
+  <div class="row">
+    <div class="col-12 text-center my-1 mb-2 headingtitle">
+      HA Reputations
+    </div>
+
+    <div class="col" fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="space-between stretch">
+      <div fxFlex="30" *ngFor="let item of dataModel?.data">
+        <div class="performance-card text-center " [ngStyle]="{background:item.backgroundColor}">
+          <div class="row  align-items-center cardheight">
+            <div class="col">
+              <div [ngStyle]="{color:item.countColor,'width':'100%'}">
+
+                <div [ngStyle]="{color:item.countColor}">
+
+                  {{item.count}}
+                </div>
+              </div>
+
+              <span class="performance-card-lable" [ngStyle]="{color:item.countColor}">
+                {{item.text}}
+
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+</div>

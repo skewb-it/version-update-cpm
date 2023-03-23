@@ -1,0 +1,13 @@
+<mat-card class="p-0">
+    <div class="col-12 col-sm-12 col-lg-12 col-xl-12 pl-0 pr-0">
+        <div class="job-card-heading text-center">{{dataModel.Duelable}}</div>
+        <ul class="job-card-list">
+            <li *ngFor="let item of dataModel.DuelistModel">
+                <div class="row col-12 m-0 list-sec">
+                    <div class="div-count">{{item.count}}</div>
+                    <div class="div-labels">{{item.label}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</mat-card>

@@ -1,0 +1,243 @@
+<div class="dashboard-container mb-4">
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <div fxLayout="row" fxLayoutAlign="start center" FxFlex="100" class="page-title m-4">
+
+                <div class="grey-text " FxFlex="98">
+                    <span class="blue-text">Dashboard</span> / <span class="blue-text">Charges</span> / {{ this.chargeOverviewDataModel.data.permitRefNumber }}
+                </div>
+
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="m-auto" fxLayoutGap="16px">
+                <mat-card fxFlex="98" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
+                    <div class="col-md-12 d-flex justify-content-between align-items-center">
+                        <div class="invoice-ref" fxFlex="12">
+                            <span class="blue-text fw-bold">{{ this.chargeOverviewDataModel.data.permitRefNumber }}</span>
+                        </div>
+                        <div fxLayoutGap="10px">
+                            <app-charges-button-set [dataModel]="chargesButtonSetDataModel" [configModel]="chargesButtonSetConfigModel"></app-charges-button-set>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="m-auto" fxLayoutGap="16px" class="my-4 col-md-12 align-items-start">
+
+                <mat-card fxFlex="70" fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" style="padding:0px;">
+
+                    <mat-tab-group>
+                        <mat-tab label="OVERVIEW">
+                            <app-charge-overview-tab [dataModel]="chargeOverviewDataModel" [configModel]="chargeOverviewConfigModel">
+                            </app-charge-overview-tab>
+                        </mat-tab>
+                        <mat-tab label="COMMENTS">
+
+                            <app-charge-comments-tab [dataModel]="chargeCommentsTabDataModel" [configModel]="chargeCommentsTabConfigModel">
+                            </app-charge-comments-tab>
+                        </mat-tab>
+                        <mat-tab label="ACTIVITY LOG">
+                            <app-charge-activity-log-tab [dataModel]="chargeActivityTabDataModel" [configModel]="chargeActivityTabConfigModel">
+
+                            </app-charge-activity-log-tab>
+                        </mat-tab>
+                        <mat-tab label="FILES & ATTACHMENTS">
+                            <app-charge-file-attachments-tab [dataModel]="chargeFileAttachmentsTabDataModel" [configModel]="chargeFileAttachmentsTabConfigModel">
+                            </app-charge-file-attachments-tab>
+                        </mat-tab>
+                    </mat-tab-group>
+
+
+                </mat-card>
+
+
+
+
+                <mat-card fxFlex="30" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px" style="padding:0px;">
+                    <app-charge-key-details [dataModel]="chargeKeyDetailsDataModel" [configModel]="chargeKeyDetailsConfigModel">
+                    </app-charge-key-details>
+                </mat-card>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Dialogs Part -->
+
+<app-dialog [dialogModel]="dialogModel" (onDialogClose)="onAppDialogClose($event)">
+    <ng-container class="dialog-content-slot">
+
+        <div [ngSwitch]="formNumber" class="mat-typography permit-form">
+
+            <div *ngSwitchCase="ASSIGN_JOB_OWNER">
+                <app-assign-job-owner-form [dataModel]="assignJobOwnerFormDataModel" [configModel]="assignJobOwnerFormConfigModel">
+                </app-assign-job-owner-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onAssignJobOwnerCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onAssignJobOwnerSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="ASSIGN_LIABILITY">
+                <app-assign-liability-form [dataModel]="assignLiabilityFormDataModel" [configModel]="assignLiabilityFormConfigModel">
+                </app-assign-liability-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onAssignLiabilityCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onAssignLiabilitySave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="ACCEPT_CHARGE">
+                <app-accept-charge-form [dataModel]="acceptChargeFormDataModel" [configModel]="acceptChargeFormConfigModel">
+                </app-accept-charge-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onAcceptChargeCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onAcceptChargeSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="DISPUTE_CHARGE">
+                <app-dispute-charge-form [dataModel]="disputeChargeFormDataModel" [configModel]="disputeChargeFormConfigModel">
+                </app-dispute-charge-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onDisputeChargeCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onDisputeChargeSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="RECORD_NEGOTIATED_CHARGE">
+                <app-record-negotiated-form [dataModel]="recordNegotiatedChargeFormDataModel" [configModel]="recordNegotiatedChargeFormConfigModel"></app-record-negotiated-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onRecordNegotiatedChargeCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onRecordNegotiatedChargeSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="WRITE_OFF_CHARGE">
+                <app-write-off-form [dataModel]="writeOffChargeFormDataModel" [configModel]="writeOffChargeFormConfigModel">
+                </app-write-off-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onWriteOffChargeCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onWriteOffChargeSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="RECORD_PAYMENT">
+                <app-record-payment-form [dataModel]="recordPaymentChargeFormDataModel" [configModel]="recordPaymentChargeFormConfigModel"></app-record-payment-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onRecordPaymentChargeCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onRecordPaymentChargeSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="APPROVE_CHARGE">
+                <app-approve-charge-form [dataModel]="approveChargeDataModel" [configModel]="approveChargeConfigModel">
+                </app-approve-charge-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onApproveChargeCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onApproveChargeSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="AUDIT_CHARGE">
+                <app-audit-charge-form [dataModel]="auditChargeDataModel" [configModel]="auditChargeConfigModel">
+                </app-audit-charge-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onAuditChargeCancel()">CANCEL</button>
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onAuditChargeSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngSwitchCase="ADD_COMMENT">
+                <div class="fixed-underline" fxLayoutGap="10px">
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Comment" [formControl]="commentText">
+                    </mat-form-field>
+                </div>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onCancelDialogClick()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onAddComment()">SAVE</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div *ngSwitchCase="REQUEST_APPROVAL">
+                <app-approve-charge-form [dataModel]="approveChargeDataModel" [configModel]="approveChargeConfigModel">
+                </app-approve-charge-form>
+                <div class="buttons-container">
+                    <div fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="10px">
+                        <button type="button" fxflex="100" mat-stroked-button (click)="onRequestApprovalCancel()">CANCEL</button>
+
+                        <button type="button" fxflex="100" mat-stroked-button class="blue-btn" (click)="onRequestApprovalSave()">SAVE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchDefault>Something went wrong..!!</div>
+
+        </div>
+
+
+    </ng-container>
+</app-dialog>
+
+
+<app-dialog [dialogModel]="dialogModelUpdate" (onDialogClose)="dialogModelUpdateclose($event)">
+    <ng-container class="dialog-content-slot">
+        <div [ngSwitch]="formNumber">
+            <div *ngSwitchCase="ACCEPT_CHARGE">
+                <app-file-upload [dataModel]="fileUploadDataModel" [configModel]="fileUploadConfigModel">
+                </app-file-upload>
+            </div>
+            <div *ngSwitchCase="DISPUTE_CHARGE">
+                <app-file-upload [dataModel]="fileUploadDataModel2" [configModel]="fileUploadConfigModel">
+                </app-file-upload>
+            </div>
+            <div *ngSwitchCase="RECORD_NEGOTIATED_CHARGE">
+                <app-file-upload [dataModel]="fileUploadDataModel3" [configModel]="fileUploadConfigModel">
+                </app-file-upload>
+            </div>
+            <div *ngSwitchCase="WRITE_OFF_CHARGE">
+                <app-file-upload [dataModel]="fileUploadDataModel4" [configModel]="fileUploadConfigModel">
+                </app-file-upload>
+            </div>
+            <div *ngSwitchCase="RECORD_PAYMENT">
+                <app-file-upload [dataModel]="fileUploadDataModel5" [configModel]="fileUploadConfigModel">
+                </app-file-upload>
+            </div>
+        </div>
+    </ng-container>
+</app-dialog>

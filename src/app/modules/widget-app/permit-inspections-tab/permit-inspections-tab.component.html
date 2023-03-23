@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="inspection-list custom-table ">
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+          <!-- Position Column -->
+          <ng-container matColumnDef="InspectionLoggedDate">
+            <th mat-header-cell *matHeaderCellDef>Inspection Logged Date </th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 20px !important;">
+              {{element.InspectionLoggedDate | transformDate}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="WorksReferenceNumber">
+            <th mat-header-cell *matHeaderCellDef>Works Reference Number</th>
+            <td mat-cell *matCellDef="let element"> {{element.WorksReferenceNumber}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="InspectionType">
+            <th mat-header-cell *matHeaderCellDef>Inspection Type</th>
+            <td mat-cell *matCellDef="let element"> {{element.InspectionType}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="InspectionCategory">
+            <th mat-header-cell *matHeaderCellDef>Inspection Category</th>
+            <td mat-cell *matCellDef="let element"> {{element.InspectionCategory}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="InspectionDate">
+            <th mat-header-cell *matHeaderCellDef>Inspection Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.InspectionDate | transformDate}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="InspectionOutcome">
+            <th mat-header-cell *matHeaderCellDef>Inspection Outcome</th>
+            <td mat-cell *matCellDef="let element"> {{element.InspectionOutcome}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="FailureReasons">
+            <th mat-header-cell *matHeaderCellDef>Failure Reasons</th>
+            <td mat-cell *matCellDef="let element"> {{element.FailureReasons}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="InspectionStatus">
+            <th mat-header-cell *matHeaderCellDef>Inspection Status</th>
+            <td mat-cell *matCellDef="let element"> {{element.InspectionStatus}} </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Actions </th>
+            <td mat-cell *matCellDef="let row">
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <button (click)="openDialog(row)" mat-icon-button matTooltip="Click to view" class="iconbutton"
+                  color="primary">
+                  <mat-icon aria-label="Edit">visibility</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+      </div>
+    </div>
+  </div>
+</div>

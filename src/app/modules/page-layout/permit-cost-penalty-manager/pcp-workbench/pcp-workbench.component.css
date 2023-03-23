@@ -1,0 +1,68 @@
+.pcp-workbench-container {
+    padding: 10px 25px 50px 25px;
+}
+
+.workbench-row {
+    margin-top: 10px;
+}
+
+.button-container-row {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.border-right {
+    border-right: 1px solid #eee;
+}
+
+.heading {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--theme-color);
+    margin: 6px 0px 8px 0px;
+}
+
+.padding-right {
+    padding-right: 15px;
+}
+
+.stepper-cost-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px 35px 0px;
+}
+
+.centre {
+    text-align: center;
+}
+
+.button-container-row {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.cost-penalty-history-list {
+    height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 2rem 0 2rem;
+    margin-top: 5rem;
+}
+
+.status {
+    background-color: #2dad3e;
+    padding: 3px 20px;
+    border-radius: 20px;
+}
+
+.permit-cost-count {
+    font-weight: bold;
+}
+
+.quick-filter {
+    width: calc(100% - 288px);
+}

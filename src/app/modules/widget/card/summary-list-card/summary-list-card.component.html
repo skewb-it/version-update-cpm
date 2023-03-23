@@ -1,0 +1,20 @@
+<mat-card class="count-card" [ngClass]="{'left-strip': dataModel.data.isLeftStripEnable}"
+  [ngStyle]="{'border-left-color':dataModel.data.isLeftStripEnable ? 'var('+dataModel.data.leftStripColor+')':''}"
+  fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+    <div *ngIf="dataModel.data.isIconEnable" fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon class="count-icon" *ngIf="dataModel.data.isMatIcon; else showImg"
+        [ngStyle]="{'color': 'var('+dataModel.data.iconColor+')'}">
+        {{dataModel.data.icon}}</mat-icon>
+      <ng-template #showImg>
+        <img [src]="dataModel.data.icon" alt="_ic_count" width="60px" height="60px">
+      </ng-template>
+    </div>
+    <span *ngIf="dataModel.data.isTextEnable"
+      [ngStyle]="{'color': 'var('+dataModel.data.textColor+')'}">{{dataModel.data.text}}</span>
+  </div>
+  <span class="card-count" *ngIf="dataModel.data.isCountEnable"
+    [ngStyle]="{'color': 'var('+dataModel.data.countColor+')', 'text-decoration': dataModel.data.isCountUnderlineEnable ? 'underline':'none'}">
+    {{dataModel.data.count}}
+  </span>
+</mat-card>

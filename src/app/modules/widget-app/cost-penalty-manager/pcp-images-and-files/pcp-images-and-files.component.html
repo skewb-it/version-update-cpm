@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <div class="images-container">
+                <div class="top-info" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center">
+                    <div class="info-title">
+                        <h2>Images related to permit</h2>
+                    </div>
+                    <div class="image-actions" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                        <button (click)="openFileUpload()" mat-stroked-button color="primary">
+                <mat-icon>publish</mat-icon>Upload Images
+              </button>
+                        <!-- <button mat-stroked-button color="primary"><mat-icon>cloud_upload</mat-icon>Upload to Street Manager</button> -->
+                    </div>
+                </div>
+                <hr>
+                <div *ngIf="dataModel && dataModel.data" class="all-images-container" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <div class="single-image-container" *ngFor="let i of dataModel.data" fxLayout="column" fxLayoutAlign="start stretch" fxFlex="0 1 calc(25% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+
+                        <div class="image-wrapper" fxLayout="column" fxLayoutAlign="center center">
+                            <img *ngIf="i.isImage" class="fileuplod" [src]="i.imageSrc" alt="">
+
+                            <mat-icon *ngIf="!i.isImage" class="docx" aria-label="file">
+                                {{i.iconName}}
+                            </mat-icon>
+                        </div>
+                        <div class="image-info-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+                            <div class="image-info">
+                                <h3>{{i?.title}}</h3>
+                                <p>Created By: {{i?.createdBy}}</p>
+                                <p>Size: {{i?.fileSize}}</p>
+                                <p>Created on: {{i?.createDate | transformDateTime}}</p>
+                            </div>
+                            <div class="image-action">
+                                <button mat-icon-button matTooltip="Click to Download" class="iconbutton" (click)="getFileApiData(i.fileId, i.filename)">
+                    <mat-icon aria-label="Download">get_app</mat-icon>
+                  </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

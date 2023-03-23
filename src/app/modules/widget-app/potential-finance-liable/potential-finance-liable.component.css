@@ -1,0 +1,22 @@
+.job-card-heading {
+    background-color: rgb(34, 84, 165);
+    color: #fff;
+    padding: 5px;
+}
+
+.potential-lable,
+.variation-lable {
+    font-size: 11px;
+    color: #fff;
+}
+
+.potential-icon {
+    color: #fff;
+    font-size: 17px;
+}
+
+.potential-liabality,
+.variation-liabality {
+    font-size: 24px;
+    color: #fff;
+}

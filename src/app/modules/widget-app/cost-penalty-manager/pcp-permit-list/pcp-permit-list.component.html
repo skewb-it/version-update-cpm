@@ -1,0 +1,104 @@
+<div class="permit-list custom-table border-padding">
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
+
+        <ng-container matColumnDef="PermitNumber">
+            <th mat-header-cell *matHeaderCellDef style="padding-left: 10px !important;">Permit Number</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 10px !important;">
+                {{element.PermitRefNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="WorkReference">
+            <th mat-header-cell *matHeaderCellDef>Work Reference</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.WorkRefNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Address">
+            <th mat-header-cell *matHeaderCellDef style="width: 20%;">Location Description</th>
+            <td mat-cell *matCellDef="let element">{{element.WorksLocationDescription}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="PermitStatus">
+            <th mat-header-cell *matHeaderCellDef class="centre">Work Status</th>
+            <td mat-cell *matCellDef="let element" class="centre">
+                <div [ngClass]="{'completed':element.WorkStatus=='completed','cancelled':element.WorkStatus=='cancelled','planned':element.WorkStatus=='planned','in_progress':element.WorkStatus=='in_progress','in_progress':element.WorkStatus=='in_progress','unattributable':element.WorkStatus=='unattributable','non_notifiable':element.WorkStatus=='non_notifiable','section_81':element.WorkStatus=='section_81','historical':element.WorkStatus=='historical'}">{{element.WorkStatus}}</div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CostStatus">
+            <th mat-header-cell *matHeaderCellDef class="centre">Cost Status</th>
+
+            <td mat-cell *matCellDef="let element" class="centre"><span>{{element.CostStaus}}</span> </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="CostType">
+            <th mat-header-cell *matHeaderCellDef>Cost Type</th>
+            <td mat-cell *matCellDef="let element">
+                <div>
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                        <span class="nxtlineText">
+          {{element.costTypes}}
+        </span>
+                        <mat-icon [matMenuTriggerFor]="aboveMenu">live_help</mat-icon>
+                    </div>
+
+                    <mat-menu #aboveMenu="matMenu" yPosition="below" class="custom-mat-menu">
+                        <table class="custom-table-popover">
+                            <tr>
+                                <th>Cost Type</th>
+                                <th>Estimated</th>
+                                <th>Invoiced</th>
+                                <th>Paid </th>
+                            </tr>
+                            <tr *ngFor="let item of element.costType[0]">
+                                <td> {{item.costtype}}</td>
+                                <td>{{item.estimated_cost | transformCurrency}}</td>
+                                <td>{{item.invoiced_cost | transformCurrency}}</td>
+                                <td>{{item.paid_cost | transformCurrency}}</td>
+                            </tr>
+                            <!-- <div *ngFor="let item of element.costType[0]">
+                                {{item.costtype}}
+                            </div> -->
+
+                        </table>
+                    </mat-menu>
+                </div>
+
+
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CostValueEstimated">
+            <th mat-header-cell *matHeaderCellDef class="centre">Estimated Cost<br /> Value </th>
+            <td mat-cell *matCellDef="let element" class="centre"> {{element.EestimatedCost }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CostValueInvoiced">
+            <th mat-header-cell *matHeaderCellDef class="centre">Invoiced Cost<br /> Value </th>
+            <td mat-cell *matCellDef="let element" class="centre"> {{element.InvoicedCost }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="CostValuePaid">
+            <th mat-header-cell *matHeaderCellDef class="centre">Cost Value<br /> Paid</th>
+            <td mat-cell *matCellDef="let element" class="centre"> {{element.costValuePaid }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Actions </th>
+            <td mat-cell *matCellDef="let row">
+                <div (click)="stopPropagation($event)" fxLayout="row" fxLayoutAlign="center center">
+                    <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="warn" (click)="onEditPermitIconClick($event, row)">
+            <mat-icon aria-label="Delete">edit</mat-icon>
+          </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="dataModel.columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: dataModel.columnsToDisplay;" class="detail-element-row"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="MAT_HELPER.PAGE_SIZE" [pageSizeOptions]="MAT_HELPER.PAGE_SIZE_OPTIONS" showFirstLastButtons [length]="length"></mat-paginator>
+
+</div>

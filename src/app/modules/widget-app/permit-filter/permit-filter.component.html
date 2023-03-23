@@ -1,0 +1,134 @@
+<div class="filter-card">
+    <div class="filter-title-container" fxLayout="row" fxLayoutAlign="space-between center">
+        <h2>Filter</h2>
+        <mat-icon class="ic-reset-filter" matTooltip="Clear" color="primary" (click)="onResetFilterClick()">refresh
+        </mat-icon>
+    </div>
+    <form [formGroup]="wgFormGroup" id="filter-form">
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="enter search term" autocomplete="off" formControlName="search">
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="filterFromDatepicker" (click)="filterFromDatepicker.open()" (focus)="filterFromDatepicker.open()" formControlName="fromDate">
+            <mat-datepicker-toggle matSuffix [for]="filterFromDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #filterFromDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="filterToDatepicker" (click)="filterToDatepicker.open()" (focus)="filterToDatepicker.open()" formControlName="toDate">
+            <mat-datepicker-toggle matSuffix [for]="filterToDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #filterToDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Workstream</mat-label>
+            <mat-select multiple formControlName="workstream">
+                <mat-option [value]="workstreams.workstreamId" *ngFor="let workstreams of arrWorkstreams">{{workstreams.description}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Works Type</mat-label>
+            <mat-select multiple formControlName="workType">
+                <mat-option [value]="workType.key" *ngFor="let workType of arrWorkType">
+                    {{workType.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Work Status</mat-label>
+            <mat-select multiple formControlName="workStatus">
+                <mat-option [value]="workStatus.key" *ngFor="let workStatus of arrWorkStatus">{{workStatus.displayText}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Permit Status</mat-label>
+            <mat-select multiple formControlName="permitStatus">
+                <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrPermitStatus">
+                    {{permitStatus.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Road Type</mat-label>
+            <mat-select multiple formControlName="roadType">
+                <mat-option [value]="roadCategory.key" *ngFor="let roadCategory of arrRoadCategory">
+                    {{roadCategory.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Highway Authority</mat-label>
+            <mat-select multiple formControlName="highwayAuthority">
+                <mat-option [value]="highWayAuthority.authorityId" *ngFor="let highWayAuthority of arrHighWayAuthorities">
+                    {{highWayAuthority.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Traffic Sensitive</mat-label>
+            <mat-select optionalSelect formControlName="trafficSensitive">
+                <mat-option [value]="booleanFlag.value" *ngFor="let booleanFlag of arrBooleanFlags">{{booleanFlag.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Footway Closure</mat-label>
+            <mat-select multiple formControlName="footwayClosure">
+                <mat-option [value]="closeFootway.key" *ngFor="let closeFootway of arrCloseFootway">
+                    {{closeFootway.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Excavation Required</mat-label>
+            <mat-select optionalSelect formControlName="excavationRequired">
+                <mat-option [value]="booleanFlag.value" *ngFor="let booleanFlag of arrBooleanFlags">{{booleanFlag.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Is Lane Rental Applicable?</mat-label>
+            <mat-select optionalSelect formControlName="isLaneRentalApplicable">
+                <mat-option [value]="booleanFlag.value" *ngFor="let booleanFlag of arrBooleanFlags">{{booleanFlag.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Traffic Management Required</mat-label>
+            <mat-select multiple formControlName="trafficManagementRequired">
+                <mat-option [value]="trafficManagementType.key" *ngFor="let trafficManagementType of arrTrafficManagementType">
+                    {{trafficManagementType.displayText}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="outline"> -->
+        <!-- <mat-label>Filter by Raiser</mat-label>
+            <mat-select multiple formControlName="createdByUserName">
+                <mat-option [value]="userName">
+                    Permit Created by Me</mat-option>
+            </mat-select> -->
+        <mat-checkbox formControlName="createdByUserName">Permit Created by Me</mat-checkbox>
+
+        <!-- </mat-form-field> -->
+
+    </form>
+
+    <div class="text-center mt-3 pl-3 pr-3">
+
+        <div class="is-invalid"></div>
+        <div *ngIf="wgFormGroup.errors" class="invalid-feedback">
+            <ng-container *ngFor="let item of wgFormGroup.errors | keyvalue">
+                <div *ngIf="wgFormGroup.errors[item.key].errorMessage">
+                    {{wgFormGroup.errors[item.key].errorMessage}}
+                </div>
+            </ng-container>
+        </div>
+        <!-- <div class="mb-2  ">
+      <button type="button" fxflex="100" mat-raised-button class="primary-button w-100" color="primary"
+        (click)="applyFilter()">Apply</button>
+    </div> -->
+        <div class="page-actions" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <button type="button" fxflex="100" mat-stroked-button color="primary" (click)="applyFilter()">Apply</button>
+            <button type="button" fxflex="100" mat-stroked-button color="primary" (click)="onResetFilterClick()">Reset</button>
+        </div>
+    </div>

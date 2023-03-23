@@ -1,0 +1,173 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>Inspection Details</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div> -->
+<hr>
+<!-- <mat-dialog-content class="mat-typography"> -->
+<div class="change-request-info mat-typography" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="0">
+  <div class="left-side" fxFlex="70">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspection logged date</label>
+        <p>{{dataModel.data.InspectionLoggedDate | transformDate}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Permit reference number</label>
+        <p>{{dataModel.data.PermitReferenceNumber}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspection type</label>
+        <p>{{dataModel.data.InspectionType}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Highway authority</label>
+        <p>{{dataModel.data.HighwayAuthority}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspector name</label>
+        <p>{{dataModel.data.InspectorName}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspection reference number</label>
+        <p>{{dataModel.data.InspectionReferenceNumber}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspection category</label>
+        <p>{{dataModel.data.InspectionCategory}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspection date</label>
+        <p>{{dataModel.data.InspectionDate | transformDate}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspection outcome</label>
+        <p>{{dataModel.data.InspectionOutcome}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="100">
+        <label for="">Failure reasons</label>
+        <div class="failure-reason-container" fxLayout="column" fxLayoutGap="7px">
+          <div *ngFor="let failurereason of dataModel.data.FailureReasonsArr" fxLayout="row" fxLayoutGap="20px">
+            <p fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start end">{{failurereason.failure_reason}}</p>
+            <mat-icon [inline]="true" class="ic-info" [matTooltip]="failurereason.details">
+              info_outline</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Street name</label>
+        <p>{{dataModel.data.StreetName}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Town</label>
+        <p>{{dataModel.data.Town}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Area name</label>
+        <p>{{dataModel.data.AreaName}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="66.7">
+        <label for="">Works location description</label>
+        <p>{{dataModel.data.WorkLocationDescription}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Promoter</label>
+        <p>{{dataModel.data.Promoter}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Promoter Prefix</label>
+        <p>{{dataModel.data.PromoterPrefix}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Workstream</label>
+        <p>{{dataModel.data.WorkStream}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Accountability</label>
+        <p>{{dataModel.data.Accountability}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Works start date</label>
+        <p>{{dataModel.data.WorksStartDate | transformDate}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Works end date</label>
+        <p>{{dataModel.data.WorksEndDate | transformDate}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Inspection start time</label>
+        <p></p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Outcome details</label>
+        <p>{{dataModel.data.InspectionOutcomeDetails}}</p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Has the promoter been contacted?</label>
+        <p></p>
+      </div>
+      <div class="info-element left-strip" fxFlex="33.3">
+        <label for="">Call contact</label>
+        <p>{{dataModel.data.CallContact}}</p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+      <div class="info-element left-strip" fxFlex="100">
+        <label for="">Additional comments</label>
+        <p>{{dataModel.data.AdditionalComments}}</p>
+      </div>
+    </div>
+    <div >
+    <form *ngIf="wgFormGroup" [formGroup]="wgFormGroup"
+    fxLayout="row" fxLayoutAlign="space-evenly start" fxLayoutGap="20px">
+      <mat-form-field appearance="outline" fxFlex="50">
+        <mat-label>Select Action</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let action of actionList" [value]="action.key">{{action.displayText}}</mat-option>
+         
+        </mat-select>
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="50">
+        <mat-label>Comment
+        </mat-label>
+        <textarea formControlName="comments" matInput placeholder="Enter your comment" ></textarea>
+        <mat-error>Field must be valid</mat-error>
+      </mat-form-field>
+    </form>
+    </div>
+  </div>
+  <div class="image-container" fxFlex="30">
+    <div fxLayout="row wrap" fxLayoutAlign="space-evenly center"
+      *ngFor="let inspectionFile of dataModel.data.InspectionFiles" fxLayoutGap="50px"
+      (click)="onFileClick(inspectionFile.ImageSrc)">
+      <div class="image-wrapper" fxLayout="row" fxLayoutAlign="center center">
+        <img class="fileuplod" [src]="inspectionFile.ImageSrc" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </mat-dialog-content> -->
+<hr>
+<!-- <mat-dialog-actions align="end"> -->
+<!-- <div fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button class="primary-button mb-2" (click)="update()" color="primary">Update</button>
+</div> -->
+<!-- </mat-dialog-actions> -->

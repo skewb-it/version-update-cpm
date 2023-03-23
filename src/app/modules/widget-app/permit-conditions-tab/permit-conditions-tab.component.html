@@ -1,0 +1,89 @@
+<form [formGroup]="wgFormGroup">
+    <div class="conditions-container">
+        <div class="conditions-info" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="50px">
+            <div class="conditions-title">
+                <h2>Confirm and amend as appropriate</h2>
+            </div>
+            <div  fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+                <span class="checkboxes" >
+                    <mat-checkbox [checked]="true" disabled>Selected</mat-checkbox>
+                </span>
+                <span>
+                    <mat-checkbox [checked]="true" disabled  >Mandatory</mat-checkbox> 
+                </span>               
+            </div>
+        </div>
+        <hr>
+        <div class="conditions-list" *ngIf="conditionsFormArray?.controls">
+            <div class="single-condition">
+                <div class="condition-list-grid" formArrayName="conditions">
+                    <div *ngFor="let data of conditionsFormArray?.controls;let i=index">
+                        <mat-expansion-panel [formGroupName]="i">
+
+                            <!-- <div [formGroupName]="i"></div> -->
+                            <mat-expansion-panel-header>
+                                <div class="condition-wrapper" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                                    <mat-checkbox aria-disabled="apply" formControlName="selectCondition" (click)="$event.stopPropagation();"></mat-checkbox>
+                                    <div class="condition-labels" fxLayout="column" fxLayoutAlign="space-between start" *ngIf="data">
+                                        <label class="condition">{{getConditionsFormGroup(i).controls.code.value}} </label>
+                                        <p>{{getConditionsFormGroup(i).controls.description.value}} </p>
+                                    </div>
+                                </div>
+                            </mat-expansion-panel-header>
+                            <hr>
+                            <div class="condition-form" fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+                                <!-- <mat-radio-group fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+                <mat-radio-button checked value="1">Standard Text </mat-radio-button>
+                <mat-radio-button value="2">Type your Own</mat-radio-button>
+              </mat-radio-group> -->
+                                <div fxFlex="100">
+                                    <div class="info-element" *ngIf="getConditionsFormGroup(i).controls.suggestedText.value">
+                                        <label for="" class="standart-text">Standard Text</label>
+                                        <p>{{getConditionsFormGroup(i).controls.suggestedText.value}}</p>
+                                    </div>
+                                </div>
+                                <div fxFlex="100">
+                                    <mat-form-field appearance="outline" fxFlex="100">
+                                        <mat-label>Comment
+                                        </mat-label>
+                                        <textarea matInput placeholder="Enter your comment" maxlength="500" formControlName="comment"></textarea>
+                                        <mat-error>Field must be valid</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <!-- <button mat-raised-button class="primary-button mb-2" color="primary">Save</button> -->
+                        </mat-expansion-panel>
+                    </div>
+                </div>
+                <!-- <mat-expansion-panel mat-elevation-0>
+        <mat-expansion-panel-header>
+            <div class="condition-wrapper" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <mat-checkbox  ></mat-checkbox>
+                <div class="condition-labels" fxLayout="column" fxLayoutAlign="space-between start">
+                    <label for="">NCT01a</label>
+                    <p>Duration APPLIES TO ALL PERMITS on streets where the validity window does not apply</p>
+                </div>
+            </div>
+        </mat-expansion-panel-header>
+        <hr>
+        <div class="condition-form" fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px" >
+            <mat-radio-group fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+            <mat-radio-button checked value="1">Standard Text </mat-radio-button>
+            <mat-radio-button value="2">Type your Own</mat-radio-button>
+          </mat-radio-group>
+          <div fxFlex="100">
+             <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>Comment
+                </mat-label>
+                <textarea matInput placeholder = "Enter your comment" >Duration APPLIES TO ALL PERMITS on streets where the validity window does not apply</textarea>
+                <mat-error>Field must be valid</mat-error>
+              </mat-form-field>
+          </div>
+        </div>
+        <button mat-raised-button class="primary-button mb-2" color="primary" >Save</button>
+     </mat-expansion-panel> -->
+            </div>
+        </div>
+
+    </div>
+</form>

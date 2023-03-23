@@ -1,0 +1,12 @@
+<div class="quick-filter">
+  <mat-button-toggle-group [value]="quickFilterSelectedValue" name="quickfilter" aria-label="Quick - filter"
+    (change)="onQuickFilterSelectionChange($event)">
+    <mat-button-toggle [helperTextData]="getHelpTextData()"
+      *ngFor="let quickFilter of dataModel.quickFilters; let i = index" [value]="quickFilter.filterValue">
+      <!-- {{i == 0 ? quickFilter.label : (quickFilter.label + ' - ' + quickFilter.count)}} -->
+      {{ quickFilter.label }}
+      <mat-icon *ngIf="quickFilter.icon">{{quickFilter.icon}}</mat-icon>
+      {{i == 0 ? "" : ' - ' + quickFilter.count}}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

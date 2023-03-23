@@ -1,0 +1,105 @@
+<div class="mat-typography change-request-info" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="0">
+    <div fxFlex="100">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Promoter</label>
+                <p>{{permitDetails.promoterOrg}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Workstream Prefix</label>
+                <p>{{permitDetails.workStreamPrefix}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Work Reference Number</label>
+                <p>{{permitDetails.workReferenceNumber}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Work Location Description</label>
+                <p>{{permitDetails.workLocaionDesc}}</p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Highway Authority</label>
+                <p>{{permitDetails.highwayAuthority}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Street Name</label>
+                <p>{{permitDetails.streetName}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Area Name</label>
+                <p>{{permitDetails.areaName}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Town</label>
+                <p>{{permitDetails.townName}}</p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">USRN</label>
+                <p>{{permitDetails.usrnNo}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Topic</label>
+                <p>{{commentsDetails.commentTopic}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Author</label>
+                <p>{{commentsDetails.commentBy}}</p>
+            </div>
+            <div class="info-element left-strip" fxFlex="20">
+                <label for="">Date and Time</label>
+                <p>{{commentsDetails.date | transformDateTime}}</p>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+            <div class="info-element left-strip" fxFlex="94.5">
+                <label for="">Comment</label>
+                <p>{{commentsDetails.comment}}</p>
+            </div>
+        </div>
+        <div *ngIf="commentsDetails.commentOrigin != commentOrigin && !commentsDetails.commentRead" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+            <div fxLayout="column" class="info-element left-strip" fxFlex="94.5" fxLayoutAlign="center start">
+                <div fxLayout="row" fxLayoutGap="10px">
+                    <label class="read-label" for="check">Read</label>
+                    <mat-checkbox id="check" class="read-checkbox" [(ngModel)]="isReadChecked" [disabled]="commentsDetails.commentRead"></mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="column" *ngIf="commentsDetails.commentOrigin != commentOrigin && commentsDetails.commentRead">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+                <div fxLayout="row" fxFlex="94.5" fxLayoutAlign="start start" fxLayoutGap="20px">
+                    <div class="info-element left-strip" fxFlex="24.2">
+                        <label for="">Read By</label>
+                        <p>{{commentsDetails.commentReadBy}}</p>
+                    </div>
+                    <div class="info-element left-strip" fxFlex="24.2">
+                        <label for="">Read On</label>
+                        <p>{{commentsDetails.commentReadDate | transformDateTime}}</p>
+                    </div>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+                <div class="info-element left-strip" fxFlex="20">
+                    <label for="">Closed On</label>
+                    <p>-</p>
+                </div>
+                <div class="info-element left-strip" fxFlex="20">
+                    <label for="">Closed By</label>
+                    <p>-</p>
+                </div>
+                <div class="info-element left-strip" fxFlex="45.3">
+                    <label for="">Closure Remarks</label>
+                    <p>-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
+    <button mat-raised-button class="primary-button-outline mb-2" color="primary" (click)="onCancelBtnClick()">Cancel</button>
+    <button mat-raised-button *ngIf="!commentsDetails.commentRead && isReadChecked" class="primary-button mb-2" color="primary" (click)="onSubmitBtnClick()">Submit</button>
+</div>

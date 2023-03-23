@@ -1,0 +1,47 @@
+<mat-card class="p-0">
+    <div class="text-center" [ngStyle]="{'background-color':dataModel.listModel[0].cardcolor,'padding':'4px'}">
+        <div class="col-12 col-sm-12 col-lg-12 col-xl-12 label job-card-heading">
+            {{dataModel.liabalitylable}}
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-lg-12 col-xl-12 pr-0" [ngStyle]="{'background-color':dataModel.listModel[0].cardcolor}">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-7 col-xl-7 p-0 pl-2">
+                <div class="potential-lable">
+                    <mat-icon class="potential-icon">{{dataModel.listModel[0].potentialicon}}</mat-icon>
+                    {{dataModel.listModel[0].potentiallabel1}}
+                </div>
+                <div class="potential-liabality">
+                    <i class="fa fa-gbp mr-2" aria-hidden="true"></i> {{dataModel.listModel[0].potentialliabality1}}
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-5 col-xl-5">
+                <div class="variation-lable">
+                    <span [ngStyle]="{'background-color':dataModel.listModel[0].variationsiconcolor,'padding':'0px 7px 0px 7px','margin-right': '12px'}"></span> {{dataModel.listModel[0].variationslable1}}
+                </div>
+                <div class="variation-liabality mt-3">
+                    <i class="fa fa-gbp mr-2" aria-hidden="true"></i> {{dataModel.listModel[0].variationsliabality1}}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 col-sm-12 col-lg-7 col-xl-7 p-0 pl-2">
+                <div class="potential-lable">
+                    <mat-icon class="potential-icon">{{dataModel.listModel[0].potentialicon}}</mat-icon>
+                    {{dataModel.listModel[0].potentiallabel2}}
+                </div>
+                <div class="potential-liabality">
+                    <i class="fa fa-gbp mr-2" aria-hidden="true"></i> {{dataModel.listModel[0].potentialliabality2}}
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-5 col-xl-5">
+                <div class="variation-lable">
+                    <span [ngStyle]="{'background-color':dataModel.listModel[0].variationsiconcolor,'padding':'0px 7px 0px 7px','margin-right': '12px'}"></span> {{dataModel.listModel[0].variationslable2}}
+                </div>
+                <div class="variation-liabality mt-3">
+                    <i class="fa fa-gbp mr-2" aria-hidden="true"></i> {{dataModel.listModel[0].variationsliabality2}}
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

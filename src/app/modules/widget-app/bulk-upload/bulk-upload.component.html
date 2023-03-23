@@ -1,0 +1,39 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>Bulk Upload</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div>
+<hr>
+<mat-dialog-content class="mat-typography">
+ <div class="drop-zone">
+     <div class="drop-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px">
+         <div class="file-images" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="25px">
+             <img src="/assets/images/csv.png" alt="">
+             <img src="/assets/images/xls.png" alt="">
+         </div>
+         <h1>Select or drag files here</h1>
+         <div class="file-selector">
+            <input type="file" style="display: none" #fileInput accept="*" (change)="onChangeFileInput()" />
+             <div class="selector-control" fxLayout="row" fxLayoutAlign="space-between center" >
+                <p class="file-name" *ngIf="!file; else fileName">File Not selected</p>
+                <ng-template #fileName>
+                  <p class="file-name">{{ file?.name }}</p>
+                </ng-template>
+                
+             <button mat-raised-button color="primary" class="primary-button file-select-button" (click)="onClickFileInputButton()">
+               <mat-icon>attach_file</mat-icon>
+             Browse
+             </button>
+             </div>
+         <p>Please download template file to upload the data</p>
+         </div>
+         
+     </div>
+ </div> 
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions align="end">
+    <a href="" style="margin-right: 25px;" fxLayout="row" fxLayoutAlign="space-between center">   <mat-icon>get_app</mat-icon> Download Data Template File </a>
+    <button mat-raised-button class="primary-button mb-2" color="primary"  [mat-dialog-close]="true" (click)="openDialog()">View Data</button>
+ </mat-dialog-actions>

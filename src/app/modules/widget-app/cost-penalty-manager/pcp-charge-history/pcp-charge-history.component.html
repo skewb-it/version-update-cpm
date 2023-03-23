@@ -1,0 +1,9 @@
+<div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="15px">
+  <h3 class="heading">History of costs and penalties</h3>
+  <ul class="list pl-4">
+    <li class="li-class row" *ngFor="let item of costPenaltyHistoryList; let i = index">
+      <div class="index mr-4">{{i+1}}.</div>
+      <div class="list-detail">{{ item.detail }} </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,181 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div  fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px" >
+                <app-global-filter [dataModel]="globalFilterDataModel"
+                [configModel]="globalFilterConfigModel"></app-global-filter>
+            </div>
+
+        </div>
+        <div class="col-md-12">
+
+            <div class="col-md-12" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="page-top-left" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                    <div class="page-title">
+                        <h1>My Permits</h1>
+                    </div>
+                    <div class="page-actions" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                        <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.CREATE_PERMIT)" (click)="openDialog()" mat-stroked-button color="primary">
+              <mat-icon>add_box</mat-icon>Create Permit
+            </button>
+                        <!-- <button (click)="openBulkUpload()" mat-stroked-button color="primary">
+              <mat-icon>list</mat-icon>Bulk Upload
+            </button> -->
+                    </div>
+                </div>
+                <div class="page-top-right">
+                    <app-permit-quick-filter [dataModel]="permitQuickFilterDataModel" [configModel]="permitQuickFilterConfigModel"></app-permit-quick-filter>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutters mt-4">
+        <div class="col-md-2">
+            <app-permit-filter [dataModel]="permitFilterDataModel" [configModel]="permitFilterConfigModel">
+            </app-permit-filter>
+        </div>
+        <div class="col-md-10">
+            <app-permit-list [dataModel]="permitListDataModel" [configModel]="permitListConfigModel"></app-permit-list>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row" style="height: 150px;">
+</div>
+
+<app-dialog [dialogModel]="dialogModel" (onDialogClose)="onAppDialogClose($event)">
+    <ng-container class="dialog-content-slot">
+        <div [ngSwitch]="createPermitStepNo" class="mat-typography permit-form">
+            <div *ngSwitchCase="1">
+                <app-create-permit-draw-map *ngIf="dialogModel.visible" [dataModel]="permitDrawMapDataModel" [configModel]="permitDrawMapConfigModel">
+                    <ng-container class="elgin-map-slot">
+                        <app-elginmap *ngIf="createPermitStepNo == 1" id="draw-map-elgin-map" [dataModel]="elginMapDataModel" [configModel]="elginMapConfigModel">
+                        </app-elginmap>
+                    </ng-container>
+                </app-create-permit-draw-map>
+            </div>
+            <div *ngSwitchCase="2">
+                <app-create-permit-form (trafficManagementPlanChkBoxChange)="onTrafficManagementPlanChkBoxChange($event)" (tTROChkBoxChange)="onTTROChkBoxChange($event)" [dataModel]="createPermitFormDataModel" [configModel]="createPermitFormConfigModel" *ngIf="dialogModel.visible">
+                    <ng-container class="elgin-map-view-slot">
+                        <app-elginmap *ngIf="createPermitStepNo == 2" id="create-permit-elgin-map" [dataModel]="elginMapDataModel" [configModel]="elginMapConfigModel">
+                        </app-elginmap>
+                    </ng-container>
+                </app-create-permit-form>
+            </div>
+            <div *ngSwitchCase="3">
+                <app-permit-conditions-tab [dataModel]="permitConditionsDataModel" [configModel]="permitConditionsConfigModel" *ngIf="dialogModel.visible">
+                </app-permit-conditions-tab>
+            </div>
+            <div *ngSwitchCase="4">
+                <app-permit-images-and-files-tab [dataModel]="permitImagesAndFilesDataModel" [configModel]="permitImagesAndFilesConfigModel" *ngIf="dialogModel.visible">
+                </app-permit-images-and-files-tab>
+            </div>
+            <div *ngSwitchCase="5">
+                <app-create-permit-summary [dataModel]="summaryDataModel" [configModel]="summaryConfigModel" *ngIf="dialogModel.visible"></app-create-permit-summary>
+            </div>
+            <div *ngSwitchCase="6">
+                <app-create-permit-confirmation [dataModel]="permitConfirmationDataModel" [configModel]="permitConfirmationConfigModel" *ngIf="dialogModel.visible"></app-create-permit-confirmation>
+            </div>
+            <div *ngSwitchDefault>Something went wrong..!!</div>
+        </div>
+        <hr>
+        <div>
+            <div [ngSwitch]="createPermitStepNo">
+                <div *ngSwitchCase="1" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-raised-button color="primary" class="primary-button" (click)="nextButtonDrawMapClick()">Next</button>
+                </div>
+                <div *ngSwitchCase="2" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="space-between center">
+                    <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonPermitFormClick()">Go Back</button>
+                    <div fxLayoutGap="10px">
+                        <button mat-raised-button class="dark-gray-button primary-button mb-2" color="primary" [disabled]="isCreateTrafficManagementPlanBtnDisable" [ngStyle]="{'opacity': isCreateTrafficManagementPlanBtnDisable ? '0.5' : '1' }" (click)="openOneNetwork()">Create Traffic Management
+              Plan</button>
+                        <button mat-raised-button class="dark-gray-button primary-button mb-2" color="primary" [disabled]="isCreateTTROBtnDisable" [ngStyle]="{'opacity': isCreateTTROBtnDisable ? '0.5' : '1' }" (click)="openOneNetwork()">Create
+              TTRO</button>
+                        <button mat-raised-button color="primary" class="primary-button" (click)="nextButtonPermitFormClick()">Next</button>
+                    </div>
+                </div>
+                <div *ngSwitchCase="3" fxLayout="row" fxLayoutAlign="space-between center">
+                    <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonConditionClick()">Go Back</button>
+                    <div fxLayoutGap="10px">
+                        <button mat-raised-button class="sky-blue-button primary-button mb-2" color="primary" (click)="savePermitAsDraft()">Save As Draft</button>
+                        <button mat-raised-button color="primary" class="primary-button" (click)="nextButtonConditionClick()">Next</button>
+                    </div>
+                </div>
+                <div *ngSwitchCase="4" fxLayout="row" fxLayoutAlign="space-between center">
+                    <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonUploadDocClick()">Go Back</button>
+                    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="submitPermit()">Review
+            Changes</button>
+                </div>
+                <div *ngSwitchCase="5" fxLayout="row" fxLayoutAlign="space-between center">
+                    <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonConfirmSubmitClick()">Go Back</button>
+                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                            <p style="margin-right: 25px;">Are you sure you want to confirm?</p>
+                            <button mat-raised-button appHelperTextPopover [helperTextData]="getHelpTextData()" class="green-button primary-button mb-2" color="primary" (click)="permitConfirm()">Confirm</button>
+                        </div>
+                        <button mat-raised-button class="sky-blue-button primary-button mb-2" color="primary" (click)="submissionConfirmSavePermitAsDraft()">Save As Draft</button>
+                    </div>
+                </div>
+                <div *ngSwitchCase="6" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px">
+                    <!-- <button mat-raised-button class="primary-button mb-2" color="primary">Submit Another
+            Permit</button> -->
+                    <button mat-raised-button class="primary-button mb-2" (click)="onViewClick()" color="primary">View
+            Permit</button>
+                    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onViewPermitListClick()">View
+            List</button>
+                </div>
+                <div *ngSwitchDefault>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</app-dialog>
+<app-dialog [dialogModel]="dialogUplaodFileModel">
+    <ng-container class="dialog-content-slot">
+        <app-file-upload [dataModel]="fileUploadDataModel" [configModel]="fileUploadConfigModel">
+        </app-file-upload>
+    </ng-container>
+</app-dialog>
+
+
+
+
+<app-dialog [dialogModel]="dialogUplaodFileModel">
+    <ng-container class="dialog-content-slot">
+        <app-file-upload [dataModel]="fileUploadDataModel" [configModel]="fileUploadConfigModel">
+        </app-file-upload>
+    </ng-container>
+</app-dialog>
+
+
+
+<p-dialog [(visible)]="display" class="errormodal" [modal]="true" [responsive]="true" [style]="{width: '800px', minWidth: '700px', 'text-align' : 'center', 'font-size': '15px'}" [minY]="100" [maximizable]="true" [baseZIndex]="10000">
+    <p-header class="mat-error">
+        <mat-icon class="align-middle">error</mat-icon> Error
+    </p-header>
+
+    <div class="jumbotron mb-0">
+        <label class="errorlabel">{{errorMsg}}</label>
+
+    </div>
+
+    <button class="btn btn-lg btn-primary errorbtn float-right" (click)="display=false">OK</button>
+
+
+</p-dialog>
+
+
+
+<app-dialog [dialogModel]="dialogDeleteFileModel">
+    <ng-container class="dialog-content-slot">
+        <p class="py-3">Are you sure you want to delete permit <b> {{permit_reference_number}}</b> ?</p>
+
+        <div class="float-right">
+            <button (click)="confirmDelete()" mat-raised-button class="primary-button mr-2" color="warn">Confirm</button>
+            <!-- <button (click)="cancelDelete()" mat-stroked-button  class="primary-button-outline">Cancel</button> -->
+        </div>
+
+    </ng-container>
+</app-dialog>

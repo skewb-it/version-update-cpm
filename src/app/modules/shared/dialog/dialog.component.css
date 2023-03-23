@@ -1,0 +1,13 @@
+.blue-btn {
+  background-color: var(--stroked-button-bg-color) !important;
+  color: #fff;
+}
+
+
+.plain-btn {
+  background-color: none;
+  /* color: black; */
+  border-color: none;
+  border-radius: 5px !important;
+  text-align: center;
+}

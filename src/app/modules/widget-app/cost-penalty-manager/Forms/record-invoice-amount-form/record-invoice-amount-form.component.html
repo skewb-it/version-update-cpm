@@ -1,0 +1,57 @@
+<div class="d-flex flex-column">
+  <div class="detail-container" fxFlex="100" fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutGap="10px"
+    fxLayoutAlign="flex-start strech">
+    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Invoice Reference Number </label>
+      <p class="mt-2">{{this.dataModel.data.invoiceReferenceNumber}}</p>
+    </div>
+    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Cost Estimated </label>
+      <p class="mt-2"><span class="black-tab">&pound;{{this.dataModel.data.estimatedCost}}</span></p>
+    </div>
+    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Cost Invoiced </label>
+      <p class="mt-2"><span class="blue-tab">&pound;{{this.dataModel.data.invoicedCost}}</span></p>
+    </div>
+    <div class="info-element" fxFlex="25" fxFlex.lt-sm="0 1 calc(50% - 32px)">
+      <label for="">Cost Paid </label>
+      <p class="mt-2"><span class="green-tab">&pound;{{this.dataModel.data.paidCost}}</span></p>
+    </div>
+  </div>
+  <hr>
+
+  <div class="form-group">
+    <form [formGroup]="RecordInvoiceAmountForm" id="filter-form" class="d-flex flex-column p-3">
+      <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+        <mat-form-field appearance="fill" fxFlex="50">
+          <mat-label>Final Invoice Amount</mat-label>
+          <input matInput placeholder="Final Invoice Amount" autocomplete="off" formControlName="finalInvoiceAmount">
+          <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="50">
+          <mat-label>Select Liability Owner</mat-label>
+          <mat-select multiple formControlName="liabilityOwner">
+            <mat-option [value]="permitStatus.key" *ngFor="let permitStatus of arrLiabilityOwner">
+              {{permitStatus.displayText}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <!-- <mat-label>Upload Evidence(Optional)</mat-label> -->
+          <input matInput placeholder="Upload Evidence(Optional)" autocomplete="off" formControlName="fileUp" readonly
+            value="Upload Evidence(Optional)" (click)="openFileUpload()">
+          <mat-icon matSuffix>attach_file</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="fixed-underline" fxFlex="100" fxLayoutGap="10px">
+        <mat-form-field appearance="fill" fxFlex="100">
+          <mat-label>Notes</mat-label>
+          <input matInput placeholder="Notes" autocomplete="off" formControlName="notes">
+          <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>

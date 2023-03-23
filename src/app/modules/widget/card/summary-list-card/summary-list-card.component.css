@@ -1,0 +1,14 @@
+.count-card{
+  padding: 5px 10px !important;
+  margin: 0 !important;
+}
+
+.left-strip{
+  border-left-width: 5px;
+  border-left-style: solid;
+}
+
+.card-count{
+  font-weight: bold;
+  font-size: 16px;
+}

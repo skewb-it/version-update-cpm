@@ -1,0 +1,477 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>{{dialogTitle}}</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div> -->
+<hr />
+<!-- <mat-dialog-content class="mat-typography permit-form"> -->
+<form *ngIf="wgFormGroup" [formGroup]="wgFormGroup" #formComponent="ngForm" appInvalidControlScroll>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Promoter Prefix * </mat-label>
+            <input matInput placeholder="Enter Promoter Prefix*" autocomplete="off" maxlength="25" formControlName="promoterPrefix" />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Permit Reference </mat-label>
+            <input matInput placeholder="Enter Permit Reference" autocomplete="off" maxlength="25" formControlName="permitReference" />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Works Reference Number </mat-label>
+            <input matInput required placeholder="Enter Works Reference Number" autocomplete="off" maxlength="50" formControlName="worksReferenceNumber" />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Project Reference Number </mat-label>
+            <input matInput placeholder="Enter Project Reference Number" autocomplete="off" maxlength="10" formControlName="projectReferenceNumber" pattern="^MUA.*$" />
+            <mat-error>
+                Field must be valid
+                <ng-container *ngFor="let item of wgFC.projectReferenceNumber.errors | keyvalue">
+                    <div *ngIf="wgFC.projectReferenceNumber.errors.pattern">
+                        Should start with MUA
+                    </div>
+                </ng-container>
+
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+        <!-- <mat-form-field appearance="outline" fxFlex="33">
+        <mat-label>Work Stream</mat-label>
+        <input matInput placeholder="" autocomplete="off" formControlName="workStream">
+    </mat-form-field> -->
+
+        <mat-form-field appearance="outline" fxFlex="0 1 calc(25%)">
+            <mat-label>Promoter Organisation</mat-label>
+            <!-- <input matInput placeholder="" autocomplete="off" formControlName="promoterOrganisation" /> -->
+            <mat-select formControlName="promoterOrganisation" (selectionChange)="onOrgSelectionChange()">
+                <mat-option [value]="organizations.orgId" *ngFor="let organizations of arrOrganizations">
+                    {{organizations.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" fxFlex="0 1 calc(25%)">
+            <mat-label>Workstream</mat-label>
+            <mat-select required formControlName="workStream" (selectionChange)="onWorkStreamSelectionChange()">
+                <mat-option [value]="ws.workstreamId" *ngFor="let ws of arrWorkStream">
+                    {{ ws.description }}
+                </mat-option>
+            </mat-select>
+            <mat-error>Field must be valid</mat-error>
+            <div class="is-invalid"></div>
+            <div *ngIf="wgFormGroup.errors" class="invalid-feedback">
+                <ng-container *ngFor="let item of wgFormGroup.errors | keyvalue">
+                    <div *ngIf="wgFormGroup.errors[item.key].errorMessage">
+                        {{wgFormGroup.errors[item.key].errorMessage}}
+                    </div>
+                </ng-container>
+            </div>
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="outline" fxFlex="0 1 calc(25%)">
+            <mat-label>Contractor </mat-label>
+            <input matInput placeholder="Enter Contact" autocomplete="off" formControlName="accountability" />
+
+        </mat-form-field> -->
+
+
+
+        <mat-form-field appearance="outline" fxFlex="0 1 calc(25%)">
+            <mat-label>Contractor</mat-label>
+            <mat-select required formControlName="accountability">
+                <mat-option [value]="contractor.contractor_id" *ngFor="let contractor of arrContractors">
+                    {{ contractor.contractor_name }}
+                </mat-option>
+            </mat-select>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" fxFlex="0 1 calc(25%)" *ngIf="dataModel.mode != formModeConstant.ADD">
+            <mat-label>Cost </mat-label>
+            <input matInput placeholder="Enter Cost" autocomplete="off" formControlName="cost" />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+
+        <mat-form-field appearance="outline" fxFlex="33">
+            <mat-label>Contact Name </mat-label>
+            <input matInput required placeholder="Enter Contact Name" autocomplete="off" maxlength="100" formControlName="contact" />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="33">
+            <mat-label>Contact Number </mat-label>
+            <input matInput required type="text" placeholder="Enter Contact Number" id="txtContactNo" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" autocomplete="off" maxlength="15" formControlName="contactNumber"
+            />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="33">
+            <mat-label>Works Type</mat-label>
+            <mat-select required formControlName="worksType" (selectionChange)="onChangeWorktype($event)">
+                <mat-option [value]="workType.value" *ngFor="let workType of arrWorkType">
+                    {{ workType.displayText }}</mat-option>
+            </mat-select>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+        <div fxFlex="0 1 calc(50% + 20px)" fxLayout="row" fxLayoutAlign="start center">
+            <mat-radio-button [disabled]="isdisableallFormControl" [value]="STANDARD" [checked]="workDescriptionTextType === STANDARD" (change)="workDescriptionRadioChange($event.value)"></mat-radio-button>
+            <mat-form-field appearance="outline">
+                <mat-label>Works Description </mat-label>
+                <!-- <input matInput placeholder="Enter Works Description" autocomplete="off" formControlName="worksDescription"> -->
+                <mat-select required formControlName="worksDescriptionSelect">
+                    <mat-option [value]="workIdentifier.description" *ngFor="let workIdentifier of arrWorkIdentifier">
+                        {{ workIdentifier.description }}</mat-option>
+                </mat-select>
+                <mat-error>Field must be valid</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="0 1 calc(50% + 20px)" fxLayout="row" fxLayoutAlign="start center">
+            <mat-radio-button [disabled]="isdisableallFormControl" [value]="USER" [checked]="workDescriptionTextType === USER" (change)="workDescriptionRadioChange($event.value)"></mat-radio-button>
+            <mat-form-field appearance="outline">
+                <mat-label>Works Description </mat-label>
+                <textarea required matInput rows="1" placeholder="Enter Works Description" autocomplete="off" maxlength="100" formControlName="worksDescriptionText"></textarea>
+                <mat-error>Field must be valid</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+        <!-- <mat-form-field appearance="outline" fxFlex="25">
+      <mat-label>Proposed Start Date</mat-label>
+      <input matInput required (keydown)="false" (click)="createPermitProposedStartDatepicker.open()"
+        (focus)="createPermitProposedStartDatepicker.open()" [matDatepicker]="createPermitProposedStartDatepicker"
+        formControlName="proposedStartDate">
+      <mat-datepicker-toggle matSuffix [for]="createPermitProposedStartDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #createPermitProposedStartDatepicker></mat-datepicker>
+      <mat-error>Field must be valid</mat-error>
+    </mat-form-field> -->
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Proposed Start Date</mat-label>
+            <input matInput autocomplete="off" required [ngxMatDatetimePicker]="startDatePicker" [min]="minDate" placeholder="Choose a date" [formControl]="wgFormGroup.controls.proposedStartDate" (click)="startDatePicker.open()" (dateChange)="onStartDateChange($event)"
+            />
+            <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #startDatePicker [showSeconds]="true" [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [enableMeridian]="false">
+            </ngx-mat-datetime-picker>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline" fxFlex="25">
+      <mat-label>Proposed End Date</mat-label>
+      <input matInput required (keydown)="false" (click)="createPermitProposedEndDatepicker.open()"
+        (focus)="createPermitProposedEndDatepicker.open()" [matDatepicker]="createPermitProposedEndDatepicker"
+        formControlName="proposedEndDate">
+      <mat-datepicker-toggle matSuffix [for]="createPermitProposedEndDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #createPermitProposedEndDatepicker></mat-datepicker>
+      <mat-error>Field must be valid</mat-error>
+    </mat-form-field> -->
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Proposed End Date</mat-label>
+            <input matInput autocomplete="off" required [ngxMatDatetimePicker]="endDatePicker" placeholder="Choose a date" [min]="minDate" [formControl]="wgFormGroup.controls.proposedEndDate" (click)="endDatePicker.open()" (dateChange)="onEndDateChange($event)" />
+            <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #endDatePicker [showSeconds]="true" [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [enableMeridian]="false">
+            </ngx-mat-datetime-picker>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+        <!-- <div fxFlex="25"> -->
+        <!-- <mat-form-field appearance="outline" *ngIf="dataModel.mode != formModeConstant.ADD">
+        <mat-label>Actual Start Date/Time</mat-label>
+        <input matInput (keydown)="false" (click)="createPermitActualStartDatepicker.open()"
+          (focus)="createPermitActualStartDatepicker.open()" [matDatepicker]="createPermitActualStartDatepicker"
+          formControlName="actualStartDateTime">
+        <mat-datepicker-toggle matSuffix [for]="createPermitActualStartDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #createPermitActualStartDatepicker></mat-datepicker>
+      </mat-form-field> -->
+        <!-- </div> -->
+        <!-- <div fxFlex="25"> -->
+        <!-- <mat-form-field appearance="outline" fxFlex="25" *ngIf="dataModel.mode != formModeConstant.ADD">
+        <mat-label>Actual End Date/Time</mat-label>
+        <input matInput (keydown)="false" (click)="createPermitActualEndDatepicker.open()"
+          (focus)="createPermitActualEndDatepicker.open()" [matDatepicker]="createPermitActualEndDatepicker"
+          formControlName="actualEndDateTime">
+        <mat-datepicker-toggle matSuffix [for]="createPermitActualEndDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #createPermitActualEndDatepicker></mat-datepicker>
+      </mat-form-field> -->
+        <!-- </div> -->
+        <!-- <mat-form-field appearance="outline" fxFlex="25">
+      <mat-label>Proposed End Date
+      </mat-label>
+      <input matInput placeholder="Enter Proposed End Date" autocomplete="off">
+      <mat-error>Field must be valid</mat-error>
+    </mat-form-field> -->
+        <!-- <mat-form-field appearance="outline" fxFlex="25">
+      <mat-label>Actual Start Date/Time
+      </mat-label>
+      <input matInput placeholder="Enter Actual Start Date/Time" autocomplete="off">
+      <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="25">
+      <mat-label>Actual End Date/Time
+      </mat-label>
+      <input matInput placeholder="Enter Actual End Date/Time" autocomplete="off">
+      <mat-error>Field must be valid</mat-error>
+    </mat-form-field> -->
+        <!-- <mat-form-field appearance="outline" fxFlex="25">
+      <mat-label>Proposed Start Date
+      </mat-label>
+      <input matInput placeholder="Enter Proposed Start Date" autocomplete="off">
+      <mat-error>Field must be valid</mat-error>
+    </mat-form-field> -->
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Working Days</mat-label>
+            <input matInput placeholder="Working Days" autocomplete="off" formControlName="workingDays" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Activity Type</mat-label>
+            <mat-select required formControlName="activityType">
+                <mat-option [value]="activityType.value" *ngFor="let activityType of arrActivityType">
+                    {{ activityType.displayText }}</mat-option>
+            </mat-select>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+        <div class="custom-checkbox-collabrative" fxFlex="25">
+            <mat-checkbox formControlName="collaborativeWorking" (change)="onCollabroativeChkBoxChange($event)">Collaborative Working</mat-checkbox>
+        </div>
+
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Collaborative Details </mat-label>
+            <input matInput placeholder="Collaborative Details" formControlName="collaborativeDetails" />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Collaborative Work </mat-label>
+            <input matInput placeholder="Collaborative Work" formControlName="collaborativeWork" />
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="25">
+            <mat-label>Collaborative Type</mat-label>
+            <mat-select formControlName="collaborativeType">
+                <mat-option></mat-option>
+                <mat-option [value]="collaborativeType.value" *ngFor="let collaborativeType of arrCollaborativeType">
+                    {{ collaborativeType.displayText }}
+                </mat-option>
+            </mat-select>
+            <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+    </div>
+    <hr />
+    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+        <div class="map-wrapper" fxFlex="40">
+            <ng-content select=".elgin-map-view-slot"> </ng-content>
+            <div class="action-checkbox-container">
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox formControlName="trafficManagementPlan" (change)="onTrafficManagementPlanChkBoxChange($event)">Are you submitting Traffic Management Plan?
+                        </mat-checkbox>
+                    </div>
+                </div>
+                <!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox formControlName="ttroRequired" (change)="onTTROChkBoxChange($event)">TTRO required
+                        </mat-checkbox>
+                    </div>
+                </div> -->
+                <!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <div class="custom-checkbox" fxFlex="100">
+                        <mat-checkbox formControlName="environmentalHealth">Environmental Health
+                        </mat-checkbox>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div fxFlex="60">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Works Location Description </mat-label>
+                    <input matInput required placeholder="Enter Works Location Description" autocomplete="off" maxlength="100" formControlName="worksLocationDescription" />
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Location details </mat-label>
+                    <input matInput required placeholder="Enter Location details" autocomplete="off" maxlength="500" formControlName="locationDetails" />
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <!--
+            <input matInput placeholder="Enter Highway Authority" autocomplete="off" formControlName="highwayAuthority">
+             -->
+                    <mat-label>Highway Authority</mat-label>
+                    <mat-select required formControlName="highwayAuthority">
+                        <mat-option [value]="highWayAuthority.authorityId" *ngFor="let highWayAuthority of arrHighWayAuthorities">
+                            {{ highWayAuthority.name }}</mat-option>
+                    </mat-select>
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Post Code </mat-label>
+                    <input matInput required placeholder="Enter Post Code" autocomplete="off" maxlength="20" formControlName="postCode" />
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>USRN </mat-label>
+                    <input matInput required placeholder="Enter USRN" autocomplete="off" maxlength="20" formControlName="usrn" />
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Road Type</mat-label>
+                    <mat-select required formControlName="roadType">
+                        <mat-option [value]="roadCategory.value" *ngFor="let roadCategory of arrRoadCategory">
+                            {{ roadCategory.displayText }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Footway Closure</mat-label>
+                    <mat-select required formControlName="footwayClosure">
+                        <mat-option [value]="closeFootway.value" *ngFor="let closeFootway of arrCloseFootway">
+                            {{ closeFootway.displayText }}</mat-option>
+                    </mat-select>
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Traffic Management Required</mat-label>
+                    <mat-select required formControlName="trafficManagementRequired">
+                        <mat-option [value]="trafficManagementType.value" *ngFor="let trafficManagementType of arrTrafficManagementType">
+                            {{ trafficManagementType.displayText }}</mat-option>
+                    </mat-select>
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <mat-label>Location Type</mat-label>
+                    <mat-select required multiple formControlName="locationTypes">
+                        <mat-option [value]="LocationType.value" *ngFor="let LocationType of arrLocationType">
+                            {{ LocationType.displayText }}</mat-option>
+                    </mat-select>
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <div class="custom-checkbox" fxFlex="100">
+                    <mat-checkbox formControlName="trafficSensitivity">Traffic Sensitive</mat-checkbox>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <div class="custom-checkbox" fxFlex="100">
+                    <mat-checkbox formControlName="excavationRequired">Excavation Required</mat-checkbox>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <div class="custom-checkbox" fxFlex="100">
+                    <mat-checkbox formControlName="isLaneRentalApplicable">Is Lane Rental Applicable?</mat-checkbox>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <div class="custom-checkbox" fxFlex="50">
+                    <mat-checkbox formControlName="isCovid19Response">Covid19</mat-checkbox>
+                </div>
+
+                <div class="custom-checkbox" fxFlex="50">
+                    <mat-checkbox formControlName="environmentalHealth">Environmental Health
+                    </mat-checkbox>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <div class="custom-checkbox mt-4" fxFlex="100">
+                    <mat-checkbox formControlName="ttroRequired" (change)="onTTROChkBoxChange($event)">TTRO required
+                    </mat-checkbox>
+                </div>
+            </div>
+
+            <!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="0px">
+                <div class="custom-checkbox" fxFlex="50">
+                    <mat-checkbox formControlName="environmentalHealth">Environmental Health
+                    </mat-checkbox>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!-- <hr>
+  <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+    <div fxFlex="50">
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+        <div class="custom-checkbox-extra-padding" fxFlex="100">
+          <mat-checkbox formControlName="hasHighwayAuthApproval" (change)="onHighwayAuthorityApprovalChkBoxChange()">
+            Has highway authority approval?
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="50">
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+        <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Highway Authority Approver</mat-label>
+          <input matInput placeholder="Highway Autority Approver" autocomplete="off"
+            formControlName="highwayAuthApprovalAuth">
+          <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+        <mat-form-field appearance="outline" fxFlex="100">
+          <mat-label>Highway Authority Approval Details</mat-label>
+          <input matInput placeholder="Highway Approval Details" autocomplete="off"
+            formControlName="highwayAuthApprovalDetails">
+          <mat-error>Field must be valid</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div> -->
+    <hr />
+    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+        <div fxFlex="50">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <div class="custom-checkbox-extra-padding" fxFlex="100">
+                    <mat-checkbox formControlName="hasEarlyApproval" (change)="onEarlyStartApprovalChkBoxChange()">
+                        Do you have pre-approval for an early start?
+                    </mat-checkbox>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Early Start Reason</mat-label>
+                    <input matInput placeholder="Early Start Reason" autocomplete="off" formControlName="earlyStartReason" />
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxFlex="50">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Pre approved by</mat-label>
+                    <input matInput placeholder="Pre approved by" autocomplete="off" formControlName="earlyStartApprovedBy" />
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Pre approval Details</mat-label>
+                    <input matInput placeholder="Pre approved Details" autocomplete="off" formControlName="earlyStartApprovalDetails" />
+                    <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <!-- <label class="mat-error">{{errorMsg}}</label> -->
+</div>

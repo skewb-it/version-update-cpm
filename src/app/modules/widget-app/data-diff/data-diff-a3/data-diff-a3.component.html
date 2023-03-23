@@ -1,0 +1,78 @@
+<!-- prime ng table -->
+
+<div class="diff-data-container">
+
+    <div class="row" *ngIf="(this.dataModel.dataSource1 && this.dataModel.dataSource1.length>0)
+                && (this.dataModel.dataSource2 && this.dataModel.dataSource2.length>0)">
+        <div class="col">
+            <div class="float-right mb-4">
+                <ul>
+                    <!-- <li><span class="rlegend"></span> {{dataModel.dataSource2Title}} </li>
+          <li><span class="glegend"></span> {{dataModel.dataSource1Title}} </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- <ngx-spinner color="#59B2EB" size="medium" type="ball-clip-rotate"></ngx-spinner> -->
+    </div>
+
+    <div class="row">
+        <p-table *ngIf="(this.dataModel.dataSource1 && this.dataModel.dataSource1.length>0)
+                    && (this.dataModel.dataSource2 && this.dataModel.dataSource2.length>0) && (!this.dataModel.isTranspose) ;
+                    else transpose" [columns]="displayedColumns" [value]="this.dataModel.dataSource1" [scrollable]="true" [rows]="10" scrollHeight="270px" [virtualRowHeight]="85" [loading]="isLoading" [virtualScroll]="true" [resizableColumns]="true"
+            [style]="{width:'100%'}">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" style="width: 200px; text-align: center;">
+                        {{col.name}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns let-i="rowIndex">
+                <tr style="height:30px">
+                    <td *ngFor="let col of displayedColumns;let j = index" style="width: 200px; text-align: center;">
+                        <div class="text-diff-row" *ngIf="!compareData(rowData,dataModel.dataSource2[i],col[i].field); else equal">
+                            <td-ngx-text-diff [left]="getRowValue(dataModel.dataSource2[i],j)" [right]="getRowValue(rowData,j)" [format]="dataModel.format" [showToolbar]="false" [showBtnToolbar]="false">
+                            </td-ngx-text-diff>
+                        </div>
+                        <ng-template #equal>
+                            {{getRowValue(rowData,j)}}
+                        </ng-template>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</div>
+
+<ng-template #transpose let-j="rowIndex">
+    <table *ngIf="(this.dataModel.dataSource1 && this.dataModel.dataSource1.length>0)
+          && (this.dataModel.dataSource2 && this.dataModel.dataSource2.length>0) && (this.dataModel.isTranspose) ; else nodata" class=" table
+            table-borderless text-center">
+        <tbody>
+            <tr *ngFor="let item of dataModel.dataSource1[0]; let x =index ">
+                <th style="border-right: 1px solid;">
+                    {{ item.headername }}
+                </th>
+                <td *ngFor="let row of dataModel.dataSource1;let i = index">
+                    <div class="text-diff-row" *ngIf="!compareData(row,dataModel.dataSource2[i],row[i].headername); else equal">
+                        <td-ngx-text-diff [left]="getRowValue(dataModel.dataSource2[i],row[x].headername)" [right]="getRowValue(row,row[x].headername)" [format]="dataModel.format" [showToolbar]="false" [showBtnToolbar]="false">
+                        </td-ngx-text-diff>
+                    </div>
+                    <ng-template #equal>
+                        {{getRowValue(row,row[i].headername)}}
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<ng-template #nodata>
+    <div>
+        Data not available
+    </div>
+</ng-template>

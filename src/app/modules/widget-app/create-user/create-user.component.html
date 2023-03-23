@@ -1,0 +1,68 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>Create User</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div>
+<hr>
+<mat-dialog-content class="mat-typography custom-form-input">
+   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <mat-form-field appearance="outline" fxFlex="25" >
+        <mat-label>Name *
+        </mat-label>
+        <input matInput placeholder="Enter Name *" autocomplete="off">
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="25" >
+        <mat-label>Username *
+        </mat-label>
+        <input matInput placeholder="Enter Username *" autocomplete="off">
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="25" >
+        <mat-label>Email *
+        </mat-label>
+        <input matInput placeholder="Enter Email *" autocomplete="off">
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="25" >
+        <mat-label>Phone *
+        </mat-label>
+        <input matInput placeholder="Enter Phone *" autocomplete="off">
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+   </div>
+   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <mat-form-field appearance="outline" fxFlex="25">
+        <mat-label>Select Organization *</mat-label>
+        <mat-select >
+          <mat-option >Select Organization</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="25">
+        <mat-label>Select Role *</mat-label>
+        <mat-select >
+          <mat-option >Select Role *</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="25">
+        <mat-label>Select Status *</mat-label>
+        <mat-select >
+          <mat-option >Select Status *</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="25">
+        <mat-label>Workstream *</mat-label>
+        <mat-select >
+          <mat-option >Workstream *</mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+
+</mat-dialog-content>
+<hr>
+
+<mat-dialog-actions align="end">
+             <button mat-raised-button class="primary-button mb-2" color="primary"  [mat-dialog-close]="true">Create User</button>
+  
+</mat-dialog-actions>

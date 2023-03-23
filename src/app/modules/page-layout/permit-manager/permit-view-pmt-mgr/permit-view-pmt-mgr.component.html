@@ -1,0 +1,985 @@
+<div class="container-fluid permit-view">
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <div class="permit-info-container" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center">
+                <div class="permit-title" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="5px">
+                    <div class="work-steam-icon">
+                        <mat-icon class="material-icons-outlined power" fontSet="material-icons-outlined" *ngIf="permitOverviewDataModel.data.workStream == WORK_STREAM.POWER">emoji_objects</mat-icon>
+                        <mat-icon class="material-icons-outlined gas" fontSet="material-icons-outlined" *ngIf="permitOverviewDataModel.data.workStream == WORK_STREAM.GAS">stream</mat-icon>
+                    </div>
+                    <div class="permit-ref-number">
+                        <h1>
+                            {{ this.permitOverviewDataModel.data.permitRefNumber }}
+                        </h1>
+                    </div>
+                </div>
+                <div class="permit-actions" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+                    <button *ngIf="selectedTabIndex == 8 && hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.ADD_NEW_COMMENT)" mat-stroked-button color="primary" (click)="onAddNewCommentBtnClick()">
+            <mat-icon>message</mat-icon>Add New Comment
+          </button>
+                    <button *ngIf="selectedTabIndex == 7 && hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.ADD_REINSTATEMENT)" mat-stroked-button color="primary" (click)="onAddNewReinstatementBtnClick()">
+            <mat-icon>note_add</mat-icon>Add Reinstatement
+          </button>
+                    <!-- <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.REVERT_START)" mat-stroked-button
+            id="revertStart-stop" color="primary" [matMenuTriggerFor]="menu">
+            {{revertStart}}
+          </button>
+          <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.REVERT_STOP)" mat-stroked-button
+            id="revertStart-stop" color="primary" [matMenuTriggerFor]="menu">
+            {{revertStop}}
+          </button>
+          <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.START)" mat-stroked-button id="start-stop"
+            color="primary" class="green-button" [matMenuTriggerFor]="menu">
+            <mat-icon>play_arrow</mat-icon> Start Permit
+          </button>
+          <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.STOP)" mat-stroked-button id="start-stop"
+            color="primary" class="red-button" [matMenuTriggerFor]="menuStopPermit">
+            <mat-icon>stop</mat-icon> Stop Permit
+          </button> -->
+                    <button *ngIf="
+              hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.REVERT_START)
+            " mat-stroked-button id="revertStart-stop" color="primary" [matMenuTriggerFor]="menuRevertStartTriggerr" #menuRevertStartTrigger="matMenuTrigger">
+            {{ revertStart }}
+          </button>
+                    <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.REVERT_STOP)" mat-stroked-button id="revertStart-stop" color="primary" [matMenuTriggerFor]="menuRevertStopTriggerr" #menuRevertStopTrigger="matMenuTrigger">
+            {{ revertStop }}
+          </button>
+                    <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.START)" (click)="onPermitActionClick(PERMIT_ACTIONS_CONFIG.START)" mat-stroked-button id="start-stop" color="primary" class="green-button" #menuStartTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+            <mat-icon>play_arrow</mat-icon> Start Permit
+          </button>
+                    <button *ngIf="hasPermitActionPermission(PERMIT_ACTIONS_CONFIG.STOP)" (click)="onPermitActionClick(PERMIT_ACTIONS_CONFIG.STOP)" mat-stroked-button id="start-stop" color="primary" class="red-button" #menuStopTrigger="matMenuTrigger" [matMenuTriggerFor]="menuStopPermit">
+            <mat-icon>stop</mat-icon> Stop Permit
+          </button>
+                    <mat-menu class="custom-mat-menu" #menu="matMenu" xPosition="before">
+                        <div class="early-start-form">
+                            <form (click)="stopPropagation($event)" [formGroup]="startPermitFormGroup">
+                                <div fxLayout="row">
+                                    <mat-form-field appearance="outline" fxFlex="100">
+                                        <mat-label>Start Date</mat-label>
+                                        <input matInput autocomplete="off" required [ngxMatDatetimePicker]="startDatePicker" placeholder="Choose a date" [formControl]="startPermitFormGroup.controls.startDate" (click)="startDatePicker.open()" />
+                                        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                                        <ngx-mat-datetime-picker #startDatePicker [showSeconds]="true" [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [enableMeridian]="false">
+                                        </ngx-mat-datetime-picker>
+                                        <mat-error>Field must be valid</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="row">
+                                    <mat-form-field appearance="outline" fxFlex="100">
+                                        <mat-label>Comment</mat-label>
+                                        <textarea matInput placeholder="Enter comment" formControlName="startPermitComment"></textarea>
+                                        <mat-error>Field must be valid</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div *ngIf="startPermitWarningMessage" class="warning" fxLayout="row" fxLayoutGap="10px">
+                                    <mat-icon>warning</mat-icon>
+                                    <div>{{ startPermitWarningMessage }}</div>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+                                    <button fxFlex="50" mat-raised-button class="primary-button-outline mb-2" color="primary" (click)="cancelStartPermit()">
+                    Cancel
+                  </button>
+                                    <button fxFlex="50" mat-raised-button class="primary-button mb-2" color="primary" (click)="startToggle()">
+                    Continue
+                  </button>
+                                </div>
+                                <!-- <mat-radio-group fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+                  <mat-radio-button value="1" (click)="selectedField='yes'">Yes</mat-radio-button>
+                  <mat-radio-button value="2" (click)="selectedField='no'">No</mat-radio-button>
+                </mat-radio-group>
+                <div *ngIf="selectedField=='yes'" fxLayout="column" fxLayoutAlign="space-between stretch">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Pre-approved by</mat-label>
+                    <input matInput placeholder="enter name" autocomplete="off">
+                    <mat-error>Field must be valid</mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Pre-approval details</mat-label>
+                    <textarea matInput placeholder="Enter your details"></textarea>
+                    <mat-error>Field must be valid</mat-error>
+                  </mat-form-field>
+                  <button mat-raised-button class="primary-button mb-2" color="primary"
+                    (click)="startToggle() ">Continue</button>
+                </div>
+                <div *ngIf="selectedField=='no'" fxLayout="column" fxLayoutAlign="space-between stretch">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Reason for requesting an early start</mat-label>
+                    <textarea matInput placeholder="Enter your reason"></textarea>
+                    <mat-error>Field must be valid</mat-error>
+                  </mat-form-field>
+                  <button mat-raised-button class="primary-button mb-2" color="primary"
+                    (click)="startToggle()">Continue</button>
+                </div> -->
+                            </form>
+                        </div>
+                    </mat-menu>
+                    <mat-menu class="custom-mat-menu" #menuStopPermit="matMenu" xPosition="before">
+                        <div class="early-start-form">
+                            <!-- <div (click)="stopPropagation($event)" fxLayout="column" fxLayoutAlign="space-between stretch">
+                <mat-form-field appearance="outline" style="min-width: 280px;">
+                  <mat-label>Comment</mat-label>
+                  <textarea matInput placeholder="Enter comment" [(ngModel)]="stopPermitComment"></textarea>
+                  <mat-error>Field must be valid</mat-error>
+                </mat-form-field>
+                <button mat-raised-button class="primary-button mb-2" color="primary"
+                  (click)="onStopPermitBtnClick()">Continue</button>
+              </div> -->
+                            <form (click)="stopPropagation($event)" [formGroup]="stopPermitFormGroup">
+                                <div fxLayout="row">
+                                    <mat-form-field appearance="outline" fxFlex="100">
+                                        <mat-label>Stop Date</mat-label>
+                                        <input matInput autocomplete="off" required [ngxMatDatetimePicker]="stopDatePicker" placeholder="Choose a date" [formControl]="stopPermitFormGroup.controls.stopDate" (click)="stopDatePicker.open()" />
+                                        <mat-datepicker-toggle matSuffix [for]="stopDatePicker"></mat-datepicker-toggle>
+                                        <ngx-mat-datetime-picker #stopDatePicker [showSeconds]="true" [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [enableMeridian]="false">
+                                        </ngx-mat-datetime-picker>
+                                        <mat-error>Field must be valid</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="row">
+                                    <mat-form-field appearance="outline" fxFlex="100">
+                                        <mat-label>Comment</mat-label>
+                                        <textarea matInput placeholder="Enter comment" formControlName="stopPermitComment"></textarea>
+                                        <mat-error>Field must be valid</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div *ngIf="stopPermitWarningMessage" class="warning" fxLayout="row" fxLayoutGap="10px">
+                                    <mat-icon>warning</mat-icon>
+                                    <div>{{ stopPermitWarningMessage }}</div>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="space-between stretch">
+                                    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onStopPermitBtnClick()">
+                    Continue
+                  </button>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-menu>
+                    <mat-menu class="custom-mat-menu" #menuRevertStartTriggerr="matMenu" xPosition="before">
+                        <div class="early-start-form">
+                            <div (click)="stopPropagation($event)" fxLayout="column" fxLayoutAlign="space-between stretch">
+                                <mat-form-field appearance="outline" style="min-width: 280px">
+                                    <mat-label>Comment</mat-label>
+                                    <textarea matInput placeholder="Enter comment" [(ngModel)]="revertStartPermitComment"></textarea>
+                                    <mat-error>Field must be valid</mat-error>
+                                </mat-form-field>
+                                <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onRevertStartPermitBtnClick()">
+                  Continue
+                </button>
+                            </div>
+                        </div>
+                    </mat-menu>
+                    <mat-menu class="custom-mat-menu" #menuRevertStopTriggerr="matMenu" xPosition="before">
+                        <div class="early-start-form">
+                            <div (click)="stopPropagation($event)" fxLayout="column" fxLayoutAlign="space-between stretch">
+                                <mat-form-field appearance="outline" style="min-width: 280px">
+                                    <mat-label>Comment</mat-label>
+                                    <textarea matInput placeholder="Enter comment" [(ngModel)]="revertStopPermitComment"></textarea>
+                                    <mat-error>Field must be valid</mat-error>
+                                </mat-form-field>
+                                <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onRevertStopPermitBtnClick()">
+                  Continue
+                </button>
+                            </div>
+                        </div>
+                    </mat-menu>
+                    <!-- <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="warn">
+            <mat-icon (click)="onEditPermitBtnClick()">edit</mat-icon>
+          </button> -->
+                    <!-- <div fxLayout="row">
+                  <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Comment</mat-label>
+                    <textarea matInput required placeholder="Enter comment"
+                      formControlName="stopPermitComment"></textarea>
+                    <mat-error>Field must be valid</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="space-between stretch">
+                  <button mat-raised-button class="primary-button mb-2" color="primary"
+                    (click)="onStopPermitBtnClick()">Continue</button>
+                </div>
+              </form>
+            </div>
+          </mat-menu> -->
+                    <mat-menu class="custom-mat-menu" #menuRevertStartTriggerr="matMenu" xPosition="before">
+                        <div class="early-start-form">
+                            <div (click)="stopPropagation($event)" fxLayout="column" fxLayoutAlign="space-between stretch">
+                                <mat-form-field appearance="outline" style="min-width: 280px">
+                                    <mat-label>Comment</mat-label>
+                                    <textarea matInput placeholder="Enter comment" [(ngModel)]="revertStartPermitComment"></textarea>
+                                    <mat-error>Field must be valid</mat-error>
+                                </mat-form-field>
+                                <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onRevertStartPermitBtnClick()">
+                  Continue
+                </button>
+                            </div>
+                        </div>
+                    </mat-menu>
+                    <mat-menu class="custom-mat-menu" #menuRevertStopTriggerr="matMenu" xPosition="before">
+                        <div class="early-start-form">
+                            <div (click)="stopPropagation($event)" fxLayout="column" fxLayoutAlign="space-between stretch">
+                                <mat-form-field appearance="outline" style="min-width: 280px">
+                                    <mat-label>Comment</mat-label>
+                                    <textarea matInput placeholder="Enter comment" [(ngModel)]="revertStopPermitComment"></textarea>
+                                    <mat-error>Field must be valid</mat-error>
+                                </mat-form-field>
+                                <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onRevertStopPermitBtnClick()">
+                  Continue
+                </button>
+                            </div>
+                        </div>
+                    </mat-menu>
+                </div>
+            </div>
+            <div class="permit-tabs">
+                <mat-tab-group [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChanged($event)">
+                    <mat-tab label="Overview">
+                        <app-permit-overview-tab [dataModel]="permitOverviewDataModel" [configModel]="permitOverviewConfigModel">
+                            <!-- <ng-container class="elgin-map-view-slot" *ngIf="permitConfirmationDialogMode != permitConfirmDialogModeChangeRequest">
+                                <app-elginmap id="view-permit-elgin-map" [dataModel]="viewElginMapDataModel" [configModel]="viewElginMapConfigModel">
+                                </app-elginmap>
+                            </ng-container> -->
+                        </app-permit-overview-tab>
+                    </mat-tab>
+                    <mat-tab label="Map">
+                        <ng-template matTabContent>
+                            <app-permit-map-tab [dataModel]="permitMapDataModel" [configModel]="permitMapConfigModel">
+                                <ng-container class="elgin-map-view" *ngIf="viewElginMap">
+                                    <app-elginmap id="view-elgin-map" [dataModel]="viewElginMapDataModel" [configModel]="viewElginMapConfigModel">
+                                    </app-elginmap>
+                                </ng-container>
+                            </app-permit-map-tab>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab label="Change Request">
+                        <app-permit-change-request-tab [dataModel]="permitChangeReqDataModel" [configModel]="permitChangeReqConfigModel"></app-permit-change-request-tab>
+                    </mat-tab>
+                    <mat-tab label="Conditions">
+                        <app-permit-conditions-tab *ngIf="selectedTabIndex == 3" [dataModel]="permitConditionsDataModel" [configModel]="permitConditionsConfigModel"></app-permit-conditions-tab>
+                    </mat-tab>
+                    <mat-tab label="FPN's">
+                        <app-permit-fpn-tab [dataModel]="permitFPNDataModel" [configModel]="permitFPNConfigModel">
+                        </app-permit-fpn-tab>
+                    </mat-tab>
+                    <mat-tab label="Inspections">
+                        <app-permit-inspections-tab [dataModel]="permitInspectionListDataModel" [configModel]="permitInspectionListConfigModel"></app-permit-inspections-tab>
+                    </mat-tab>
+                    <mat-tab label="Images & Files">
+                        <app-permit-images-and-files-tab [dataModel]="permitImagesAndFilesDataModel" [configModel]="permitImagesAndFilesConfigModel"></app-permit-images-and-files-tab>
+                    </mat-tab>
+                    <mat-tab label="Reinstatement">
+                        <app-permit-reinstatement-tab [dataModel]="permitReinstatementDataModel" [configModel]="permitReinstatementConfigModel"></app-permit-reinstatement-tab>
+                    </mat-tab>
+                    <mat-tab label="Comments">
+                        <app-permit-comments-tab [dataModel]="permitCommentsDataModel" [configModel]="permitCommentsConfigModel">
+                        </app-permit-comments-tab>
+                    </mat-tab>
+                    <mat-tab label="Activity Log">
+                        <app-permit-activity-log-tab [dataModel]="permitActivityLogModel" [configModel]="permitActivityLogConfigModel"></app-permit-activity-log-tab>
+                    </mat-tab>
+                </mat-tab-group>
+
+                <!-- <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="warn">
+            <mat-icon (click)="onEditPermitBtnClick()">edit</mat-icon>
+          </button> -->
+            </div>
+            <!-- <div class="permit-tabs">
+        <mat-tab-group (selectedTabChange)="onTabChanged($event)">
+          <mat-tab label="Overview">
+            <app-permit-overview-tab
+              [dataModel]="permitOverviewDataModel"
+              [configModel]="permitOverviewConfigModel"
+            >
+              <ng-container
+                class="elgin-map-view-slot"
+                *ngIf="
+                  permitConfirmationDialogMode !=
+                    permitConfirmDialogModeChangeRequest &&
+                  permitConfirmationDialogMode !=
+                    permitConfirmDialogModeNewPermit
+                "
+              >
+                <app-elginmap
+                  id="view-permit-elgin-map"
+                  [dataModel]="viewElginMapDataModel"
+                  [configModel]="viewElginMapConfigModel"
+                >
+                </app-elginmap>
+              </ng-container>
+            </app-permit-overview-tab>
+          </mat-tab>
+          <mat-tab label="Change Request">
+            <app-permit-change-request-tab
+              [dataModel]="permitChangeReqDataModel"
+              [configModel]="permitChangeReqConfigModel"
+            ></app-permit-change-request-tab>
+          </mat-tab>
+          <mat-tab label="Conditions">
+            <app-permit-conditions-tab
+              *ngIf="selectedTabIndex == 2"
+              [dataModel]="permitConditionsDataModel"
+              [configModel]="permitConditionsConfigModel"
+            ></app-permit-conditions-tab>
+          </mat-tab>
+          <mat-tab label="FPN's">
+            <app-permit-fpn-tab
+              [dataModel]="permitFPNDataModel"
+              [configModel]="permitFPNConfigModel"
+            >
+            </app-permit-fpn-tab>
+          </mat-tab>
+          <mat-tab label="Inspections">
+            <app-permit-inspections-tab
+              [dataModel]="permitInspectionListDataModel"
+              [configModel]="permitInspectionListConfigModel"
+            ></app-permit-inspections-tab>
+          </mat-tab>
+          <mat-tab label="Images & Files">
+            <app-permit-images-and-files-tab
+              [dataModel]="permitImagesAndFilesDataModel"
+              [configModel]="permitImagesAndFilesConfigModel"
+            ></app-permit-images-and-files-tab>
+          </mat-tab>
+          <mat-tab label="Reinstatement">
+            <app-permit-reinstatement-tab
+              [dataModel]="permitReinstatementDataModel"
+              [configModel]="permitReinstatementConfigModel"
+            ></app-permit-reinstatement-tab>
+          </mat-tab>
+          <mat-tab label="Comments">
+            <app-permit-comments-tab
+              [dataModel]="permitCommentsDataModel"
+              [configModel]="permitCommentsConfigModel"
+            >
+            </app-permit-comments-tab>
+          </mat-tab>
+          <mat-tab label="Activity Log">
+            <app-permit-activity-log-tab
+              [dataModel]="permitActivityLogModel"
+              [configModel]="permitActivityLogConfigModel"
+            ></app-permit-activity-log-tab>
+          </mat-tab>
+        </mat-tab-group>
+      </div> -->
+        </div>
+    </div>
+</div>
+
+<app-dialog [dialogModel]="dialogModel" (onDialogClose)="onAppDialogClose($event)">
+    <ng-container class="dialog-content-slot">
+        <div *ngIf="selectedTabIndex == 0 || selectedTabIndex == 2">
+            <div [ngSwitch]="permitConfirmationDialogMode">
+                <div *ngSwitchCase="permitCOnfirmDialogModeCancel">
+                    <app-cancel-permit-confirmation [dataModel]="permitCancelConfirmDataModel" [configModel]="permitCancelConfirmConfigModel"></app-cancel-permit-confirmation>
+                </div>
+                <div *ngSwitchCase="permitConfirmDialogModeProgressToPA" fxLayout="column" fxLayoutGap="40px">
+                    <div>Are you sure that you want to progress for PA ?</div>
+                    <div *ngIf="progressToPAWarningMessage" class="warning" fxLayout="row" fxLayoutGap="10px">
+                        <mat-icon>warning</mat-icon>
+                        <div>{{ progressToPAWarningMessage }}</div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="15px">
+                        <button mat-stroked-button color="primary" class="primary-button-outline" (click)="onAppDialogClose('')">
+              No
+            </button>
+                        <button mat-raised-button class="primary-button" color="primary" (click)="onConfirmProgressToPA()">
+              Yes
+            </button>
+                    </div>
+                </div>
+                <div *ngSwitchCase="permitDialogModeCostSplit" fxLayout="column">
+                    <div class="cost-split" fxLayout="row" fxLayoutAlign="center center">
+                        <!-- <table fxFlex="90">
+                            <tr>
+                                <td class="cost-split-row-td-key">Permit Cost</td>
+                                <td class="cost-split-row-td-value">
+                                    {{ permitCostSplit.permit_cost | transformCurrency }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cost-split-row-td-key">PAA Cost</td>
+                                <td class="cost-split-row-td-value">
+                                    {{ permitCostSplit.paa_cost | transformCurrency }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cost-split-row-td-key">Variation Cost</td>
+                                <td class="cost-split-row-td-value">
+                                    {{ permitCostSplit.variation_cost | transformCurrency }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cost-split-row-td-key">FPN Cost</td>
+                                <td class="cost-split-row-td-value">
+                                    {{ permitCostSplit.fpn_cost | transformCurrency }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="cost-split-row-td-key bg-total-row">Total Cost</td>
+                                <td class="cost-split-row-td-value bg-total-row">
+                                    {{ permitCostSplit.total_cost | transformCurrency }}
+                                </td>
+                            </tr>
+                        </table> -->
+
+
+                        <table class="w-100">
+                            <tr>
+                                <th>
+                                    Charge
+                                </th>
+                                <th>
+                                    Estimated Cost
+                                </th>
+                                <th>
+                                    Discounted Cost
+                                </th>
+                            </tr>
+
+                            <tr *ngFor="let item of permitArrayItem">
+                                <td class="cost-split-row-td-key">{{item.key}}</td>
+                                <td class="cost-split-row-td-value">
+                                    {{ item.value1 }}
+                                </td>
+                                <td class="cost-split-row-td-value">
+                                    {{ item.value2 }}
+                                </td>
+                            </tr>
+
+                            <!-- <tr>
+                              <td class="cost-split-row-td-key bg-total-row">Total Cost</td>
+                              <td class="cost-split-row-td-value bg-total-row">
+                                  {{ permitCostSplit.total_cost | transformCurrency }}
+                              </td>
+                          </tr> -->
+                        </table>
+
+
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <button mat-raised-button class="primary-button" color="primary" (click)="onCostDetailsDialogClose()">
+              OK
+            </button>
+                    </div>
+                </div>
+                <div *ngSwitchCase="permitConfirmDialogModeChangeRequest">
+                    <div [ngSwitch]="createPermitStepNo" class="mat-typography permit-form">
+                        <!--   <div *ngSwitchCase="1">
+          <app-create-permit-draw-map *ngIf="dialogModel.visible" [dataModel]="permitDrawMapDataModel"
+            [configModel]="permitDrawMapConfigModel">
+            <ng-container class="elgin-map-slot">
+              <app-elginmap *ngIf="createPermitStepNo == 1" id="draw-map-elgin-map" [dataModel]="elginMapDataModel"
+                [configModel]="elginMapConfigModel">
+              </app-elginmap>
+            </ng-container>
+          </app-create-permit-draw-map>
+        </div>
+        <div *ngSwitchCase="2">
+          <app-permit-conditions-tab [dataModel]="permitConditionsDataModel" [configModel]="permitConditionsConfigModel"
+            *ngIf="dialogModel.visible">
+          </app-permit-conditions-tab>
+        </div>-->
+                        <div *ngSwitchCase="1">
+                            <hr />
+                            <app-raise-change-req-confirmation [dataModel]="raiseChangeReqConfirmationDataModel" [configModel]="raiseChangeReqConfirmationConfigModel"></app-raise-change-req-confirmation>
+                            <!-- <div class="confirm-msg-container">
+                                <p>
+                                    You are about to raise a promoter-initiated change request. Note that change requests are only applicable under the following conditions:
+                                </p>
+                                <ol>
+                                    <li>
+                                        The status of the original permit is “Granted” or “Submitted” (and awaiting assessment)
+                                    </li>
+                                    <li>The works in in progress and requires an extension</li>
+                                    <li>
+                                        There is no open change request being assessed by the HA for this permit.
+                                    </li>
+                                </ol>
+                                <p>
+                                    Note that there is a
+                                    <span class="charge-tag">{{
+                    permitProposedVariationCost | transformCurrency
+                  }}</span>
+                  charge for raising a change request.
+                </p>
+                <br />
+                <p>
+                  <strong
+                    >Do you want to continue with raising a change
+                    request?</strong
+                  >
+                </p>
+              </div> -->
+                        </div>
+
+                        <div *ngSwitchCase="2">
+                            <div *ngIf="!isviewchangereqmode">
+                                <app-permit-map-designation-tab [dataModel]="permitMapDesignationModel" [configModel]="permitMapDesignationConfigModel">
+                                    <ng-container class="elgin-map-view">
+                                        <app-elginmap id="view-elgin-map" [dataModel]="viewElginMapDataModel" [configModel]="viewElginMapConfigModel">
+                                        </app-elginmap>
+                                    </ng-container>
+                                </app-permit-map-designation-tab>
+                            </div>
+
+                            <div *ngIf="isviewchangereqmode">
+                                <app-permit-map-tab [dataModel]="permitMapDataModel" [configModel]="permitMapConfigModel">
+                                    <ng-container class="elgin-map-view">
+                                        <app-elginmap id="view-elgin-map" [dataModel]="viewElginMapDataModel" [configModel]="viewElginMapConfigModel">
+                                        </app-elginmap>
+                                    </ng-container>
+                                </app-permit-map-tab>
+                            </div>
+                        </div>
+
+                        <div *ngSwitchCase="3">
+                            <app-create-permit-form [dataModel]="createPermitFormDataModel" [configModel]="createPermitFormConfigModel">
+                                <ng-container class="elgin-map-view-slot">
+                                    <app-elginmap id="create-permit-elgin-map" [dataModel]="elginMapDataModel" [configModel]="elginMapConfigModel">
+                                    </app-elginmap>
+                                </ng-container>
+                            </app-create-permit-form>
+                        </div>
+
+                        <div *ngSwitchCase="4">
+                            <app-permit-conditions-tab [dataModel]="permitConditionsDataModel" [configModel]="permitConditionsConfigModel" *ngIf="dialogModel.visible">
+                            </app-permit-conditions-tab>
+                        </div>
+
+                        <div *ngSwitchCase="5">
+                            <app-data-diff-a3 [dataModel]="dataDiffA3DataModel" [configModel]="dataDiffA3ConfigModel">
+                            </app-data-diff-a3>
+                        </div>
+
+                        <div *ngSwitchDefault>Something went wrong..!!</div>
+                    </div>
+                    <hr />
+                    <div>
+                        <div [ngSwitch]="createPermitStepNo">
+                            <div *ngSwitchCase="1" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="15px">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="onAppDialogClose('')">
+                  No
+                </button>
+                                <button mat-raised-button class="primary-button" color="primary" (click)="onChangeRequest()">
+                  Yes
+                </button>
+                            </div>
+
+                            <div *ngSwitchCase="2" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="end center">
+                                <!-- <button mat-stroked-button color="primary" class="primary-button-outline"
+              (click)="backButtonConditionClick()">Go Back</button> -->
+                                <button *ngIf="!isviewchangereqmode" mat-raised-button color="primary" class="primary-button" (click)="nextButtonDrawMapClick()">
+                  Next
+                </button>
+                                <button *ngIf="isviewchangereqmode" mat-raised-button color="primary" class="primary-button" (click)="onChangeRequest()">
+                  Next
+                </button>
+                            </div>
+
+                            <div *ngSwitchCase="3" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="space-between center">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backStep()">
+                  Go Back
+                </button>
+                                <button mat-raised-button color="primary" class="primary-button" (click)="nextButtonPermitFormClick()">
+                  Next
+                </button>
+                            </div>
+
+                            <div *ngSwitchCase="4" fxLayout="row" fxLayoutAlign="space-between center">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonPermitFormClick()">
+                  Go Back
+                </button>
+                                <div fxLayoutGap="10px">
+                                    <button *ngIf="
+                      alterationApplicationId == null && !isviewchangereqmode
+                    " mat-raised-button class="draft-button primary-button mb-2" color="primary" (click)="nextButtonConditionClick('save-as-draft')">
+                    Save As Draft
+                  </button>
+                                    <button *ngIf="!isviewchangereqmode" mat-raised-button class="primary-button mb-2" color="primary" (click)="nextButtonConditionClick('submit-change-request')">
+                    Review & Submit Change Request
+                  </button>
+                                    <button *ngIf="isviewchangereqmode" mat-raised-button class="primary-button mb-2" color="primary" (click)="appDialogClose(null)">
+                    OK
+                  </button>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="5" fxLayout="row" fxLayoutAlign="space-between center">
+                                <div>
+                                    <!-- <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backStep()">
+                    Go Back
+                  </button> -->
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="end center">
+                                    <p style="margin-right: 25px">
+                                        Are you sure you want to confirm?
+                                    </p>
+
+                                    <button mat-raised-button class="green-button mb-2" color="primary" (click)="onConfirmChangeRequest()">
+                    Confirm
+                  </button>
+                                </div>
+                            </div>
+                            <div *ngSwitchDefault></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="permitConfirmDialogModeNewPermit">
+                    <div [ngSwitch]="createPermitStepNo" class="mat-typography permit-form">
+                        <div *ngSwitchCase="1">
+                            <app-create-permit-form [dataModel]="createPermitFormDataModel" [configModel]="createPermitFormConfigModel">
+                                <ng-container class="elgin-map-view-slot">
+                                    <app-elginmap id="create-permit-elgin-map" [dataModel]="elginMapDataModel" [configModel]="elginMapConfigModel">
+                                    </app-elginmap>
+                                </ng-container>
+                            </app-create-permit-form>
+                        </div>
+
+                        <div *ngSwitchCase="2">
+                            <app-permit-conditions-tab [dataModel]="permitConditionsDataModel" [configModel]="permitConditionsConfigModel" *ngIf="dialogModel.visible">
+                            </app-permit-conditions-tab>
+                        </div>
+
+                        <div *ngSwitchCase="3">
+                            <app-create-permit-summary [dataModel]="summaryDataModel" [configModel]="summaryConfigModel" *ngIf="dialogModel.visible"></app-create-permit-summary>
+                        </div>
+
+                        <div *ngSwitchCase="4">
+                            <app-create-permit-confirmation [dataModel]="permitConfirmationDataModel" [configModel]="permitConfirmationConfigModel" *ngIf="dialogModel.visible">
+                            </app-create-permit-confirmation>
+                        </div>
+
+                        <div *ngSwitchDefault></div>
+                    </div>
+                    <hr />
+                    <div>
+                        <div [ngSwitch]="createPermitStepNo">
+                            <div *ngSwitchCase="1" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="end center">
+                                <button mat-raised-button color="primary" class="primary-button" (click)="nextButtonNewPermitFormClick()">
+                  Next
+                </button>
+                            </div>
+
+                            <div *ngSwitchCase="2" fxLayout="row" fxLayoutAlign="space-between center">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonNewPermitConditionClick()">
+                  Go Back
+                </button>
+                                <div fxLayoutGap="10px">
+                                    <button mat-raised-button class="draft-button primary-button mb-2" color="primary" (click)="newPermitSaveAsDraftClick()">
+                    Save As Draft
+                  </button>
+                                    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="newPermitSubmitClick()">
+                    Submit New Phase
+                  </button>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="3" fxLayout="row" fxLayoutAlign="space-between center">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonNewPermitConfirmSubmitClick()">
+                  Go Back
+                </button>
+                                <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                                        <p style="margin-right: 25px">
+                                            Are you sure you want to confirm?
+                                        </p>
+                                        <button mat-raised-button class="green-button primary-button mb-2" color="primary" (click)="newPermitConfirm()">
+                      Confirm
+                    </button>
+                                    </div>
+                                    <button mat-raised-button class="draft-button primary-button mb-2" color="primary" (click)="submissionConfirmSaveNewPermitAsDraft()">
+                    Save As Draft
+                  </button>
+                                </div>
+                            </div>
+                            <div *ngSwitchCase="4" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px">
+                                <button mat-raised-button class="primary-button mb-2" (click)="onNewPermitViewClick()" color="primary">
+                  View Permit
+                </button>
+                                <button mat-raised-button class="primary-button mb-2" color="primary" (click)="onNewPermitViewPermitListClick()">
+                  View List
+                </button>
+                            </div>
+
+                            <div *ngSwitchDefault></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="permitConfirmDialogModeWorkExtension">
+                    <div class="wrk-extension-form">
+                        <form [formGroup]="workExtensionFormGroup">
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Proposed End Date</mat-label>
+                                <input matInput autocomplete="off" required [ngxMatDatetimePicker]="endDatePicker" placeholder="Choose a date" [formControl]="
+                    workExtensionFormGroup.controls.proposedEndDate
+                  " (click)="endDatePicker.open()" />
+                                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                                <ngx-mat-datetime-picker #endDatePicker [showSeconds]="true" [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [enableMeridian]="false">
+                                </ngx-mat-datetime-picker>
+                                <mat-error>Field must be valid</mat-error>
+                            </mat-form-field>
+                        </form>
+                    </div>
+                    <hr />
+                    <div>
+                        <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="end center">
+                            <button mat-raised-button color="primary" class="primary-button" (click)="onSubmitWorkExtensionClick()">
+                Submit
+              </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-file-upload *ngIf="selectedTabIndex == 6" [dataModel]="fileUploadDataModel" [configModel]="fileUploadConfigModel">
+        </app-file-upload>
+        <div *ngIf="selectedTabIndex == 7">
+            <div [ngSwitch]="reinstatementDialogMode">
+                <div *ngSwitchCase="reinstatementDialogModeAddReinstatement">
+                    <div [ngSwitch]="createReinstatementStepNo" class="mat-typography permit-form">
+                        <div *ngSwitchCase="1">
+                            <app-create-permit-draw-map *ngIf="dialogModel.visible" [dataModel]="permitDrawMapDataModel" [configModel]="permitDrawMapConfigModel">
+                                <ng-container class="elgin-map-slot">
+                                    <app-elginmap *ngIf="createReinstatementStepNo == 1" id="draw-map-elgin-map" [dataModel]="elginMapDataModel" [configModel]="elginMapConfigModel">
+                                    </app-elginmap>
+                                </ng-container>
+                            </app-create-permit-draw-map>
+                        </div>
+
+                        <div *ngSwitchCase="2">
+                            <app-create-reinstatement-form *ngIf="dialogModel.visible" [dataModel]="createReinstatementFormDataModel" [configModel]="createReinstatementFormConfigModel">
+                            </app-create-reinstatement-form>
+                        </div>
+
+                        <div *ngSwitchCase="3">
+                            <app-reinstatement-images-and-files *ngIf="dialogModel.visible" [dataModel]="reinstatementImagesAndFilesDataModel" [configModel]="reinstatementImagesAndFilesConfigModel"></app-reinstatement-images-and-files>
+                        </div>
+
+                        <div *ngSwitchCase="4">
+                            <app-create-reinstatement-summary *ngIf="dialogModel.visible" [dataModel]="createReinstatementSummuryDataModel" [configModel]="createReinstatementSummuryConfigModel">
+                            </app-create-reinstatement-summary>
+                        </div>
+
+                        <div *ngSwitchDefault>Something went wrong..!!</div>
+                    </div>
+                    <hr />
+                    <div>
+                        <div [ngSwitch]="createReinstatementStepNo">
+                            <div *ngSwitchCase="1" fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="end center">
+                                <button mat-raised-button color="primary" class="primary-button" (click)="nextButtonReinstatementDrawMapClick()">
+                  Next
+                </button>
+                            </div>
+
+                            <div *ngSwitchCase="2" fxLayout="row" fxLayoutAlign="space-between center">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonReinstatementFormClick()">
+                  Go Back
+                </button>
+                                <div fxLayoutGap="10px">
+                                    <button mat-raised-button class="draft-button primary-button mb-2" color="primary" (click)="saveReinstatementAsDraft(saveAsDraftAndClose)">
+                    Save As Draft
+                  </button>
+                                    <button mat-raised-button color="primary" class="primary-button" (click)="nextButtonReinstatementFormClick()">
+                    Next
+                  </button>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="3" fxLayout="row" fxLayoutAlign="space-between center">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonReinstatementUploadClick()">
+                  Go Back
+                </button>
+                                <div fxLayoutGap="10px">
+                                    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="nextButtonReinstatementUploadClick()">
+                    Review Changes
+                  </button>
+                                </div>
+                            </div>
+
+                            <div *ngSwitchCase="4" fxLayout="row" fxLayoutAlign="space-between center">
+                                <button mat-stroked-button color="primary" class="primary-button-outline" (click)="backButtonReinstatementSummaryClick()">
+                  Go Back
+                </button>
+                                <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                                    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                                        <p style="margin-right: 25px">
+                                            Are you sure you want to confirm?
+                                        </p>
+                                        <button mat-raised-button class="green-button primary-button mb-2" color="primary" (click)="reinstatementSubmission()">
+                      Confirm
+                    </button>
+                                    </div>
+                                    <button mat-raised-button class="draft-button primary-button mb-2" color="primary" (click)="closeReinstatementDraft()">
+                    Save As Draft
+                  </button>
+                                </div>
+                            </div>
+                            <div *ngSwitchDefault></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="reinstatementDialogModeViewReinstatement">
+
+                    <mat-tab-group mat-stretch-tabs>
+                        <mat-tab label="Details">
+
+                            <app-site-details *ngIf="dialogModel.visible" [dataModel]="siteDetailsDataModel" [configModel]="siteDetailsConfigModel">
+                                <ng-container class="elgin-map-view" *ngIf="viewElginMap">
+                                    <app-elginmap id="view-elgin-map" [dataModel]="viewElginMapReinstatementDataModel" [configModel]="viewElginReinstatementConfigModel">
+                                    </app-elginmap>
+                                </ng-container>
+                            </app-site-details>
+
+
+                        </mat-tab>
+
+                        <mat-tab label="Attachments">
+                            <app-reinstatement-images-and-files *ngIf="dialogModel.visible" [dataModel]="reinstatementImagesAndFilesDataModel" [configModel]="reinstatementImagesAndFilesConfigModel"></app-reinstatement-images-and-files>
+
+                        </mat-tab>
+                    </mat-tab-group>
+
+
+                </div>
+            </div>
+        </div>
+        <app-add-comment *ngIf="selectedTabIndex == 8 && !isViewCommentTrue" [dataModel]="permitAddCommentDataModel" [configModel]="permitAddCommentConfigModel"></app-add-comment>
+
+        <div *ngIf="selectedTabIndex == 2">
+            <div [ngSwitch]="changeRequestDialogMode" class="mat-typography permit-form">
+                <div *ngSwitchCase="changeRequestDialogModDiff">
+                    <app-data-diff-a3 [dataModel]="dataDiffA3DataModel" [configModel]="dataDiffA3ConfigModel"></app-data-diff-a3>
+                </div>
+                <!-- <div *ngSwitchCase="changeRequestDialogModeView">
+                <app-create-permit-form [dataModel]="createPermitFormDataModel" [configModel]="createPermitFormConfigModel">
+                <ng-container class="elgin-map-view-slot">
+                  <app-elginmap id="create-permit-elgin-map" [dataModel]="elginMapDataModel"  [configModel]="elginMapConfigModel">
+                  </app-elginmap>
+                </ng-container>
+              </app-create-permit-form>
+            </div>
+
+            <div *ngSwitchCase="changeRequestDialogModEdit">
+                <app-create-permit-form [dataModel]="createPermitFormDataModel" [configModel]="createPermitFormConfigModel">
+                    <ng-container class="elgin-map-view-slot">
+                      <app-elginmap id="create-permit-elgin-map" [dataModel]="elginMapDataModel"  [configModel]="elginMapConfigModel">
+                      </app-elginmap>
+                    </ng-container>
+                  </app-create-permit-form>
+            </div> -->
+            </div>
+        </div>
+
+        <app-view-permit-fpn *ngIf="selectedTabIndex == 4 && dialogModel.visible" [dataModel]="viewPermitFpnDataModel" [configModel]="viewPermitFpnConfigModel">
+        </app-view-permit-fpn>
+        <app-view-permit-inspection *ngIf="selectedTabIndex == 5 && dialogModel.visible" [dataModel]="viewPermitInspectionDataModel" [configModel]="viewPermitInspectionConfigModel">
+        </app-view-permit-inspection>
+        <div *ngIf="selectedTabIndex == 5 && dialogModel.visible">
+            <div fxLayout="row" fxLayoutAlign="end center">
+                <button mat-raised-button class="primary-button mb-2" (click)="updateInspection()" color="primary">Update</button>
+            </div>
+        </div>
+        <app-view-permit-comments *ngIf="isViewCommentTrue && dialogModel.visible" [dataModel]="viewPermitCommentsDataModel" [configModel]="viewPermitCommentConfigModel">
+        </app-view-permit-comments>
+    </ng-container>
+</app-dialog>
+
+<p-dialog [(visible)]="display" class="errormodal" [modal]="true" [responsive]="true" [style]="{
+    width: '800px',
+    minWidth: '700px',
+    'text-align': 'center',
+    'font-size': '15px'
+  }" [minY]="100" [maximizable]="true" [baseZIndex]="10000">
+    <p-header class="mat-error">
+        <mat-icon class="align-middle">error</mat-icon> Error
+    </p-header>
+
+    <div class="jumbotron mb-0">
+        <label class="errorlabel">{{ errorMsg }}</label>
+    </div>
+
+    <button class="btn btn-lg btn-primary errorbtn float-right" (click)="display = false">
+    OK
+  </button>
+</p-dialog>
+
+<app-dialog [dialogModel]="dialogConfirm">
+    <ng-container class="dialog-content-slot" *ngIf="!isworkextensionconfirm">
+        <p class="py-3">
+            Are you sure you want to delete change request
+            <b>{{ CRReferenceNumber }}</b> ?
+        </p>
+        <div class="float-right">
+            <button (click)="confirmDelete()" mat-raised-button class="primary-button" color="warn">
+        Confirm
+      </button>
+        </div>
+    </ng-container>
+
+    <ng-container class="dialog-content-slot" *ngIf="isworkextensionconfirm">
+        <p class="py-3">
+            You are about to submit a work extension request to Street Manager. Note that this is a chargeable activity. Do you want to proceed?
+        </p>
+        <div class="float-right">
+            <button (click)="confirmsubmitworkextension('yes')" mat-raised-button class="primary-button btn-primary mr-2" color="primary">
+        Yes
+      </button>
+            <button (click)="confirmsubmitworkextension('no')" mat-raised-button class="primary-button btn-secondary">
+        No
+      </button>
+        </div>
+    </ng-container>
+</app-dialog>
+
+<!-- <app-dialog [dialogModel]="dialogConfirmWorkExtension">
+  <ng-container class="dialog-content-slot">
+      <p class="py-3">You are about to submit a work extension request
+        to Street Manager. Note that this is a chargeable activity. Do you want to
+       proceed? (Y/N)</p>
+      <div class="float-right">
+      <button (click)="confirmsubmitworkextension('yes')" mat-raised-button class="primary-button btn-primary mr-2" color="primary">Yes</button>
+      <button (click)="confirmsubmitworkextension('no')" mat-raised-button class="primary-button btn-secondary" >No</button>
+ </div>
+  </ng-container>
+</app-dialog> -->
+
+
+
+<app-dialog [dialogModel]="dialogDeleteReinstatement">
+    <ng-container class="dialog-content-slot">
+        <p class="py-3">
+            Are you sure you want to delete reinstatement for site
+            <b>{{SiteIdToBeDelete}}</b> ?
+        </p>
+        <div class="float-right">
+            <button (click)="confirmDeleteReinstatement()" mat-raised-button class="primary-button" color="warn">
+        Confirm
+      </button>
+        </div>
+    </ng-container>
+</app-dialog>
+
+
+<app-dialog [dialogModel]="dialogReinstatementUpload">
+    <ng-container class="dialog-content-slot">
+        <app-file-upload [dataModel]="fileUploadDataModel1" [configModel]="fileUploadConfigModel1">
+        </app-file-upload>
+    </ng-container>
+</app-dialog>
+
+
+<app-dialog [dialogModel]="dialogOnRegister">
+    <ng-container class="dialog-content-slot">
+        <p class="py-3">
+            You are being redirected to the Reinstatement Page where you can register site
+        </p>
+        <div class="float-right">
+            <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+                <button mat-raised-button class="primary-button-outline mb-2" color="primary" (click)="closeDialogOnRegister()">
+          Cancel
+        </button>
+                <button mat-raised-button class="primary-button mb-2" color="primary" (click)="navigateToReinstatement()">
+          Yes
+        </button>
+            </div>
+        </div>
+    </ng-container>
+</app-dialog>

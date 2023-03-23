@@ -1,0 +1,43 @@
+.cancel-alert-container{
+  height: 100%;
+}
+
+.cancel-negative-btn{
+  width: 130px;
+}
+
+.cancel-positive-btn{
+  width: 130px;
+}
+
+.cancel-dialog-msg{
+  text-align: center;
+  max-width: 350px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.ic-cancel{
+  background-color: var(--cancel-dialog-color-light-red);
+  padding: 30px;
+  border-radius: 50%;
+  color: var(--cancel-dialog-color-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-heading{
+  color: var(--cancel-dialog-color-red);
+  font-weight: bold !important;
+}
+
+.cancel-dialog-row1{
+  border-bottom: 1px solid var(--cancel-dialog-color-border);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-action{
+  min-width: 120px;
+}

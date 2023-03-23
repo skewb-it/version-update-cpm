@@ -1,0 +1,58 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 matDialogTitle>Permit Request Confirmed</h2>
+    <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+      <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+    </button>
+  </div> -->
+<hr>
+<!-- <mat-dialog-content class="mat-typography"> -->
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="main-container">
+    <div class="success-div">
+      <mat-icon class="mat-icon-green-big">verified</mat-icon>
+      <h1>Permit Request Confirmed</h1>
+      <h5>Permit Reference Number : {{dataModel.data.permitReferenceNumber}}</h5>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+      <div class="indicator" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center"
+        fxLayoutGap="15px">
+        <img src="/assets/images/flags/cost.png" alt="">
+        <div class="indicator-info">
+          <h2>{{dataModel.data.totalCost | transformCurrency}}</h2>
+          <p>Expected Permit Cost</p>
+        </div>
+      </div>
+      <div class="indicator" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center"
+        fxLayoutGap="15px">
+        <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.costRisk)" alt="">
+        <div class="indicator-info">
+          <h2>Cost Risk</h2>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+      <div class="indicator" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center"
+        fxLayoutGap="15px">
+        <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.customerRisk)" alt="">
+        <div class="indicator-info">
+          <h2>Customer Risk</h2>
+        </div>
+      </div>
+      <div class="indicator" fxFlex="50" fxFlex.lt-sm="0 1 calc(50% - 20px)" fxLayout="row" fxLayoutAlign="start center"
+        fxLayoutGap="15px">
+        <img [src]="DATA_HELPER.getPermitIconURL(dataModel.data.trafficManagementRisk)" alt="">
+        <div class="indicator-info">
+          <h2>Traffic Management</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </mat-dialog-content> -->
+<!-- <hr> -->
+<!-- <mat-dialog-actions align="center">
+    <button mat-raised-button class="primary-button mb-2" color="primary"  [mat-dialog-close]="true">Submit Another Permit</button>
+    <button mat-raised-button class="primary-button mb-2" color="primary"  [mat-dialog-close]="true">View Permit</button>
+    <button mat-raised-button class="primary-button mb-2" color="primary"  [mat-dialog-close]="true">View List</button>
+</mat-dialog-actions> -->

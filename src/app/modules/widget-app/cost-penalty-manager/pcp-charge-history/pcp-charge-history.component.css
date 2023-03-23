@@ -1,0 +1,10 @@
+.heading {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--theme-color);
+  margin: 6px 0px 8px 0px;
+}
+
+.cost-penalty-history-list{
+  margin: 15px;
+}

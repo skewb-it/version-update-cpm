@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>Create Organization</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div>
+<hr>
+<mat-dialog-content class="mat-typography custom-form-input">
+   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" style="min-width:  500px;">
+    <mat-form-field appearance="outline" fxFlex="50">
+        <mat-label>Select Parent Organization *</mat-label>
+        <mat-select >
+          <mat-option >Select Parent Organization</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="50" >
+        <mat-label>Organization Name
+        </mat-label>
+        <input matInput placeholder="Enter Organization Name" autocomplete="off">
+        <mat-error>Field must be valid</mat-error>
+    </mat-form-field>
+</div>
+
+</mat-dialog-content>
+<hr>
+
+<mat-dialog-actions align="end">
+             <button mat-raised-button class="primary-button mb-2" color="primary"  [mat-dialog-close]="true">Create Organization</button>
+  
+</mat-dialog-actions>

@@ -1,0 +1,106 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 matDialogTitle>Create Permit - Select Location</h2>
+    <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+      <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+    </button>
+</div>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <div class="change-request-info" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="0">
+        <div class="left-side" fxFlex="65">
+            <h2 class="info-title">Select the works location to acquire the data</h2>
+            <!-- <div class="map-wrapper" style="background-image: url('/assets/images/map.png'); height: 520px;"></div> -->
+            <div class="map-wrapper" >
+                 <app-elginmap id="create-permit-elgin-map" ></app-elginmap>
+            </div>
+           
+        </div>
+        <div class="right-side" fxFlex="35" >
+            <div class="selection-field" fxLayout="row" fxLayoutAlign="start center">
+                <mat-radio-group fxLayout="column" fxLayoutAlign="space-between stretch">
+                    <mat-radio-button value="1" >
+                        <mat-form-field appearance="outline" >
+                            <mat-label>USRN
+                            </mat-label>
+                            <input matInput placeholder="Enter USRN" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </mat-radio-button>
+                    <mat-radio-button value="2">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Post Code
+                            </mat-label>
+                            <input matInput placeholder="Enter Post Code" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </mat-radio-button>
+                    <mat-radio-button value="3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Works Location
+                            </mat-label>
+                            <input matInput placeholder="Enter Works Location" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </mat-radio-button>
+                    <mat-radio-button value="4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Works Co-ordinates
+                            </mat-label>
+                            <input matInput placeholder="Enter Co-ordinates" autocomplete="off">
+                            <mat-error>Field must be valid</mat-error>
+                        </mat-form-field>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <hr>
+            <div class="pin-div" fxLayout="row" fxLayoutAlign="space-between center" >
+                <div class="pin-title">
+                    <h3>Drop Pin</h3>
+                    <p>Drop a Pin to select the location</p>
+                </div>
+                <button mat-icon-button matTooltip="Click to drop Pin" class="iconbutton" color="warn">
+                    <mat-icon >pin_drop</mat-icon>
+                  </button>
+            </div>
+            <hr>
+            <div class="info-div">
+                <div fxLayout="row" fxLayoutAlign="space-between center" >
+                    <div class="info-element" fxFlex="100">
+                        <label for="">Works Location Description</label>
+                        <p>Opp Salford Priors C of E Primary School, School Road, Salford Priors, Evesham</p>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center" >
+                    <div class="info-element" fxFlex="100">
+                        <label for="">Location details</label>
+                        <p>Opp Salford Priors C of E Primary School, FWY</p>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center" >
+                    <div class="info-element" fxFlex="50">
+                        <label for="">Post Code</label>
+                        <p>WR11 8XD</p>
+                    </div>
+                    <div class="info-element" fxFlex="50">
+                        <label for="">USRN</label>
+                        <p>38301771</p>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center" >
+                    <div class="info-element" fxFlex="50">
+                        <label for="">Road Type</label>
+                        <p>Carriageway Type 4</p>
+                    </div>
+                    <div class="info-element" fxFlex="50">
+                        <label for="">Highway Authority</label>
+                        <p>Warwickshire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="openDialog()" [mat-dialog-close]="true">Select and Draw</button>
+</mat-dialog-actions>

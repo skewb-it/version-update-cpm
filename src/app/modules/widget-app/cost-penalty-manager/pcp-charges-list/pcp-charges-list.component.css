@@ -1,0 +1,74 @@
+.table-head {
+  color: var(--theme-color);
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.head-row {
+  border-bottom: 1px solid rgb(185, 185, 185);
+  margin-bottom: 5px;
+}
+
+
+.row-span {
+
+  color: #696969;
+  border-bottom: .75px solid #696969;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+
+
+.td-content,
+.th-content {
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+.th-heading {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.bg-blue,
+.bg-grey {
+  background-color: var(--theme-color);
+  color: white;
+  border-radius: 2px;
+  text-align: center;
+  width: 70px;
+}
+
+.bg-grey {
+  background-color: #696969;
+  width: 40px;
+}
+
+
+
+/* Mat Table  */
+
+.demo-table {
+  width: 100%;
+}
+
+tr.mat-header-row {
+  height: 33px;
+}
+
+tr.mat-row,
+tr.mat-footer-row {
+  height: 38px;
+}
+
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding-left: 0;
+}

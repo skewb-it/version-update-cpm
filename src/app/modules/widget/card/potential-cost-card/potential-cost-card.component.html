@@ -1,0 +1,19 @@
+<mat-card [ngStyle]="{'background-color': 'var('+dataModel.data.backgroundColor+')','min-height':'170px'}">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="cost-label" [ngStyle]="{'color': 'var('+dataModel.data.costColor+')'}">
+            <!-- {{dataModel.data.cost | transformCurrency}} -->
+            {{dataModel.data.cost | transformCurrencyOrg }}
+        </div>
+        <div *ngIf="dataModel.data.isIconEnable" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon [inline]="true" class="count-icon" *ngIf="dataModel.data.isMatIcon; else showImg" [ngStyle]="{'color': 'var('+dataModel.data.iconColor+')'}">
+                {{dataModel.data.icon}}</mat-icon>
+            <ng-template #showImg>
+                <img [src]="dataModel.data.icon" alt="_ic_count" width="60px" height="60px">
+            </ng-template>
+        </div>
+    </div>
+    <div class="label-container" fxLayout="column">
+        <span [ngStyle]="{'color': 'var('+dataModel.data.label1Color+')','width':'70%'}">{{dataModel.data.label1}}</span>
+        <!-- <span [ngStyle]="{'color': 'var('+dataModel.data.label2Color+')'}">{{dataModel.data.label2}}</span> -->
+    </div>
+</mat-card>

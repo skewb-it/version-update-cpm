@@ -1,0 +1,195 @@
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 matDialogTitle>Create Permit - Draw Map</h2>
+  <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+    <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+  </button>
+</div> -->
+<!-- <mat-dialog-content class="mat-typography"> -->
+<hr>
+<div class="change-request-info" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="0">
+    <div class="left-side" fxFlex="showHideDetialsSection()? '100' : '65'">
+        <h2 class="info-title">Create Drawing on the map</h2>
+        <!-- <div class="map-wrapper" style="background-image: url('/assets/images/map.png');"></div> -->
+        <div class="map-wrapper">
+            <!-- <app-elginmap id="draw-map-elgin-map" (overlayCompleteEventEmitter)="onOverlayComplete($event)">
+      </app-elginmap> -->
+            <ng-content select=".elgin-map-slot">
+            </ng-content>
+
+        </div>
+    </div>
+    <div class="right-side" [hidden]="showHideDetialsSection()" fxFlex="35">
+        <div class="info-div">
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" *ngIf="ismultipleusrn" fxFlex="100">
+
+                    <mat-form-field class="mb-0" appearance="outline">
+                        <mat-label>Select USRN</mat-label>
+                        <mat-select [(ngModel)]="selectedUSRN" (selectionChange)="changeUSRN()">
+                            <mat-option *ngFor="let item of usrnArray; let i = index" [value]="item.usrn">
+                                {{item.usrnwithstreetname}}</mat-option>
+                        </mat-select>
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+                    <span *ngIf="ismulitusrnselect" class="selectusrn">Please Select USRN</span>
+
+
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div *ngIf="!ismultipleusrn" class="info-element" fxFlex="100">
+                    <label for="">Works Location Description</label>
+                    <p>{{dataModel.data.worksLocationDescription}}</p>
+                </div>
+
+                <div *ngIf="ismultipleusrn && isChangeUSRN" class="info-element" fxFlex="100">
+                    <label for="">Works Location Description</label>
+                    <!-- <p>{{worksLocationDescriptionbyUSRN}}</p> -->
+                    <p>{{dataModel.data.worksLocationDescription}}</p>
+
+                </div>
+
+            </div>
+            <div fxLayout="row" *ngIf="!ismultipleusrn" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Location details</label>
+                    <p>{{dataModel.data.location_details}}</p>
+                </div>
+            </div>
+            <div fxLayout="row" *ngIf="ismultipleusrn && isChangeUSRN" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="100">
+                    <label for="">Location details</label>
+                    <p>{{dataModel.data.location_details}}</p>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="info-element" *ngIf="!ismultipleusrn" fxFlex="50">
+                    <label for="">Post Code</label>
+                    <p>{{dataModel.data.postcode}}</p>
+                </div>
+                <div class="info-element" *ngIf="ismultipleusrn && isChangeUSRN" fxFlex="50">
+                    <label for="">Post Code</label>
+                    <p>{{dataModel.data.postcode}}</p>
+                </div>
+                <div class="info-element" *ngIf="ismultipleusrn && isChangeUSRN" fxFlex="50">
+                    <label for="">USRN</label>
+                    <p>{{selectedUSRN}}</p>
+                </div>
+
+                <div class="info-element" *ngIf="!ismultipleusrn" fxFlex="50">
+                    <label for="">USRN</label>
+                    <p>{{dataModel.data.usrn}}</p>
+                </div>
+                <!-- <div class="info-element" *ngIf="ismultipleusrn" fxFlex="50">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>USRN</mat-label>
+                        <mat-select [(ngModel)]="selectedUSRN" (selectionChange)="changeUSRN($event)">
+                            <mat-option *ngFor="let item of usrnArray; let i = index" [value]="item">
+                                {{item}}</mat-option>
+                        </mat-select>
+                        <mat-error>Field must be valid</mat-error>
+                    </mat-form-field>
+
+                </div> -->
+            </div>
+            <div fxLayout="row" *ngIf="!ismultipleusrn" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="50">
+                    <label for="">Road Type</label>
+                    <p>{{dataModel.data.roadType}}</p>
+                </div>
+                <div class="info-element" fxFlex="50">
+                    <label for="">Highway Authority</label>
+                    <p>{{dataModel.data.highway_authority_name}}</p>
+                </div>
+            </div>
+
+            <div *ngIf="isprivaateroad" class="text-warning">
+                Please note that the road you have chosen is a private road. Please contact the owner of the road as the Highway Authority may not be responsible for road works on this road.
+            </div>
+
+            <div fxLayout="row" *ngIf="ismultipleusrn && isChangeUSRN" fxLayoutAlign="space-between center">
+                <div class="info-element" fxFlex="50">
+                    <label for="">Road Type</label>
+                    <p>{{dataModel.data.roadType}}</p>
+                </div>
+                <div class="info-element" fxFlex="50">
+                    <label for="">Highway Authority</label>
+                    <p>{{dataModel.data.highway_authority_name}}</p>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="dataModel.data?.special_designations?.length > 0">
+                <div *ngIf="dataModel.showSpecialDesignations" class="info-element" fxFlex="100">
+                    <label for="">Designations</label>
+                    <div class="designations-list">
+                        <ul class="list-group">
+                            <li class="list-group-item list-item-background" *ngFor="let d of dataModel.data.special_designations; let i= index;">
+                                <mat-card fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" appHelperTextPopover [helperTextData]="getHelpTextData(d)">
+                                    <mat-checkbox [checked]="d.isChecked" (change)="onDesignationCheckBoxChange(i, $event.checked)">
+                                    </mat-checkbox>
+                                    <div>
+                                        <div class="code">{{d.code}}</div>
+                                        <div class="description">{{d.description}}</div>
+                                        <div class="periodicity">{{d.periodicityCode}}</div>
+                                    </div>
+                                </mat-card>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <hr> -->
+
+        <!-- hide for now -->
+
+    </div>
+    <div [hidden]="true" class="selection-field" fxLayout="row" fxLayoutAlign="start center">
+        <mat-radio-group fxLayout="column" fxLayoutAlign="space-between stretch">
+            <mat-radio-button value="1">
+                <div class="pin-div" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="pin-title">
+                        <h3>Draw Polygon</h3>
+                        <p>Select here and draw polygon on the map</p>
+                    </div>
+                    <button mat-icon-button matTooltip="Click to drop Pin" class="iconbutton" color="warn">
+        <mat-icon>star_outline</mat-icon>
+      </button>
+                </div>
+            </mat-radio-button>
+            <mat-radio-button value="2">
+                <div class="pin-div" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="pin-title">
+                        <h3>Draw Line</h3>
+                        <p>Select here and draw Line on the map</p>
+                    </div>
+                    <button mat-icon-button matTooltip="Click to drop Pin" class="iconbutton" color="warn">
+        <mat-icon>horizontal_rule</mat-icon>
+      </button>
+                </div>
+            </mat-radio-button>
+            <mat-radio-button value="3">
+                <div class="pin-div" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="pin-title">
+                        <h3>Drop Pin</h3>
+                        <p>Select here and drop Pin on the map</p>
+                    </div>
+                    <button mat-icon-button matTooltip="Click to drop Pin" class="iconbutton" color="warn">
+        <mat-icon>push_pin</mat-icon>
+      </button>
+                </div>
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<!-- </mat-dialog-content> -->
+<!-- <hr> -->
+<!-- <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-raised-button class="primary-button-outline mb-2" color="primary" [mat-dialog-close]="true">Go
+        Back</button>
+    <button mat-raised-button class="primary-button mb-2" color="primary" (click)="openDialog()"
+        [mat-dialog-close]="true">Next</button>
+</mat-dialog-actions> -->

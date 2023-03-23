@@ -1,0 +1,23 @@
+<form [formGroup]="wgFormGroup">
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
+        <mat-form-field class="select-global-filter" appearance="outline">
+            <mat-label>Promoter Organisation</mat-label>
+            <mat-select multiple formControlName="promoterOrganisation" (selectionChange)="onChangePromoterOrgnisation($event.value)">
+                <mat-option [value]="d.orgId" *ngFor="let d of arrPromoterOrgnisation">{{d.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-global-filter" appearance="outline">
+            <mat-label>Contractor</mat-label>
+            <mat-select (selectionChange)="onChangeContractor($event.value)" formControlName="contractor" multiple>
+                <mat-option [value]="d.contractor_id" *ngFor="let d of arrContractors">{{d.contractor_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="select-global-filter" appearance="outline" *ngIf="tempPermission && !(dataModel.permission.highwayAuthority == 'n')">
+            <mat-label>Highway Authority</mat-label>
+            <mat-select (selectionChange)="onChangeHighwayAuthority($event.value)" formControlName="highwayAuthority" multiple>
+                <mat-option [value]="highWayAuthority.authorityId" *ngFor="let highWayAuthority of arrHighwayAuthority">
+                    {{highWayAuthority.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</form>

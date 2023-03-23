@@ -1,0 +1,69 @@
+.permit-list {
+    padding-left: 25px;
+}
+
+.detail-row {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.element-detail {
+    overflow: hidden;
+    background: rgb(255, 255, 255) none no-repeat scroll 0% 0% padding-box;
+    box-shadow: rgba(193, 203, 255, 0.23) 0px 3px 4px;
+    border-radius: 4px;
+}
+
+.element-wrapper {
+    padding: 15px;
+}
+
+.info-element label {
+    font: Noto Sans;
+    font-size: 0.9rem;
+    letter-spacing: 0px;
+    color: #838296;
+    margin-bottom: 0px;
+}
+
+.info-element p {
+    font: Noto Sans;
+    font-size: 1.2rem;
+    letter-spacing: 0px;
+    color: #2B5C41;
+}
+
+.ColWidth {
+    min-width: 100px;
+}
+
+.iconColWidth {
+    min-width: 80px;
+}
+
+.iconColWidth120 {
+    width: 125px;
+}
+
+.pRNColWidth120 {
+    min-width: 125px;
+}
+
+.CollaborativeCell {
+    padding-left: 20px !important;
+}
+
+.CollaborativeImg {
+    width: 25px;
+    height: 25px;
+}
+
+.icon-color {
+    color: var(--icon-theme-color);
+}
+
+.work-location-description {
+    max-width: 100px !important;
+    /* word-break: break-all; */
+    overflow-wrap: break-word;
+}

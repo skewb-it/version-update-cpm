@@ -1,0 +1,25 @@
+#filter-form {
+  height: 78vh;
+  overflow-y: auto;
+  padding: 10px 10px 0 0 !important;
+}
+
+.theme-color {
+  color: var(--theme-color);
+  font-size: 110%;
+}
+
+.blue-btn {
+  background-color: var(--theme-color);
+  color: #fff;
+}
+
+.page-actions .mat-stroked-button {
+
+  line-height: none !important;
+
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  padding: 0.5em 0.75em 0 0.75em !important;
+}

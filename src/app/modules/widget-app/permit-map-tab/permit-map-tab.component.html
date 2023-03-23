@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row permit-details">
+        <div class="col-md-8">
+            <div class="map-container">
+                <ng-content select=".elgin-map-view"> </ng-content>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- location fields -->
+            <div class="special-designation-container2">
+                <div>
+                    <div class="detail-container" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+                        <div class="info-element" fxFlex="50">
+                            <label for="">Post Code</label>
+                            <p>{{ permitFormData[0].postcode }}</p>
+                        </div>
+                        <div class="info-element" fxFlex="50">
+                            <label for="">USRN</label>
+                            <p>{{ permitFormData[0].usrn }}</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="detail-container" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+                        <div class="info-element" fxFlex="100">
+                            <label for="">Works Location Description</label>
+                            <p>{{ permitFormData[0].location_description }}</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="detail-container" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between start">
+                        <div class="info-element" fxFlex="100">
+                            <label for="">Location details</label>
+                            <p>{{ permitFormData[0].location_details }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- location fields ends-->
+            <div *ngIf="!(designationList.length<1)">
+                <div class="special-designation-container">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="info-element" fxFlex="100">
+                            <div class="designationFont">Designations</div>
+                            <div class="designations-list">
+                                <ul class="list-group">
+                                    <li class="list-group-item list-item-background" *ngFor="let d of designationList; let i = index">
+                                        <mat-card fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+
+
+                                            <div>
+                                                <div class="code">{{ d.code }}</div>
+                                                <div class="description">
+                                                    {{ d.special_desig_description }}
+                                                </div>
+                                                <div class="periodicity">
+                                                    {{ d.periodicityCode }}
+                                                </div>
+                                            </div>
+                                        </mat-card>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
