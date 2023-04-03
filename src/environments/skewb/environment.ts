@@ -5,9 +5,10 @@
 export const environment = {
   production: false,
   // baseurl:'https://streetmanager.duckdns.org:7443',
-  baseurl:'https://streetworks.skewb.co.uk:6056',
+  // baseurl:'https://streetworks.skewb.co.uk:6056',
   // baseurl:'https://streetworks.skewb.co.uk:7444',
   // baseurl:'https://streetmanager.duckdns.org:7002',
+  baseurl: 'https://skewb-cpm-dev.skewb.co.uk',
   mapBaseUrl:'https://api-gb.one.network',
   productCode:'CostPenMgr'
   //'http://52.56.129.141:6080'
