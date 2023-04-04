@@ -19,8 +19,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren:
-          '../app/modules/page-layout/page-layout.module#PageLayoutModule',
+        loadChildren: () => import('../app/modules/page-layout/page-layout.module').then(module => module.PageLayoutModule)
       },
     ],
   },
