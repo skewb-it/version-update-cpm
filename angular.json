@@ -23,7 +23,8 @@
                             "chart.js",
                             "crypto-js"
                         ],
-                        "assets": [{
+                        "assets": [
+                            {
                                 "glob": "**/*",
                                 "input": "src/assets/skewb",
                                 "output": "/assets/"
@@ -34,8 +35,10 @@
                                 "output": "/"
                             }
                         ],
-                        "styles": [{
-                                "input": "src/custom-theme.scss"
+                        "styles": [
+                            {
+                                "input": "src/custom-theme.scss",
+                                "inject": true
                             },
                             "./node_modules/bootstrap/dist/css/bootstrap.css",
                             "./node_modules/primeicons/primeicons.css",
@@ -46,7 +49,8 @@
                         "scripts": [
                             "src/assets/js/geotools2.js"
                         ],
-                        "fileReplacements": [{
+                        "fileReplacements": [
+                            {
                                 "replace": "src/app/theme/all-theme/default-theme.ts",
                                 "with": "src/app/theme/all-theme/blue-theme.ts"
                             },
@@ -58,19 +62,21 @@
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/skewb/environment.prod.ts"
-                            }],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/skewb/environment.prod.ts"
+                                }
+                            ],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "budgets": [{
+                            "budgets": [
+                                {
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
@@ -174,7 +180,8 @@
                             "chart.js",
                             "crypto-js"
                         ],
-                        "assets": [{
+                        "assets": [
+                            {
                                 "glob": "**/*",
                                 "input": "src/assets/murphy",
                                 "output": "/assets/"
@@ -185,8 +192,10 @@
                                 "output": "/"
                             }
                         ],
-                        "styles": [{
-                                "input": "src/custom-theme.scss"
+                        "styles": [
+                            {
+                                "input": "src/custom-theme.scss",
+                                "inject": true
                             },
                             "./node_modules/bootstrap/dist/css/bootstrap.css",
                             "./node_modules/primeicons/primeicons.css",
@@ -197,32 +206,34 @@
                         "scripts": [
                             "src/assets/js/geotools2.js"
                         ],
-                        "fileReplacements": [{
+                        "fileReplacements": [
+                            {
                                 "replace": "src/app/theme/all-theme/default-theme.ts",
                                 "with": "src/app/theme/all-theme/orange-theme.ts"
                             },
                             {
                                 "replace": "src/environments/environment.ts",
                                 "with": "src/environments/murphy/environment.ts"
-
                             }
                         ]
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/murphy/environment.prod.ts"
-                            }],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/murphy/environment.prod.ts"
+                                }
+                            ],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "budgets": [{
+                            "budgets": [
+                                {
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
@@ -326,7 +337,8 @@
                             "chart.js",
                             "crypto-js"
                         ],
-                        "assets": [{
+                        "assets": [
+                            {
                                 "glob": "**/*",
                                 "input": "src/assets/nwl",
                                 "output": "/assets/"
@@ -337,8 +349,10 @@
                                 "output": "/"
                             }
                         ],
-                        "styles": [{
-                                "input": "src/custom-theme.scss"
+                        "styles": [
+                            {
+                                "input": "src/custom-theme.scss",
+                                "inject": true
                             },
                             "./node_modules/bootstrap/dist/css/bootstrap.css",
                             "./node_modules/primeicons/primeicons.css",
@@ -349,7 +363,8 @@
                         "scripts": [
                             "src/assets/js/geotools2.js"
                         ],
-                        "fileReplacements": [{
+                        "fileReplacements": [
+                            {
                                 "replace": "src/app/theme/all-theme/default-theme.ts",
                                 "with": "src/app/theme/all-theme/nwl-theme.ts"
                             },
@@ -361,19 +376,21 @@
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/nwl/environment.prod.ts"
-                            }],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/nwl/environment.prod.ts"
+                                }
+                            ],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "budgets": [{
+                            "budgets": [
+                                {
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
@@ -477,7 +494,8 @@
                             "chart.js",
                             "crypto-js"
                         ],
-                        "assets": [{
+                        "assets": [
+                            {
                                 "glob": "**/*",
                                 "input": "src/assets/uu",
                                 "output": "/assets/"
@@ -488,8 +506,10 @@
                                 "output": "/"
                             }
                         ],
-                        "styles": [{
-                                "input": "src/custom-theme.scss"
+                        "styles": [
+                            {
+                                "input": "src/custom-theme.scss",
+                                "inject": true
                             },
                             "./node_modules/bootstrap/dist/css/bootstrap.css",
                             "./node_modules/primeicons/primeicons.css",
@@ -500,7 +520,8 @@
                         "scripts": [
                             "src/assets/js/geotools2.js"
                         ],
-                        "fileReplacements": [{
+                        "fileReplacements": [
+                            {
                                 "replace": "src/app/theme/all-theme/default-theme.ts",
                                 "with": "src/app/theme/all-theme/blue-theme.ts"
                             },
@@ -512,19 +533,21 @@
                     },
                     "configurations": {
                         "production": {
-                            "fileReplacements": [{
-                                "replace": "src/environments/environment.ts",
-                                "with": "src/environments/uu/environment.prod.ts"
-                            }],
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/uu/environment.prod.ts"
+                                }
+                            ],
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
-                            "budgets": [{
+                            "budgets": [
+                                {
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
