@@ -30,7 +30,7 @@
         "latest-version": "^7.0.0",
         "moment": "^2.29.1",
         "ngx-spinner": "^10.0.1",
-        "ngx-text-diff": "^11.2.14",
+        "ngx-text-diff": "^0.6.0",
         "primeicons": "^4.1.0",
         "primeng": "^10.0.3",
         "rxjs": "~6.6.0",
