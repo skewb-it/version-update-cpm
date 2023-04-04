@@ -29,7 +29,7 @@
         "jspdf": "^2.5.1",
         "latest-version": "^7.0.0",
         "moment": "^2.29.1",
-        "ngx-spinner": "^15.0.1",
+        "ngx-spinner": "^10.0.1",
         "ngx-text-diff": "^0.6.0",
         "primeicons": "^4.1.0",
         "primeng": "^10.0.3",
